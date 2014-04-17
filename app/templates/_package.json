@@ -1,5 +1,24 @@
 {
-  "name": "package",
-  "version": "0.0.0",
-  "dependencies": {}
+  "name": "marionette-base-spa",
+  "version": "0.0.1",
+  "description": "Grunt build dependencies",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "grunt": "~0.4.2",
+    "grunt-sass": "~0.10.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-connect": "~0.6.0",
+    "request": "~2.33.0",
+    "connect-modrewrite": "~0.5.11",
+    "grunt-contrib-requirejs": "~0.4.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "Readme.md"
 }

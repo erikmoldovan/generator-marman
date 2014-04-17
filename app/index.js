@@ -26,12 +26,12 @@ var MarionetteBaseSpaGenerator = yeoman.generators.Base.extend({
     this.log(chalk.magenta('RequireJS + Backbone/Marionette + Underscore + Handlebars + SASS + Jasmine'));
 
     var prompts = [
-      {
-        type: 'confirm',
-        name: 'unitTests',
-        message: 'Would you like to use Jasmine?',
-        default: false
-      }
+      // {
+      //   type: 'confirm',
+      //   name: 'unitTests',
+      //   message: 'Would you like to use Jasmine?',
+      //   default: false
+      // }
     ];
 
     this.prompt(prompts, function (props) {
@@ -58,13 +58,21 @@ var MarionetteBaseSpaGenerator = yeoman.generators.Base.extend({
     this.mkdir('assets/img');
     this.mkdir('assets/fonts');
 
-    this.copy('_package.json', 'package.json');
-    this.copy('_bower.json', 'bower.json');
+    this.template('Gruntfile.js', 'Gruntfile.js');
+    this.template('index.html', 'index.html');
+
+    this.template('_bower.json', 'bower.json');
+    this.template('_package.json', 'package.json');
   },
 
   projectfiles: function () {
     this.copy('editorconfig', '.editorconfig');
-    this.copy('jshintrc', '.jshintrc');
+  },
+
+  runtime: function () {
+    this.copy('bowerrc', '.bowerrc');
+    this.copy('gitignore', '.gitignore');
+    this.copy('htaccess', '.htaccess');
   }
 });
 

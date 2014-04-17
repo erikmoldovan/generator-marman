@@ -1,0 +1,7 @@
+*.yml
+assets/styles/*.css
+assets/styles/*.css.map
+.DS_Store
+
+node_modules
+app/libs
