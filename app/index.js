@@ -23,15 +23,9 @@ var MarionetteBaseSpaGenerator = yeoman.generators.Base.extend({
     this.log(this.yeoman);
 
     // replace it with a short and sweet description of your generator
-    this.log(chalk.magenta('RequireJS + Backbone/Marionette + Underscore + Handlebars + SASS + Jasmine'));
+    this.log(chalk.magenta('Marionette SPA done simple: RequireJS/Backbone/Marionette'));
 
     var prompts = [
-      // {
-      //   type: 'confirm',
-      //   name: 'unitTests',
-      //   message: 'Would you like to use Jasmine?',
-      //   default: false
-      // }
         {
           type: 'checkbox',
           name: 'additionalFeatures',
@@ -53,7 +47,7 @@ var MarionetteBaseSpaGenerator = yeoman.generators.Base.extend({
     ];
 
     this.prompt(prompts, function (props) {
-      this.unitTests = props.unitTests;
+      this.additionalFeatures = props.additionalFeatures;
 
       done();
     }.bind(this));
