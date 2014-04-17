@@ -32,6 +32,24 @@ var MarionetteBaseSpaGenerator = yeoman.generators.Base.extend({
       //   message: 'Would you like to use Jasmine?',
       //   default: false
       // }
+        {
+          type: 'checkbox',
+          name: 'additionalFeatures',
+          message: 'Select the additional features you would like including in your app',
+          choices: [
+            {
+              name: 'Style Preprocessor'
+            },{
+              name: 'Style Framework'
+            },{
+              name: 'Unit Testing Framework'
+            },{
+              name: 'Web Server'
+            },{
+              name: 'Extra Modules'
+            }
+          ]
+        }
     ];
 
     this.prompt(prompts, function (props) {
