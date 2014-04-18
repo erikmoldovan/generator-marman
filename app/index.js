@@ -24,6 +24,7 @@ var MarionetteBaseSpaGenerator = yeoman.generators.Base.extend({
     // replace it with a short and sweet description of your generator
     this.log(chalk.magenta('Marionette SPAs made simple: RequireJS/Backbone/Marionette'));
 
+    // Read the prompts config file
     var prompts = JSON.parse(this.readFileAsString(path.join(__dirname, './prompts.json')));
 
     this.prompt(prompts, function (props) {
@@ -35,56 +36,33 @@ var MarionetteBaseSpaGenerator = yeoman.generators.Base.extend({
 
       done();
     }.bind(this));
+  },
+
+  readBowerConfig: function(){
+    // this.bower_config = JSON.parse(this.readFileAsString(path.join(__dirname, './base/_base.bower.json')));
   }
 });
 
 MarionetteBaseSpaGenerator.prototype.generateApp = function generateApp(){
-  function scaffoldStructure(parent) {
-    parent.mkdir('app');
-    parent.mkdir('app/libs');
-    parent.mkdir('app/global');
-    parent.mkdir('app/modules');
-    parent.mkdir('app/modules/shared');
-    parent.mkdir('app/modules/shared/extensions');
-    parent.mkdir('app/modules/shared/models');
-    parent.mkdir('app/modules/shared/views');
-    parent.mkdir('app/modules/all');
+  var scaffold_config = JSON.parse(this.readFileAsString(path.join(__dirname, './scaffold.json')));
 
-    parent.mkdir('assets');
-    parent.mkdir('assets/styles');
-    parent.mkdir('assets/styles/sass');
-    parent.mkdir('assets/img');
-    parent.mkdir('assets/fonts');
-  };
+  var parent = this;
 
-  function createAppTemplates(parent){
-    parent.template('Gruntfile.js', 'Gruntfile.js');
-    parent.template('index.html', 'index.html');
+  this._.forEach(scaffold_config, function(section){
+    var method = section.method,
+        list = section.list;
 
-    parent.template('_bower.json', 'bower.json');
-    parent.template('_package.json', 'package.json');
-  };
-
-  function createProjectFiles(parent) {
-    parent.copy('editorconfig', '.editorconfig');
-  };
-
-  function createRuntimeFiles(parent) {
-    parent.copy('bowerrc', '.bowerrc');
-    parent.copy('gitignore', '.gitignore');
-    parent.copy('htaccess', '.htaccess');
-  };
-
-  scaffoldStructure(this);
-  createAppTemplates(this);
-  createProjectFiles(this);
-  createRuntimeFiles(this);
+    for(var i = 0; i < list.length; i++){
+      parent[method](list[i]);
+    }
+  });
 };
 
 MarionetteBaseSpaGenerator.prototype.stylePreprocessor = function stylePreprocessor(){
   if(this.stylePreprocessor != "None"){
     console.log('spp');
 
+    
   }
 };
 
@@ -110,7 +88,7 @@ MarionetteBaseSpaGenerator.prototype.webServer = function webServer(){
 };
 
 MarionetteBaseSpaGenerator.prototype.extraModules = function extraModules(){
-  if(this.extraModules != "None"){
+  if(this.extraModules.length > 0){
     console.log('em');
 
   }

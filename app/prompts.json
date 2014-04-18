@@ -8,8 +8,6 @@
         "name": "None"
       },{
         "name": "SASS"
-      },{
-        "name": "LESS"
       }
     ]
   },
@@ -20,8 +18,6 @@
     "choices": [
       {
         "name": "None"
-      },{
-        "name": "Bootstrap"
       },{
         "name": "Foundation"
       }

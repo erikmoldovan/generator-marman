@@ -19,10 +19,10 @@ module.exports = function(grunt) {
                     imagesDir: 'assets/img',
                     cssDir: 'assets/styles',
                     sourceComments: 'map',
-                    sourceMap:'assets/styles/main.css.map'
+                    sourceMap:'assets/styles/app.css.map'
                 },
                 files: {
-                    'assets/styles/main.css':  'assets/styles/sass/main.scss'
+                    'assets/styles/app.css':  'assets/styles/sass/app.scss'
                 }
             }
         },
