@@ -17,7 +17,7 @@ module.exports = function(grunt) {
                 options: {
                     includePaths: ['scss'],
                     imagesDir: 'assets/img',
-                    cssDir: 'assets/styles/css',
+                    cssDir: 'assets/styles',
                     sourceComments: 'map',
                     sourceMap:'assets/styles/main.css.map'
                 },

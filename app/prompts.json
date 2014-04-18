@@ -1,0 +1,72 @@
+[
+  {
+    "type": "list",
+    "name": "stylePreprocessor",
+    "message": "Which CSS Preprocessor would you like to use?",
+    "choices": [
+      {
+        "name": "None"
+      },{
+        "name": "SASS"
+      },{
+        "name": "LESS"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "name": "styleFramework",
+    "message": "Which style framework would you like to use?",
+    "choices": [
+      {
+        "name": "None"
+      },{
+        "name": "Bootstrap"
+      },{
+        "name": "Foundation"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "name": "unitTestingFramework",
+    "message": "Which unit testing framework would you like to use?",
+    "choices": [
+      {
+        "name": "None"
+      },{
+        "name": "Jasmine"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "name": "webServer",
+    "message": "Which web server would you like to use?",
+    "choices": [
+      {
+        "name": "None"
+      },{
+        "name": "Node.js"
+      }
+    ]
+  },
+  {
+    "type": "checkbox",
+    "name": "extraModules",
+    "message": "What extra modules would you like to include?",
+    "choices": [
+      {
+        "name": "Backgrid"
+      },{
+        "name": "Backbone extras"
+      },{
+        "name": "lunr"
+      },{
+        "name": "SinonJS"
+      },{
+        "name": "Sticky JS"
+      }
+    ]
+  }
+]
