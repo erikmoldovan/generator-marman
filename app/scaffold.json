@@ -41,5 +41,14 @@
 			".gitignore",
 			".htaccess"
 		]
+	},
+	"application_files": {
+		"method": "copy",
+		"list": [
+			"app/config.js",
+			"app/app.js",
+			"app/main.js",
+			"assets/styles/sass/app.scss"
+		]
 	}
 }
