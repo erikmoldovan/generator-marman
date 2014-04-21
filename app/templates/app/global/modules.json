@@ -3,33 +3,11 @@
 	 	"name": "Test 1",
 	 	"path": "",
 	 	"url": "/test1",
-	 	"navigationTrigger": "show:test1",
-	 	"subnav": [
-			{
-				"name": "Sub Test 1",
-				"url": "subtest1",
-				"navigationTrigger": "show:test1:subtest1"
-			},{
-            	"name": "Sub Test 2",
-            	"url": "subtest2",
-            	"navigationTrigger": "show:test1:subtest2"
-            }   
-		]
+	 	"navigationTrigger": "show:test1"
 	},{
 	 	"name": "Test 2",
 	 	"path": "",
 	 	"url": "/test2",
-	 	"navigationTrigger": "show:test2",
-	 	"subnav": [
-	 		{
-				"name": "Sub Test 1",
-				"url": "subtest1",
-				"navigationTrigger": "show:test2:subtest1"
-			},{
-            	"name": "Sub Test 2",
-            	"url": "subtest2",
-            	"navigationTrigger": "show:test2:subtest2"
-            }   
-	 	]
+	 	"navigationTrigger": "show:test2"
 	}
 ]
