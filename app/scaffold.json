@@ -24,22 +24,22 @@
 		"list": [
 			"Gruntfile.js",
 			"index.html",
-			"_bower.json",
-			"_package.json"
+			"bower.json",
+			"package.json"
 		]
 	},
 	"project_files": {
 		"method": "copy",
 		"list": [
-			"editorconfig"
+			".editorconfig"
 		]
 	},
 	"runtime_files": {
 		"method": "copy",
 		"list": [
-			"bowerrc",
-			"gitignore",
-			"htaccess"
+			".bowerrc",
+			".gitignore",
+			".htaccess"
 		]
 	}
 }
