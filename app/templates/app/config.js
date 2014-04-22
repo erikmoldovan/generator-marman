@@ -1,76 +1,74 @@
 require.config({
-    baseUrl: 'app/libs',
     paths: {
         // Make this easier to access
-        'libs': '.',
+        'libs': '/app/libs',
 
         // Underscore functionality provided by lo-dash
-        'underscore': 'lodash/dist/lodash.underscore',
+        'underscore': 'libs/lodash/dist/lodash.underscore',
 
         // jQuery
-        'jquery': 'jquery/jquery',
+        'jquery': 'libs/jquery/jquery',
 
         // Fastclick
-        'fastclick': 'fastclick/lib/fastclick',
+        'fastclick': 'libs/fastclick/lib/fastclick',
 
         // Backbone
-        'backbone': 'backbone/backbone',
+        'backbone': 'libs/backbone/backbone',
 
         // Marionette
-        'marionette': 'marionette/lib/backbone.marionette',
+        'marionette': 'libs/marionette/lib/backbone.marionette',
 
         // Lunr - Full Text Search.
         // Note: Dependency for backgrid filter
-        'lunr': 'lunr.js/lunr',
+        'lunr': 'libs/lunr.js/lunr',
 
         // Backbone.picky
-        'backbone.picky': 'backbone.picky/src/backbone.picky',
+        'backbone.picky': 'libs/backbone.picky/src/backbone.picky',
         
         // Backgrid Pageable
-        'backbone.pageable': 'backbone-pageable/lib/backbone-pageable',
+        'backbone.pageable': 'libs/backbone-pageable/lib/backbone-pageable',
 
         // Foundation Module
-        'foundation': 'foundation/js/foundation',
+        'foundation': 'libs/foundation/js/foundation',
 
         // Foundation Tooltip
-        'foundation.tooltip': 'foundation/js/foundation/foundation.tooltip',
+        'foundation.tooltip': 'libs/foundation/js/foundation/foundation.tooltip',
 
         // Foundation Dropdown
-        'foundation.dropdown': 'foundation/js/foundation/foundation.dropdown',
+        'foundation.dropdown': 'libs/foundation/js/foundation/foundation.dropdown',
 
         // Backgrid Component
-        'backbone.backgrid': 'backgrid/lib/backgrid',
+        'backbone.backgrid': 'libs/backgrid/lib/backgrid',
 
         // Backgrid Paginator
-        'backbone.backgrid.paginator': 'backgrid-paginator/backgrid-paginator',
+        'backbone.backgrid.paginator': 'libs/backgrid-paginator/backgrid-paginator',
 
         // Backgrid Select All Extension
-        'backbone.backgrid.selectall': 'backgrid-select-all/backgrid-select-all',
+        'backbone.backgrid.selectall': 'libs/backgrid-select-all/backgrid-select-all',
 
         // Backgrid Filter
-        'backbone.backgrid.filter': 'backgrid-filter/backgrid-filter',
+        'backbone.backgrid.filter': 'libs/backgrid-filter/backgrid-filter',
 
         // Handlebars
-        'handlebars': 'handlebars/handlebars',
+        'handlebars': 'libs/handlebars/handlebars',
         
         // Handlebars Text Helper
-        'hbs': 'requirejs-hbs/hbs',
+        'hbs': 'libs/requirejs-hbs/hbs',
 
         // Requirejs Text Helper
-        'text': 'requirejs-text/text',
+        'text': 'libs/requirejs-text/text',
 
         // Requirejs Text Helper
-        'sticky': 'sticky/jquery.sticky',
+        'sticky': 'libs/sticky/jquery.sticky',
 
         // Modernizr
-        'modernizr': 'modernizr/modernizr',
+        'modernizr': 'libs/modernizr/modernizr',
 
         // RequireJS Plugin - JSON
-        'json': 'requirejs-plugins/src/json'
+        'json': 'libs/requirejs-plugins/src/json',
 
         // Handlebar helpers
         // 'handlebar.helpers': 'config/handlebars/helpers',
-
 
         // === Common Modules ===
 

@@ -3,7 +3,7 @@ require(['config'], function() {
     'use strict';
 
     // Load the Application
-    require(['App', 'underscore', 'modules/main/main.app', 'foundation'], function(App, _, MainApp, Foundation) {
+    require(['App', 'underscore', 'foundation'], function(App, _, Foundation) {
 
         App.start();
         
