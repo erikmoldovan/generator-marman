@@ -51,7 +51,7 @@
 			"app/config.js",
 			"app/app.js",
 			"app/main.js",
-			"app/global/modules.json",
+			"app/modules.json",
 			"assets/styles/sass/app.scss"
 		]
 	},

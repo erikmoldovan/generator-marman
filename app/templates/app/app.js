@@ -4,13 +4,13 @@ define([
         'backbone', 
         'marionette',
         // 'config/regions/dialog',
-        'json!global/modules.json'
+        'json!modules.json'
     ],
 
     function( _, $, Backbone, Marionette, modulesList ) {
         'use strict';
 
-        /**** NEEDS TO BE REVISITED *****/
+        /**** NEEDS TO BE ABSTRACTED INTO APP.ROUTER MAYBE *****/
         // _.extend( Marionette.Application.prototype, {
         //     /**
         //      * Navigate method. Handles Backbone.history.navigate behavior
@@ -38,7 +38,7 @@ define([
             headerRegion: '#header-region', // Banner area, where menu, search and utitlities will live 
             mainRegion: '#main-region' // Main Application Layout Region
 
-            /**** NEEDS TO BE RE-IMPLEMENTED *****/
+            /**** NEEDS TO BE RE-ENABLED, AFTER I FIGURE OUT IMPORTING THE DIALOG CONFIG *****/
             // dialogRegion: DialogRegion.extend({
             //     el: '#dialog-region' // Application Dialog Region
             // })    
@@ -48,7 +48,7 @@ define([
         App.on('initialize:after', function(){            
             // Pulls in the list of modules dynamically from JSON, as filtered by permissions
             var modulesArray = [];
-            var baseModulesURL = 'modules/all/'; /**** NEEDS TO BE ABSTRACTED ****/
+            var baseModulesURL = 'modules/all/'; /**** NEEDS TO BE ABSTRACTED INTO APP.MODULES ****/
 
             console.log(modulesList);
 
