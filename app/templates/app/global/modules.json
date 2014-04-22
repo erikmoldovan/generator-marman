@@ -1,12 +1,12 @@
 [
 	{
 	 	"name": "Test 1",
-	 	"path": "",
+	 	"path": "test1/module.test1",
 	 	"url": "/test1",
 	 	"navigationTrigger": "show:test1"
 	},{
 	 	"name": "Test 2",
-	 	"path": "",
+	 	"path": "test2/module.test2",
 	 	"url": "/test2",
 	 	"navigationTrigger": "show:test2"
 	}

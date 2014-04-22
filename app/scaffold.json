@@ -12,6 +12,9 @@
 			"app/modules/shared/views",
 			"app/modules/all",
 
+			"app/modules/all/test1",
+			"app/modules/all/test2",
+
 			"assets",
 			"assets/styles",
 			"assets/styles/sass",
@@ -34,7 +37,7 @@
 			".editorconfig"
 		]
 	},
-	"runtime_files": {
+	"runtime_files": {	
 		"method": "copy",
 		"list": [
 			".bowerrc",
@@ -50,6 +53,13 @@
 			"app/main.js",
 			"app/global/modules.json",
 			"assets/styles/sass/app.scss"
+		]
+	},
+	"module_files": {
+		"method": "copy",
+		"list": [
+			"app/modules/all/test1/module.test1.js",
+			"app/modules/all/test2/module.test2.js"
 		]
 	}
 }

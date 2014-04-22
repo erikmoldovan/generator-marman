@@ -1,2 +1,5 @@
 node_modules/
 temp/
+
+.DS_STORE
+*/.DS_STORE
