@@ -5,7 +5,7 @@ require(['config'],
 
         // Load the Application
         require([
-                'app',
+                'app.ld',
                 'underscore',
                 'foundation'
             ],

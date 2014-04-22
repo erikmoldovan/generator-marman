@@ -49,7 +49,7 @@
 		"method": "copy",
 		"list": [
 			"app/config.js",
-			"app/app.js",
+			"app/app.ld.js",
 			"app/main.js",		
 			"app/modules.json",
 			"app/global/app.router.js",

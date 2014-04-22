@@ -1,5 +1,5 @@
 define([
-        'app'
+        'app.ld'
     ],
 
     function( LDApp ){
