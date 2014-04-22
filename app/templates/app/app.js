@@ -1,58 +1,40 @@
-define([ 
+define([
         'underscore', 
         'jquery', 
         'backbone', 
         'marionette',
-        // 'config/regions/dialog',
+        'global/app.region.dialog',
         'json!modules.json'
     ],
 
-    function( _, $, Backbone, Marionette, modulesList ) {
+    function( _, $, Backbone, Marionette, DialogRegion, ModulesList ){
         'use strict';
 
-        /**** NEEDS TO BE ABSTRACTED INTO APP.ROUTER MAYBE *****/
-        // _.extend( Marionette.Application.prototype, {
-        //     /**
-        //      * Navigate method. Handles Backbone.history.navigate behavior
-        //      * @param {string} route
-        //      * @param [{object}] options
-        //      */
-        //     navigate: function( route, options ) {
-        //         options || (options = {});
-        //         Backbone.history.navigate( route, options );
-        //     },
-        //     /**
-        //      * Returns current route fragment
-        //      * @return {string}
-        //      */
-        //     getCurrentRoute: function() {
-        //         return Backbone.history.fragment;
-        //     }
+        var LDApp = new Marionette.Application();
 
-        // });
-
-        var App = new Marionette.Application();
-        
-        // Specify the application region
-        App.addRegions({
-            headerRegion: '#header-region', // Banner area, where menu, search and utitlities will live 
-            mainRegion: '#main-region' // Main Application Layout Region
-
-            /**** NEEDS TO BE RE-ENABLED, AFTER I FIGURE OUT IMPORTING THE DIALOG CONFIG *****/
-            // dialogRegion: DialogRegion.extend({
-            //     el: '#dialog-region' // Application Dialog Region
-            // })    
+        /*
+         * Define the Application Regions
+         */
+        LDApp.addRegions({
+            headerRegion: '#header-region',
+            mainRegion: '#main-region',
+            footerRegion: '#footer-region',
+            dialogRegion: DialogRegion.extend({
+                el: '#dialog-region' // Application Dialog / Modal
+            })
         });
 
-        // Initializer Handler
-        App.on('initialize:after', function(){            
+        /*
+         * Application initialization handler
+         */
+        LDApp.on('initialize:after', function(){
             // Pulls in the list of modules dynamically from JSON, as filtered by permissions
             var modulesArray = [];
             var baseModulesURL = 'modules/all/'; /**** NEEDS TO BE ABSTRACTED INTO APP.MODULES ****/
 
-            console.log(modulesList);
+            console.log(ModulesList);
 
-            _.each(modulesList, function(module){
+            _.each(ModulesList, function(module){
                 modulesArray.push(baseModulesURL + module.path);
             });
 
@@ -64,6 +46,6 @@ define([
             });
         });
 
-        return App;
+        return LDApp;
     }
 );

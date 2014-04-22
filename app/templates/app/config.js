@@ -68,7 +68,7 @@ require.config({
         'json': 'libs/requirejs-plugins/src/json',
 
         // Handlebar helpers
-        // 'handlebar.helpers': 'config/handlebars/helpers',
+        'handlebar.helpers': 'global/app.helpers.handlebars',
 
         // === Common Modules ===
 

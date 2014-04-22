@@ -50,8 +50,11 @@
 		"list": [
 			"app/config.js",
 			"app/app.js",
-			"app/main.js",
+			"app/main.js",		
 			"app/modules.json",
+			"app/global/app.router.js",
+			"app/global/app.region.dialog.js",
+			"app/global/app.helpers.handlebars.js",
 			"assets/styles/sass/app.scss"
 		]
 	},

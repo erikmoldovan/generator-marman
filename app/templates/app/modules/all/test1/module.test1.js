@@ -1,11 +1,11 @@
 define([
-        'App'
+        'app'
     ],
 
-    function( App ){
+    function( LDApp ){
         'use strict';
 
-        App.module( 'Test1', function( Test1 ) {
+        LDApp.module( 'Test1', function( Test1 ) {
 
             /**** NEED TO ACTUALLY CREATE SCAFFOLD ****/
             // var API = {
@@ -24,6 +24,6 @@ define([
             });
         });
 
-        return App.Test1;
+        return LDApp.Test1;
     }
 );
