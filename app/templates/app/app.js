@@ -13,6 +13,26 @@ define([
     function( _, $, Backbone, Marionette, DialogRegion, EventManager, ModuleManager, Router ){
         'use strict';
 
+        _.extend( Marionette.Application.prototype, {
+            /**
+             * Navigate method. Handles Backbone.history.navigate behavior
+             * @param {string} route
+             * @param [{object}] options
+             */
+            navigate: function( route, options ) {
+                options || (options = {});
+                Backbone.history.navigate( route, options );
+            },
+            /**
+             * Returns current route fragment
+             * @return {string}
+             */
+            getCurrentRoute: function() {
+                return Backbone.history.fragment;
+            }
+
+        });
+
         // Globalization
         window.App = new Marionette.Application();
 
@@ -27,7 +47,7 @@ define([
         });
 
         // Load app-level helper methods
-        App.EventManager = new EventManager;
+        // App.EventManager = new EventManager;
         App.ModuleManager = new ModuleManager;
         App.Router = new Router;
 
@@ -43,7 +63,7 @@ define([
             console.log('[GLOBAL] App started');
         });
 
-        App.vent.trigger('test_event');
+        App.EventManager.trigger('test_event');
 
         return App;
     }
