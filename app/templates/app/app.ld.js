@@ -4,17 +4,17 @@ define([
         'backbone', 
         'marionette',
         'global/app.region.dialog',
-        'json!modules.json'
+        'json!modules.json',
+        'global/app.router'
     ],
 
-    function( _, $, Backbone, Marionette, DialogRegion, ModulesList ){
+    function( _, $, Backbone, Marionette, DialogRegion, ModulesList, Router ){
         'use strict';
 
-        var LDApp = new Marionette.Application();
+        // Globalization
+        window.LDApp = new Marionette.Application();
 
-        /*
-         * Define the Application Regions
-         */
+        // Define the Application Regions
         LDApp.addRegions({
             headerRegion: '#header-region',
             mainRegion: '#main-region',
@@ -24,21 +24,17 @@ define([
             })
         });
 
-        /*
-         * Application initialization handler
-         */
+        LDApp.Router = new Router();
+
+        // Application initialization handler
         LDApp.on('initialize:after', function(){
             // Pulls in the list of modules dynamically from JSON, as filtered by permissions
             var modulesArray = [];
             var baseModulesURL = 'modules/all/'; /**** NEEDS TO BE ABSTRACTED INTO APP.MODULES ****/
 
-            console.log(ModulesList);
-
             _.each(ModulesList, function(module){
                 modulesArray.push(baseModulesURL + module.path);
             });
-
-            console.log(modulesArray);
 
             require(modulesArray, function(){
                 // Kick off Backbone.history to resolve current url

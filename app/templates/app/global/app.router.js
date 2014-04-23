@@ -6,12 +6,17 @@ define([
   function(Backbone, Marionette){
     'use strict';
 
-    var Router = Marionette.AppRouter.extend({
-      appRoutes: {
-        "test1": "loadTest1",
-        "test2": "loadTest2"
-      },
+    // var Controller = Marionette.Controller.extend({
+    //   loadTest1: function(){
+    //     console.log('test 1 route loaded');
+    //   },
 
+    //   loadTest2: function(){
+    //     console.log('test 2 route loaded');
+    //   }
+    // });
+
+    var Controller = {
       loadTest1: function(){
         console.log('test 1 route loaded');
       },
@@ -19,6 +24,14 @@ define([
       loadTest2: function(){
         console.log('test 2 route loaded');
       }
+    };
+
+    var Router = Marionette.AppRouter.extend({
+      controller: Controller,
+      appRoutes: {
+        "test1": "loadTest1",
+        "test2": "loadTest2"
+      },
     });
 
     return Router;
