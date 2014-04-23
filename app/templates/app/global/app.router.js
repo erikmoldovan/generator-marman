@@ -29,6 +29,7 @@ define([
     var Router = Marionette.AppRouter.extend({
       controller: Controller,
       appRoutes: {
+        "*defaults": "loadTest1",
         "test1": "loadTest1",
         "test2": "loadTest2"
       },
