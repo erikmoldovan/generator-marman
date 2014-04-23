@@ -58,6 +58,7 @@
 			"app/global/app.modulemanager.js",
 			"app/global/app.router.js",
 
+			"app/global/config/config.environment.json",
 			"app/global/config/config.modules.json",
 			"app/global/helpers/region.dialog.js",
 			"app/global/helpers/helper.handlebars.js",

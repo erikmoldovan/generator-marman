@@ -80,6 +80,9 @@ require.config({
         // Dialog region
         'region.dialog': 'global/helpers/region.dialog',
 
+        // App.Environment
+        'app.environment': 'global/app.environment',
+
         // App.EventManager
         "app.eventmanager": 'global/app.eventmanager',
 

@@ -5,12 +5,13 @@ define([
         'marionette',
 
         'region.dialog',
+        'app.environment',
         'app.eventmanager',
         'app.modulemanager',
         'app.router'
     ],
 
-    function( _, $, Backbone, Marionette, DialogRegion, EventManager, ModuleManager, Router ){
+    function( _, $, Backbone, Marionette, DialogRegion, Environment, EventManager, ModuleManager, Router ){
         'use strict';
 
         _.extend( Marionette.Application.prototype, {
@@ -47,6 +48,7 @@ define([
         });
 
         // Load app-level helper methods
+        App.Environment = new Environment;
         // App.EventManager = new EventManager;
         App.ModuleManager = new ModuleManager;
         App.Router = new Router;
@@ -63,7 +65,7 @@ define([
             console.log('[GLOBAL] App started');
         });
 
-        App.EventManager.trigger('test_event');
+        // App.EventManager.trigger('test_event');
 
         return App;
     }

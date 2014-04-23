@@ -15,11 +15,11 @@ define([
 		        console.log('[GLOBAL] ModuleManager loaded');
 
 		        // If no module list is explicitly passed in by the app, load the defaults
-		        if(_.isUndefined(options)) this.loadDefaultModules();
+		        if(_.isUndefined(options)) this._loadDefaultModules();
 		    },
 
 		    // Loads the default modules, which consists of the entire list of defined modules in the app
-		    loadDefaultModules: function(){
+		    _loadDefaultModules: function(){
 		    	var self = this;
 
 		    	_.each(ModuleLsist, function(module){
