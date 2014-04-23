@@ -25,22 +25,22 @@ var MarionetteBaseSpaGenerator = yeoman.generators.Base.extend({
     this.log(chalk.magenta('Marionette SPAs made simple: RequireJS/Backbone/Marionette'));
 
     // Read the prompts config file
-    var prompts = JSON.parse(this.readFileAsString(path.join(__dirname, './prompts.json')));
+    // var prompts = JSON.parse(this.readFileAsString(path.join(__dirname, './prompts.json')));
 
-    this.prompt(prompts, function (props) {
-      this.stylePreprocessor = props.stylePreprocessor;
-      this.styleFramework = props.styleFramework;
-      this.unitTestingFramework = props.unitTestingFramework;
-      this.webServer = props.webServer;
-      this.extraModules = props.extraModules;
+    // this.prompt(prompts, function (props) {
+      // this.stylePreprocessor = props.stylePreprocessor;
+      // this.styleFramework = props.styleFramework;
+      // this.unitTestingFramework = props.unitTestingFramework;
+      // this.webServer = props.webServer;
+      // this.extraModules = props.extraModules;
 
       done();
-    }.bind(this));
-  },
-
-  readBowerConfig: function(){
-    // this.bower_config = JSON.parse(this.readFileAsString(path.join(__dirname, './base/_base.bower.json')));
+    // }.bind(this));
   }
+
+  // readBowerConfig: function(){
+    // this.bower_config = JSON.parse(this.readFileAsString(path.join(__dirname, './base/_base.bower.json')));
+  // }
 });
 
 MarionetteBaseSpaGenerator.prototype.generateApp = function generateApp(){
@@ -58,40 +58,40 @@ MarionetteBaseSpaGenerator.prototype.generateApp = function generateApp(){
   });
 };
 
-MarionetteBaseSpaGenerator.prototype.stylePreprocessor = function stylePreprocessor(){
-  if(this.stylePreprocessor != "None"){
-    console.log('spp');
+// MarionetteBaseSpaGenerator.prototype.stylePreprocessor = function stylePreprocessor(){
+//   if(this.stylePreprocessor != "None"){
+//     console.log('spp');
 
     
-  }
-};
+//   }
+// };
 
-MarionetteBaseSpaGenerator.prototype.styleFramework = function styleFramework(){
-  if(this.styleFramework != "None"){
-    console.log('sf');
+// MarionetteBaseSpaGenerator.prototype.styleFramework = function styleFramework(){
+//   if(this.styleFramework != "None"){
+//     console.log('sf');
 
-  }
-};
+//   }
+// };
 
-MarionetteBaseSpaGenerator.prototype.unitTestingFramework = function unitTestingFramework(){
-  if(this.unitTestingFramework != "None"){
-    console.log('utf');
+// MarionetteBaseSpaGenerator.prototype.unitTestingFramework = function unitTestingFramework(){
+//   if(this.unitTestingFramework != "None"){
+//     console.log('utf');
 
-  }
-};
+//   }
+// };
 
-MarionetteBaseSpaGenerator.prototype.webServer = function webServer(){
-  if(this.webServer != "None"){
-    console.log('ws');
+// MarionetteBaseSpaGenerator.prototype.webServer = function webServer(){
+//   if(this.webServer != "None"){
+//     console.log('ws');
 
-  }
-};
+//   }
+// };
 
-MarionetteBaseSpaGenerator.prototype.extraModules = function extraModules(){
-  if(this.extraModules.length > 0){
-    console.log('em');
+// MarionetteBaseSpaGenerator.prototype.extraModules = function extraModules(){
+//   if(this.extraModules.length > 0){
+//     console.log('em');
 
-  }
-};
+//   }
+// };
 
 module.exports = MarionetteBaseSpaGenerator;
