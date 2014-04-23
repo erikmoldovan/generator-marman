@@ -1,5 +1,8 @@
 require.config({
     paths: {
+        //
+        // === Global libraries ===
+
         // Make this easier to access
         'libs': '/app/libs',
 
@@ -67,34 +70,24 @@ require.config({
         // RequireJS Plugin - JSON
         'json': 'libs/requirejs-plugins/src/json',
 
+
+        //
+        // === App level requires ===
+
         // Handlebar helpers
-        'handlebar.helpers': 'global/helpers.handlebars',
+        'handlebar.helper': 'global/helpers/helper.handlebars',
 
-        // === Common Modules ===
+        // Dialog region
+        'region.dialog': 'global/helpers/region.dialog',
 
-        // Views
-        // 'common.views': 'common/views/views',
+        // App.EventManager
+        "app.eventmanager": 'global/app.eventmanager',
 
-        // // Layouts
-        // 'common.layouts': 'common/layouts/layouts',
+        // App.ModuleManager
+        'app.modulemanager': 'global/app.modulemanager',
 
-        // // Utilities
-        // 'common.utilities': 'common/utilities/all',
-
-        // // Grid Module
-        // 'components.grid': 'common/components/grid/grid',
-
-        // // Grid Pagination Module
-        // 'components.grid.pagination': 'common/components/grid/grid.pagination',
-
-        // // Tab Components
-        // 'components.tabs': 'common/components/tabs/tabs',
-
-        // // Drop Down Components
-        // 'components.dropdown': 'common/components/dropdown/dropdown',
-
-        // // Loan Pagination
-        // 'components.pagination.page': 'common/components/pagination/page/page'
+        // App.Router
+        'app.router': 'global/app.router'
     },
 
     shim: {
@@ -176,16 +169,12 @@ require.config({
 
         // Foundation Tooltip
         'foundation.tooltip': {
-            deps: [
-            'foundation'
-            ]
+            deps: ['foundation']
         },        
 
         // Foundation Tooltip
         'foundation.dropdown': {
-            deps: [
-            'foundation'
-            ]
+            deps: ['foundation']
         }
     }
 });

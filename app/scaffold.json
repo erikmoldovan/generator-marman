@@ -51,14 +51,17 @@
 			"README.md",
 			"app/config.js",
 			"app/app.js",
-			"app/main.js",		
-			"app/modules/config.modules.json",
+			"app/main.js",
+
 			"app/global/app.environment.js",
 			"app/global/app.eventmanager.js",
 			"app/global/app.modulemanager.js",
 			"app/global/app.router.js",
-			"app/global/region.dialog.js",
-			"app/global/helpers.handlebars.js",
+
+			"app/global/config/config.modules.json",
+			"app/global/helpers/region.dialog.js",
+			"app/global/helpers/helper.handlebars.js",
+
 			"assets/styles/sass/app.scss"
 		]
 	},

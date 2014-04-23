@@ -1,7 +1,7 @@
 define([
 		'underscore',
 		'backbone',
-		'json!../modules/config.modules.json'
+		'json!./global/config/config.modules.json'
 	],
 
 	function( _, Backbone, ModuleLsist ){

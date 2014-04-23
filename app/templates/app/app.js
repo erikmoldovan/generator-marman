@@ -3,13 +3,14 @@ define([
         'jquery', 
         'backbone', 
         'marionette',
-        'global/app.eventmanager',
-        'global/app.modulemanager',
-        'global/app.router',
-        'global/region.dialog'
+
+        'region.dialog',
+        'app.eventmanager',
+        'app.modulemanager',
+        'app.router'
     ],
 
-    function( _, $, Backbone, Marionette, EventManager, ModuleManager, Router, DialogRegion ){
+    function( _, $, Backbone, Marionette, DialogRegion, EventManager, ModuleManager, Router ){
         'use strict';
 
         // Globalization
