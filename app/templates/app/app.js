@@ -5,11 +5,10 @@ define([
         'marionette',
         'global/app.modulemanager',
         'global/app.router',
-        'global/region.dialog',
-        'json!./modules/config.modules.json'
+        'global/region.dialog'
     ],
 
-    function( _, $, Backbone, Marionette, ModuleManager, Router, DialogRegion, ModulesList ){
+    function( _, $, Backbone, Marionette, ModuleManager, Router, DialogRegion ){
         'use strict';
 
         // Globalization
@@ -25,8 +24,8 @@ define([
             })
         });
 
-        App.ModuleManager = new ModuleManager(ModulesList);
-        App.Router = new Router();
+        App.ModuleManager = new ModuleManager;
+        App.Router = new Router;
 
         // Application initialization handler
         App.on('initialize:after', function(){

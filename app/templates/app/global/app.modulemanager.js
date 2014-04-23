@@ -10,10 +10,21 @@ define([
 		return Backbone.Collection.extend({
 		    initialize: function(options){
 		        console.log('[GLOBAL] ModuleManager loaded');
+
+		        // If no module list is explicitly pass in by the app, load the defaults
+		        if(_.isUndefined(options)) this.loadDefaultModules();
+		    },
+
+		    // Loads the default modules, which is the entire list
+		    loadDefaultModules: function(){
+		    	var self = this;
+
+		    	_.each(ModuleLsist, function(module){
+	        		self.add(new Backbone.Model(module));
+	        	});
 		    },
 
 		    returnModulePaths: function(){
-	            // Pulls in the list of modules dynamically from JSON, as filtered by permissions
 	            var modulesArray = [];
 	            var baseModulesURL = 'modules/all/'; /**** NEEDS TO BE ABSTRACTED INTO APP.MODULES ****/
 
