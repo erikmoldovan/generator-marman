@@ -2,15 +2,15 @@ define([
         'marionette'
     ],
 
-    function(Marionette){
+    function( Marionette ){
         'use strict';
 
         var Router = Marionette.AppRouter.extend({
             initialize: function(){
                 this.processRoutes();
-                // this.createController();
             },
 
+            // Fetches the global module routing data from App.ModuleManager
             processRoutes: function(){
                 this.appRoutes = App.ModuleManager.retrieveRoutes();
             },

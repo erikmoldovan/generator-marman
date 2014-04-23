@@ -3,12 +3,13 @@ define([
         'jquery', 
         'backbone', 
         'marionette',
+        'global/app.eventmanager',
         'global/app.modulemanager',
         'global/app.router',
         'global/region.dialog'
     ],
 
-    function( _, $, Backbone, Marionette, ModuleManager, Router, DialogRegion ){
+    function( _, $, Backbone, Marionette, EventManager, ModuleManager, Router, DialogRegion ){
         'use strict';
 
         // Globalization
@@ -25,6 +26,7 @@ define([
         });
 
         // Load app-level helper methods
+        App.EventManager = new EventManager;
         App.ModuleManager = new ModuleManager;
         App.Router = new Router;
 
@@ -39,6 +41,8 @@ define([
 
             console.log('[GLOBAL] App started');
         });
+
+        App.vent.trigger('test_event');
 
         return App;
     }

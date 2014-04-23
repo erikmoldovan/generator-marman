@@ -54,6 +54,7 @@
 			"app/main.js",		
 			"app/modules/config.modules.json",
 			"app/global/app.environment.js",
+			"app/global/app.eventmanager.js",
 			"app/global/app.modulemanager.js",
 			"app/global/app.router.js",
 			"app/global/region.dialog.js",
