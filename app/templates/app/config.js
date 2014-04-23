@@ -68,7 +68,7 @@ require.config({
         'json': 'libs/requirejs-plugins/src/json',
 
         // Handlebar helpers
-        'handlebar.helpers': 'global/app.helpers.handlebars',
+        'handlebar.helpers': 'global/helpers.handlebars',
 
         // === Common Modules ===
 
@@ -94,31 +94,7 @@ require.config({
         // 'components.dropdown': 'common/components/dropdown/dropdown',
 
         // // Loan Pagination
-        // 'components.pagination.page': 'common/components/pagination/page/page',
-        
-
-        // === Application Paths ===
-
-        // Loan Delivery
-        // 'loan_delivery': 'modules/loan_delivery',
-
-        // // Imports
-        // 'imports': 'modules/imports',
-
-        // // Pools
-        // 'pools': 'modules/pools',
-
-        // // Commitments
-        // 'commitments': 'modules/commitments',
-
-        // // Login
-        // 'login': 'modules/login',
-
-        // // Settings
-        // 'settings': 'modules/settings',
-
-        // // Support & Guidance
-        // 'support': 'modules/support',
+        // 'components.pagination.page': 'common/components/pagination/page/page'
     },
 
     shim: {

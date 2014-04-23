@@ -1,14 +1,14 @@
 define([
-        'underscore', 
+        'underscore',
         'jquery', 
         'backbone', 
         'marionette',
-        'global/app.region.dialog',
-        'json!modules.json',
-        'global/app.router'
+        'global/app.modulemanager',
+        'global/app.router',
+        'global/region.dialog'
     ],
 
-    function( _, $, Backbone, Marionette, DialogRegion, ModulesList, Router ){
+    function( _, $, Backbone, Marionette, ModuleManager, Router, DialogRegion ){
         'use strict';
 
         // Globalization
@@ -25,6 +25,7 @@ define([
         });
 
         App.Router = new Router();
+        App.ModuleManager = new ModuleManager();
 
         // Application initialization handler
         App.on('initialize:after', function(){
@@ -32,9 +33,9 @@ define([
             var modulesArray = [];
             var baseModulesURL = 'modules/all/'; /**** NEEDS TO BE ABSTRACTED INTO APP.MODULES ****/
 
-            _.each(ModulesList, function(module){
-                modulesArray.push(baseModulesURL + module.path);
-            });
+            // _.each(ModulesList, function(module){
+            //     modulesArray.push(baseModulesURL + module.path);
+            // });
 
             require(modulesArray, function(){
                 // Kick off Backbone.history to resolve current url
