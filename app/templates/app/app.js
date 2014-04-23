@@ -24,18 +24,21 @@ define([
             })
         });
 
+        // Load app-level helper methods
         App.ModuleManager = new ModuleManager;
         App.Router = new Router;
 
         // Application initialization handler
         App.on('initialize:after', function(){
-            require(App.ModuleManager.returnModulePaths(), function(){
+            var modules = App.ModuleManager.retrievePaths();
+
+            require(modules, function(){
                 // Kick off Backbone.history to resolve current url
                 Backbone.history.start({ pushState: true, root: '/' });
             });
-        });
 
-        console.log('[GLOBAL] App started');
+            console.log('[GLOBAL] App started');
+        });
 
         return App;
     }

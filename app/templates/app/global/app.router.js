@@ -1,35 +1,36 @@
 define([
-    'backbone',
-    'marionette'
-  ],
+        'marionette'
+    ],
 
-  function(Backbone, Marionette){
-    'use strict';
+    function(Marionette){
+        'use strict';
 
-    var Router = Marionette.AppRouter.extend({
-      initialize: function(options){
-        
-      },
-      appRoutes: {
-        "test1" : "loadTest1",
-        "test2" : "loadTest2",
-        "*path" : "default"
-      },
-      controller: {
-        loadTest1: function(){
-          console.log('[ROUTE] Test1 route fired');
-        },
+        var Router = Marionette.AppRouter.extend({
+            initialize: function(){
+                this.processRoutes();
+                // this.createController();
+            },
 
-        loadTest2: function(){
-          console.log('[ROUTE] Test2 route fired');
-        },
+            processRoutes: function(){
+                this.appRoutes = App.ModuleManager.retrieveRoutes();
+            },
 
-        default: function(){
-          console.log('[ROUTE] Default route fired');
-        }
-      }
-    });
+            controller: {
+                // Format: 'load_module_' + module.baseUrl
+                load_module_test1: function(){
+                    console.log('[ROUTE] Test1 route fired');
+                },
 
-    return Router;
-  }
+                load_module_test2: function(){
+                    console.log('[ROUTE] Test2 route fired');
+                },
+
+                default: function(){
+                    console.log('[ROUTE] Default route fired');
+                }
+            }
+        });
+
+        return Router;
+    }
 );

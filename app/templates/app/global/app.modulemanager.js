@@ -8,14 +8,17 @@ define([
 		'use strict';
 
 		return Backbone.Collection.extend({
+			baseModulesURL: 'modules/all/',
+			baseRoute: "load_module_",
+
 		    initialize: function(options){
 		        console.log('[GLOBAL] ModuleManager loaded');
 
-		        // If no module list is explicitly pass in by the app, load the defaults
+		        // If no module list is explicitly passed in by the app, load the defaults
 		        if(_.isUndefined(options)) this.loadDefaultModules();
 		    },
 
-		    // Loads the default modules, which is the entire list
+		    // Loads the default modules, which consists of the entire list of defined modules in the app
 		    loadDefaultModules: function(){
 		    	var self = this;
 
@@ -24,15 +27,33 @@ define([
 	        	});
 		    },
 
-		    returnModulePaths: function(){
-	            var modulesArray = [];
-	            var baseModulesURL = 'modules/all/'; /**** NEEDS TO BE ABSTRACTED INTO APP.MODULES ****/
+		    // Retrieves module paths for App-level module loading
+		    retrievePaths: function(){
+	            var paths = [],
+	            	self = this;
 
 	            _.each(this.models, function(module){
-	                modulesArray.push(baseModulesURL + module.get('path'));
+	                paths.push(self.baseModulesURL + module.get('path'));
 	            });
 
-				return modulesArray;
+				return paths;
+		    },
+
+		    // Retrieves module routes for App-level router loading
+		    retrieveRoutes: function(){
+		    	var routes = {},
+		    		self = this;
+
+		    	_.each(this.models, function(module){
+		    		var baseUrl = module.get('baseUrl');
+
+		    		routes[baseUrl] = self.baseRoute + baseUrl;
+		    	});
+
+		    	// Define a default 'module' for the router
+		    	if(_.isUndefined(routes['*path'])) routes['*path'] = "default";
+
+		    	return routes;
 		    }
 		});
 	}
