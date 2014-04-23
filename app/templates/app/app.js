@@ -5,10 +5,11 @@ define([
         'marionette',
         'global/app.modulemanager',
         'global/app.router',
-        'global/region.dialog'
+        'global/region.dialog',
+        'json!./modules/config.modules.json'
     ],
 
-    function( _, $, Backbone, Marionette, ModuleManager, Router, DialogRegion ){
+    function( _, $, Backbone, Marionette, ModuleManager, Router, DialogRegion, ModulesList ){
         'use strict';
 
         // Globalization
@@ -24,24 +25,18 @@ define([
             })
         });
 
+        App.ModuleManager = new ModuleManager(ModulesList);
         App.Router = new Router();
-        App.ModuleManager = new ModuleManager();
 
         // Application initialization handler
         App.on('initialize:after', function(){
-            // Pulls in the list of modules dynamically from JSON, as filtered by permissions
-            var modulesArray = [];
-            var baseModulesURL = 'modules/all/'; /**** NEEDS TO BE ABSTRACTED INTO APP.MODULES ****/
-
-            // _.each(ModulesList, function(module){
-            //     modulesArray.push(baseModulesURL + module.path);
-            // });
-
-            require(modulesArray, function(){
+            require(App.ModuleManager.returnModulePaths(), function(){
                 // Kick off Backbone.history to resolve current url
                 Backbone.history.start({ pushState: true, root: '/' });
             });
         });
+
+        console.log('[GLOBAL] App started');
 
         return App;
     }

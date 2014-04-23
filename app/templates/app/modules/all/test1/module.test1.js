@@ -20,7 +20,7 @@ define([
 
             Test1.on( 'start', function(){
                 // API.initializeLayout();
-                console.log('test 1 module loaded');
+                console.log('[MODULE] Test1 loaded');
             });
         });
 

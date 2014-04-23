@@ -48,10 +48,12 @@
 	"application_files": {
 		"method": "copy",
 		"list": [
+			"README.md",
 			"app/config.js",
 			"app/app.js",
 			"app/main.js",		
-			"app/modules.json",
+			"app/modules/config.modules.json",
+			"app/global/app.environment.js",
 			"app/global/app.modulemanager.js",
 			"app/global/app.router.js",
 			"app/global/region.dialog.js",

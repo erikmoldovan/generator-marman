@@ -7,6 +7,9 @@ define([
     'use strict';
 
     var Router = Marionette.AppRouter.extend({
+      initialize: function(options){
+        
+      },
       appRoutes: {
         "test1" : "loadTest1",
         "test2" : "loadTest2",
@@ -14,15 +17,15 @@ define([
       },
       controller: {
         loadTest1: function(){
-          console.log('test 1 route loaded');
+          console.log('[ROUTE] Test1 route fired');
         },
 
         loadTest2: function(){
-          console.log('test 2 route loaded');
+          console.log('[ROUTE] Test2 route fired');
         },
 
         default: function(){
-          console.log('default route loaded');
+          console.log('[ROUTE] Default route fired');
         }
       }
     });
