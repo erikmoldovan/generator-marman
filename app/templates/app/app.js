@@ -12,10 +12,10 @@ define([
         'use strict';
 
         // Globalization
-        window.LDApp = new Marionette.Application();
+        window.App = new Marionette.Application();
 
         // Define the Application Regions
-        LDApp.addRegions({
+        App.addRegions({
             headerRegion: '#header-region',
             mainRegion: '#main-region',
             footerRegion: '#footer-region',
@@ -24,10 +24,10 @@ define([
             })
         });
 
-        LDApp.Router = new Router();
+        App.Router = new Router();
 
         // Application initialization handler
-        LDApp.on('initialize:after', function(){
+        App.on('initialize:after', function(){
             // Pulls in the list of modules dynamically from JSON, as filtered by permissions
             var modulesArray = [];
             var baseModulesURL = 'modules/all/'; /**** NEEDS TO BE ABSTRACTED INTO APP.MODULES ****/
@@ -42,6 +42,6 @@ define([
             });
         });
 
-        return LDApp;
+        return App;
     }
 );

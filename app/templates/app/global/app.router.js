@@ -8,9 +8,9 @@ define([
 
     var Router = Marionette.AppRouter.extend({
       appRoutes: {
-        "*defaults": "loadTest1",
-        "test1": "loadTest1",
-        "test2": "loadTest2"
+        "test1" : "loadTest1",
+        "test2" : "loadTest2",
+        "*path" : "default"
       },
       controller: {
         loadTest1: function(){
@@ -19,6 +19,10 @@ define([
 
         loadTest2: function(){
           console.log('test 2 route loaded');
+        },
+
+        default: function(){
+          console.log('default route loaded');
         }
       }
     });

@@ -5,13 +5,13 @@ require(['config'],
 
         // Load the Application
         require([
-                'app.ld',
+                'app',
                 'underscore',
                 'foundation'
             ],
 
-            function(LDApp, _, Foundation) {
-                LDApp.start();
+            function(App, _, Foundation) {
+                App.start();
                 
                 // First time foundation initialization
                 Foundation.libs.reveal.settings = _.extend(Foundation.libs.reveal.settings, {
