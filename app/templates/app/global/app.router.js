@@ -5,7 +5,7 @@ define([
     function( Marionette ){
         'use strict';
 
-        var Router = Marionette.AppRouter.extend({
+        return Marionette.AppRouter.extend({
             initialize: function(){
                 this.processRoutes();
 
@@ -32,7 +32,5 @@ define([
                 }
             }
         });
-
-        return Router;
     }
 );

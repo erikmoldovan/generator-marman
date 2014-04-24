@@ -69,6 +69,8 @@
 	"module_files": {
 		"method": "copy",
 		"list": [
+			"app/modules/shared/extensions/shared.router.js",
+
 			"app/modules/all/test1/module.test1.js",
 			"app/modules/all/test2/module.test2.js"
 		]

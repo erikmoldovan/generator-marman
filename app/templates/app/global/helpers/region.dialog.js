@@ -10,7 +10,7 @@ define([
         // Handles displaying views in foundation reveal
         // Also takes care of destroying views and unbinding from 'reveal' event
         // The application should always use the dialog region to display Modals
-        var Dialog = Marionette.Region.extend({
+        return Marionette.Region.extend({
 
             // When the Dialog Region shows
             onShow: function( view ) {                
@@ -48,7 +48,5 @@ define([
                 this.$el.empty();
             }
         });
-
-        return Dialog;
     }
 );

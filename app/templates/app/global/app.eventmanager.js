@@ -7,6 +7,7 @@ define([
     function( _, Backbone, Marionette ){
         'use strict';
 
+        // I really don't like this. I wish there was a way to do all these bindings without chaining the calls
         var EventManager = new Backbone.Wreqr.EventAggregator();
 
         EventManager
