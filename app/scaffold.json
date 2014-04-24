@@ -53,10 +53,9 @@
 			"app/app.js",
 			"app/main.js",
 
-			"app/global/app.environment.js",
-			"app/global/app.eventmanager.js",
-			"app/global/app.modulemanager.js",
-			"app/global/app.router.js",
+			"app/global/global.environment.js",
+			"app/global/global.eventmanager.js",
+			"app/global/global.modulemanager.js",
 
 			"app/global/config/config.environment.json",
 			"app/global/config/config.modules.json",

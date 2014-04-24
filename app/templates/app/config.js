@@ -81,16 +81,19 @@ require.config({
         'region.dialog': 'global/helpers/region.dialog',
 
         // App.Environment
-        'app.environment': 'global/app.environment',
+        'global.environment': 'global/global.environment',
 
         // App.EventManager
-        "app.eventmanager": 'global/app.eventmanager',
+        "global.eventmanager": 'global/global.eventmanager',
 
         // App.ModuleManager
-        'app.modulemanager': 'global/app.modulemanager',
+        'global.modulemanager': 'global/global.modulemanager',
+
+        //
+        // === Shared modules
 
         // App.Router
-        'app.router': 'global/app.router'
+        'shared.router': 'modules/shared/extensions/shared.router'
     },
 
     shim: {

@@ -5,10 +5,12 @@ define([
         'marionette',
 
         'region.dialog',
-        'app.environment',
-        'app.eventmanager',
-        'app.modulemanager',
-        'app.router'
+        
+        'global.environment',
+        'global.eventmanager',
+        'global.modulemanager',
+
+        'shared.router'
     ],
 
     function( _, $, Backbone, Marionette, DialogRegion, Environment, EventManager, ModuleManager, Router ){
