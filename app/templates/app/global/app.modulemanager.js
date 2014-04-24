@@ -12,10 +12,10 @@ define([
 			baseRoute: "load_module_",
 
 		    initialize: function(options){
-		        console.log('[GLOBAL] ModuleManager loaded');
-
 		        // If no module list is explicitly passed in by the app, load the defaults
 		        if(_.isUndefined(options)) this._loadDefaultModules();
+
+		        App.EventManager.trigger('global:modulemanager:loaded');
 		    },
 
 		    // Loads the default modules, which consists of the entire list of defined modules in the app

@@ -24,6 +24,7 @@ define([
                 options || (options = {});
                 Backbone.history.navigate( route, options );
             },
+
             /**
              * Returns current route fragment
              * @return {string}
@@ -31,7 +32,6 @@ define([
             getCurrentRoute: function() {
                 return Backbone.history.fragment;
             }
-
         });
 
         // Globalization
@@ -48,10 +48,10 @@ define([
         });
 
         // Load app-level helper methods
-        App.Environment = new Environment;
-        // App.EventManager = new EventManager;
-        App.ModuleManager = new ModuleManager;
-        App.Router = new Router;
+        App.EventManager = EventManager; // Initializes global event system
+        App.Environment = new Environment; // Initializes environment defined model
+        App.ModuleManager = new ModuleManager; // Initialize global module manager
+        App.Router = new Router; // Initializes top level router
 
         // Application initialization handler
         App.on('initialize:after', function(){
@@ -62,10 +62,8 @@ define([
                 Backbone.history.start({ pushState: true, root: '/' });
             });
 
-            console.log('[GLOBAL] App started');
+            App.EventManager.trigger('global:app:start');
         });
-
-        // App.EventManager.trigger('test_event');
 
         return App;
     }

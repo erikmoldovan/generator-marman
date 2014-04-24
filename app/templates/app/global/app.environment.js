@@ -16,6 +16,8 @@ define([
 		        if(!_.isUndefined(Environment)){
 		        	this._loadProdEnvironment();
 		        }
+
+		        App.EventManager.trigger('global:environment:loaded');
 		    },
 
 		    // Loads dev environment variables if file is present

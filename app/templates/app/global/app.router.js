@@ -8,6 +8,8 @@ define([
         var Router = Marionette.AppRouter.extend({
             initialize: function(){
                 this.processRoutes();
+
+                App.EventManager.trigger('global:router:loaded');
             },
 
             // Fetches the global module routing data from App.ModuleManager
@@ -18,15 +20,15 @@ define([
             controller: {
                 // Format: 'load_module_' + module.baseUrl
                 load_module_test1: function(){
-                    console.log('[ROUTE] Test1 route fired');
+                    App.EventManager.trigger('route:test1:fired');
                 },
 
                 load_module_test2: function(){
-                    console.log('[ROUTE] Test2 route fired');
+                    App.EventManager.trigger('route:test2:fired');
                 },
 
                 default: function(){
-                    console.log('[ROUTE] Default route fired');
+                    App.EventManager.trigger('route:default:fired');
                 }
             }
         });
