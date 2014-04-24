@@ -55,11 +55,10 @@
 
 			"app/global/global.environment.js",
 			"app/global/global.eventmanager.js",
-			"app/global/global.modulemanager.js",
-			"app/global/global.router.js",
 
 			"app/global/config/config.environment.json",
-			"app/global/config/config.modules.json",
+			"app/global/config/config.module.global.json",
+
 			"app/global/helpers/region.dialog.js",
 			"app/global/helpers/helper.handlebars.js",
 
@@ -69,8 +68,14 @@
 	"module_files": {
 		"method": "copy",
 		"list": [
+			"app/modules/shared/shared.modulemanager.js",
+			"app/modules/shared/shared.router.js",
+
 			"app/modules/all/test1/module.test1.js",
-			"app/modules/all/test2/module.test2.js"
+			"app/modules/all/test1/config.module.test1.json",
+
+			"app/modules/all/test2/module.test2.js",
+			"app/modules/all/test2/config.module.test2.json"
 		]
 	}
 }

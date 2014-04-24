@@ -93,8 +93,14 @@ require.config({
         // App.ModuleManager
         'global.modulemanager': 'global/global.modulemanager',
 
-        // App.Router
-        'global.router': 'global/global.router'
+        //
+        // === Shared ===
+
+        // shared.modulemanager
+        'shared.modulemanager': 'modules/shared/shared.modulemanager',
+
+        // shared.router
+        'shared.router': 'modules/shared/shared.router'
     },
 
     shim: {

@@ -8,8 +8,9 @@ define([
         
         'global.environment',
         'global.eventmanager',
-        'global.modulemanager',
-        'global.router'
+
+        'shared.modulemanager',
+        'shared.router'
     ],
 
     function( _, $, Backbone, Marionette, DialogRegion, Environment, EventManager, ModuleManager, Router ){
@@ -50,13 +51,16 @@ define([
 
         // Load app-level helper methods
         App.EventManager = EventManager; // Initializes global event system
-        App.Environment = new Environment; // Initializes environment defined model
-        App.ModuleManager = new ModuleManager; // Initialize global module manager
-        App.Router = new Router; // Initializes top level router
+        App.Environment = new Environment; // Initializes global environment model
+
+        App.ModuleManager = new ModuleManager; // Initialize modules manager
+        App.Router = new Router; // Initializes modules router
 
         // Application initialization handler
         App.on('initialize:after', function(){
             var modules = App.ModuleManager.retrievePaths();
+
+            console.log(modules);
 
             require(modules, function(){
                 // Kick off Backbone.history to resolve current url
