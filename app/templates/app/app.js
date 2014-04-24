@@ -9,8 +9,7 @@ define([
         'global.environment',
         'global.eventmanager',
         'global.modulemanager',
-
-        'shared.router'
+        'global.router'
     ],
 
     function( _, $, Backbone, Marionette, DialogRegion, Environment, EventManager, ModuleManager, Router ){

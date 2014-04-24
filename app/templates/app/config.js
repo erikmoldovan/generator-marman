@@ -72,13 +72,17 @@ require.config({
 
 
         //
-        // === App level requires ===
+        // === Helpers ===
 
         // Handlebar helpers
         'handlebar.helper': 'global/helpers/helper.handlebars',
 
         // Dialog region
         'region.dialog': 'global/helpers/region.dialog',
+
+
+        //
+        // === Global extensions ===
 
         // App.Environment
         'global.environment': 'global/global.environment',
@@ -89,11 +93,8 @@ require.config({
         // App.ModuleManager
         'global.modulemanager': 'global/global.modulemanager',
 
-        //
-        // === Shared modules
-
         // App.Router
-        'shared.router': 'modules/shared/extensions/shared.router'
+        'global.router': 'global/global.router'
     },
 
     shim: {
