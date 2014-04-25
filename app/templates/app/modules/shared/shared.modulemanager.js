@@ -12,20 +12,22 @@ define([
 		    	// Loads default global modules list if no params are passed in
 		        var data = (_.isUndefined(options)) ? GlobalModules : options;
 
-		        this._loadModules(data.baseUrl, data.baseRoute, data.modules);
+		        this._loadModules(data.basePath, data.baseRoute, data.modules);
 
-		        App.EventManager.trigger('global:modulemanager:loaded');
+		        App.EventManager.trigger(data.eventTrigger);
 		    },
 
 		    // Loads the default modules, which consists of the entire list of defined modules in the app
-		    _loadModules: function(baseUrl, baseRoute, modules){
+		    _loadModules: function(basePath, baseRoute, modules){
 		    	var self = this;
 
 		    	_.each(modules, function(module){
-		    		module.url = baseUrl + "/" + module.url;
+		    		module.path = basePath + "/" + module.path;
 		    		module.route = baseRoute + "_" + module.path;
 
-	        		self.add(new Backbone.Model(module));
+		    		console.log(module);
+
+	        		self.add(new Backbone.Model(module), {merge: true});
 	        	});
 		    },
 

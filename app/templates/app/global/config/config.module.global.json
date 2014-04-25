@@ -1,6 +1,7 @@
 {
-	"baseUrl": "modules/all",
+	"basePath": "modules/all",
 	"baseRoute": "load_module",
+	"eventTrigger": "global:modulemanager:loaded",
 	"modules": [
 		{
 			"title": "Test 1",
