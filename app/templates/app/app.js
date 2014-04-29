@@ -56,9 +56,13 @@ define([
         App.Environment = new Environment; // Initializes global environment model
 
         App.ModuleManager = new ModuleManager; // Initialize modules manager
-        App.ModuleManager.loadModules(GlobalConfig);
-        
         App.Router = new Router; // Initializes modules router
+
+        App.on('initialize:before', function(){
+            App.ModuleManager.loadModules(GlobalConfig);
+
+            App.Router.processRoutes();
+        });
 
         // Application initialization handler
         App.on('initialize:after', function(){

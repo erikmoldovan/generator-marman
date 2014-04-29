@@ -13,7 +13,7 @@ define([
 
 		    	_.each(config.modules, function(module){
 		    		module.path = config.basePath + "/" + module.path;
-		    		module.route = config.baseRoute + "_" + module.path;
+		    		module.route = config.baseRoute + "_" + module.route;
 
 	        		self.add(new Backbone.Model(module), {merge: true});
 	        	});
@@ -32,19 +32,17 @@ define([
 
 		    // Retrieves module routes
 		    retrieveRoutes: function(){
-		    	// var routes = {},
-		    	// 	self = this;
+		    	var routes = {},
+		    		self = this;
 
-		    	// _.each(this.models, function(module){
-		    	// 	var baseUrl = module.get('baseUrl');
+		    	_.each(this.models, function(module){
+			    	routes[module.get('url')] = module.get('route');
+		    	});
 
-		    	// 	routes[baseUrl] = self.baseRoute + baseUrl;
-		    	// });
+		    	// Define a default 'module' for the router
+		    	if(_.isUndefined(routes['*path'])) routes['*path'] = "default";
 
-		    	// // Define a default 'module' for the router
-		    	// if(_.isUndefined(routes['*path'])) routes['*path'] = "default";
-
-		    	// return routes;
+		    	return routes;
 		    }
 		});
 	}
