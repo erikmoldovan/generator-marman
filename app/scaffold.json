@@ -51,10 +51,11 @@
 			"README.md",
 			"app/config.js",
 			"app/app.js",
-			"app/router.app.js",
 
 			"app/global/global.environment.js",
 			"app/global/global.eventmanager.js",
+			"app/global/global.moduleslist.js",
+			"app/global/global.router.js",
 
 			"app/global/config/config.environment.json",
 			"app/global/config/config.module.global.json",
@@ -69,10 +70,8 @@
 		"method": "copy",
 		"list": [
 			"app/modules/shared/shared.modulemanager.js",
-			"app/modules/shared/shared.router.js",
 
 			"app/modules/all/example/module.example.js",
-			"app/modules/all/example/router.example.js",
 			"app/modules/all/example/config.module.example.json"
 		]
 	}

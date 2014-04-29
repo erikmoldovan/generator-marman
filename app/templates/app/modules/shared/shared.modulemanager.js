@@ -21,10 +21,11 @@ define([
 		    		module.path = config.basePath + "/" + module.path;
 		    		module.route = config.baseRoute + "_" + module.url.replace('/', '_');
 
-	        		self.modulesCollection.add(new Backbone.Model(module), {merge: true});
-	        	});
+		    		var new_entry = new Backbone.Model(module);
 
-	        	// App.EventManager.trigger('global:modulemanager:loaded');
+	        		self.modulesCollection.add(new_entry, {merge: true}); // Local module dependency collection
+	        		App.ModulesList.add(new_entry, {merge: true}); // Global module dependency collection
+	        	});
 		    },
 
 		    // Retrieves module paths (for module loading via Require)
@@ -36,21 +37,6 @@ define([
 	            });
 
 				return paths;
-		    },
-
-		    // Retrieves module routes (for module routers)
-		    retrieveRoutes: function(){
-		    	var routes = {},
-		    		self = this;
-
-		    	_.each(this.modulesCollection.models, function(module){
-			    	routes[module.get('url')] = module.get('route');
-		    	});
-
-		    	// Define a default 'module' for the router
-		    	if(_.isUndefined(routes['*path'])) routes['*path'] = "default";
-
-		    	return routes;
 		    }
 		});
 	}

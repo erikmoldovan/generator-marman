@@ -90,17 +90,17 @@ require.config({
         // App.EventManager
         "global.eventmanager": 'global/global.eventmanager',
 
-        // App.ModuleManager
-        'global.modulemanager': 'global/global.modulemanager',
+        // App.ModuleList
+        'global.moduleslist': 'global/global.moduleslist',
+
+        // App.Router
+        'global.router': 'global/global.router',
 
         //
         // === Shared ===
 
         // shared.modulemanager
-        'shared.modulemanager': 'modules/shared/shared.modulemanager',
-
-        // shared.router
-        'shared.router': 'modules/shared/shared.router'
+        'shared.modulemanager': 'modules/shared/shared.modulemanager'
     },
 
     shim: {
