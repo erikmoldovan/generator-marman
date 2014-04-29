@@ -10,10 +10,12 @@ define([
         'global.eventmanager',
 
         'shared.modulemanager',
-        'shared.router'
+        'shared.router',
+
+        'json!./global/config/config.module.global.json'
     ],
 
-    function( _, $, Backbone, Marionette, DialogRegion, Environment, EventManager, ModuleManager, Router ){
+    function( _, $, Backbone, Marionette, DialogRegion, Environment, EventManager, ModuleManager, Router, GlobalConfig ){
         'use strict';
 
         _.extend( Marionette.Application.prototype, {
@@ -54,13 +56,13 @@ define([
         App.Environment = new Environment; // Initializes global environment model
 
         App.ModuleManager = new ModuleManager; // Initialize modules manager
+        App.ModuleManager.loadModules(GlobalConfig);
+        
         App.Router = new Router; // Initializes modules router
 
         // Application initialization handler
         App.on('initialize:after', function(){
             var modules = App.ModuleManager.retrievePaths();
-
-            console.log(modules);
 
             require(modules, function(){
                 // Kick off Backbone.history to resolve current url
