@@ -55,11 +55,10 @@ define([
         App.EventManager = EventManager; // Initializes global event system
         App.Environment = new Environment; // Initializes global environment model
 
-        App.ModuleManager = new ModuleManager; // Initialize modules manager
-        App.ModuleManager.loadModules(GlobalConfig);
+        App.ModuleManager = new ModuleManager(GlobalConfig); // Initialize modules manager collection
 
         App.on('initialize:before', function(){
-            App.Router = new Router; // Initializes modules router
+            App.Router = new Router(App); // Initializes modules router
         });
 
         // Application initialization handler

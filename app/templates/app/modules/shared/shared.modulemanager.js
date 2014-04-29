@@ -1,41 +1,49 @@
 define([
 		'underscore',
-		'backbone'
+		'backbone',
+		'marionette'
 	],
 
-	function( _, Backbone, GlobalModules ){
+	function( _, Backbone, Marionette ){
 		'use strict';
 
-		return Backbone.Collection.extend({
-		    // Loads the default modules, which consists of the entire list of defined modules in the app
-		    loadModules: function(config){
+		return Marionette.Controller.extend({
+			initialize: function(config){
+				this._loadModules(config);
+			},
+
+			// "Initializes" the collection with the passed in config JSON blob
+		    _loadModules: function(config){
 		    	var self = this;
+		    	this.modulesCollection = new Backbone.Collection();
 
 		    	_.each(config.modules, function(module){
 		    		module.path = config.basePath + "/" + module.path;
 		    		module.route = config.baseRoute + "_" + module.url;
 
-	        		self.add(new Backbone.Model(module), {merge: true});
+	        		self.modulesCollection.add(new Backbone.Model(module), {merge: true});
 	        	});
+
+	        	App.EventManager.trigger('global:modulemanager:loaded');
 		    },
 
-		    // Retrieves module paths
+		    // Retrieves module paths (for module loading via Require)
 		    retrievePaths: function(){
 	            var paths = [];
 
-	            _.each(this.models, function(module){
+	            _.each(this.modulesCollection.models, function(module){
 	                paths.push(module.get('path'));
 	            });
 
 				return paths;
 		    },
 
-		    // Retrieves module routes
+		    // Retrieves module routes (for module routers)
 		    retrieveRoutes: function(){
 		    	var routes = {},
 		    		self = this;
 
-		    	_.each(this.models, function(module){
+		    	_.each(this.modulesCollection.models, function(module){
 			    	routes[module.get('url')] = module.get('route');
 		    	});
 

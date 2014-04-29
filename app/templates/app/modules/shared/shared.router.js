@@ -6,19 +6,19 @@ define([
         'use strict';
 
         return Marionette.AppRouter.extend({
-            initialize: function(){
-                this._processRoutes();
-
-                App.EventManager.trigger('global:router:loaded');
+            initialize: function(context){
+                this._processRoutes(context);
             },
 
             // Fetches the global module routing data from App.ModuleManager
-            _processRoutes: function(){
-                this.appRoutes = App.ModuleManager.retrieveRoutes();
+            _processRoutes: function(context){
+                this.appRoutes = context.ModuleManager.retrieveRoutes();
+
+                context.EventManager.trigger('global:router:loaded');
             },
 
             controller: {
-                // Format: 'load_module_' + module.baseUrl
+                // Format: 'load_module_' + module.get('url')
                 load_module_test1: function(){
                     App.EventManager.trigger('route:test1:fired');
                 },
