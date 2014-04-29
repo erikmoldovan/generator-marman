@@ -71,13 +71,9 @@
 			"app/modules/shared/shared.modulemanager.js",
 			"app/modules/shared/shared.router.js",
 
-			"app/modules/all/test1/module.test1.js",
-			"app/modules/all/test1/router.test1.js",
-			"app/modules/all/test1/config.module.test1.json",
-
-			"app/modules/all/test2/module.test2.js",
-			"app/modules/all/test2/router.test2.js",
-			"app/modules/all/test2/config.module.test2.json"
+			"app/modules/all/example/module.example.js",
+			"app/modules/all/example/router.example.js",
+			"app/modules/all/example/config.module.example.json"
 		]
 	}
 }

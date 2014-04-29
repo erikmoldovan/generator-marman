@@ -17,30 +17,15 @@ define([
             .on('global:modulemanager:loaded', function(){
                 console.log('[GLOBAL] ModuleManager loaded');
             })
-            // .on('global:environment:loaded', function(){
-            //     console.log('[GLOBAL] Environment loaded');
-            // })
+            .on('global:environment:loaded', function(){
+                console.log('[GLOBAL] Environment loaded');
+            })
             .on('global:router:loaded', function(){
                 console.log('[GLOBAL] Router loaded');
             })
-            .on('module:test1:loaded', function(){
-                console.log('[MODULE] Test1 loaded');
-            })
-            .on('module:test2:loaded', function(){
-                console.log('[MODULE] Test2 loaded');
-            })
-            .on('route:test1:fired', function(){
-                console.log('[ROUTE] Test1 fired');
-            })
-            .on('route:test2:fired', function(){
-                console.log('[ROUTE] Test2 fired');
-            })
-            .on('route:default:fired', function(){
-                console.log('[ROUTE] Default fired');
-            })
             ;
 
-        // console.log('[GLOBAL] EventManager loaded');
+        console.log('[GLOBAL] EventManager loaded');
 
         return EventManager;
     }

@@ -8,16 +8,12 @@ define([
         return Router.extend({
             controller: {
                 // Format: 'load_module_' + module.get('url')
-                load_module_test1: function(){
-                    App.EventManager.trigger('route:test1:fired');
-                },
-
-                load_module_test2: function(){
-                    App.EventManager.trigger('route:test2:fired');
+                load_module_example: function(){
+                    console.log('[ROUTE] Example fired');
                 },
 
                 default: function(){
-                    App.EventManager.trigger('route:default:fired');
+                    console.log('[ROUTE] Default fired');
                 }
             }
         });

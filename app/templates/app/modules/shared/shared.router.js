@@ -7,6 +7,7 @@ define([
 
         return Marionette.AppRouter.extend({
             initialize: function(context){
+                console.log(context);
                 this._processRoutes(context);
             },
 
