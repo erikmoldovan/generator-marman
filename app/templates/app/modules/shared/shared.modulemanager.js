@@ -19,12 +19,12 @@ define([
 
 		    	_.each(config.modules, function(module){
 		    		module.path = config.basePath + "/" + module.path;
-		    		module.route = config.baseRoute + "_" + module.url;
+		    		module.route = config.baseRoute + "_" + module.url.replace('/', '_');
 
 	        		self.modulesCollection.add(new Backbone.Model(module), {merge: true});
 	        	});
 
-	        	App.EventManager.trigger('global:modulemanager:loaded');
+	        	// App.EventManager.trigger('global:modulemanager:loaded');
 		    },
 
 		    // Retrieves module paths (for module loading via Require)

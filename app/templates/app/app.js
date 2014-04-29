@@ -1,78 +1,96 @@
-define([
-        'underscore',
-        'jquery', 
-        'backbone', 
-        'marionette',
-
-        'region.dialog',
-        
-        'global.environment',
-        'global.eventmanager',
-
-        'shared.modulemanager',
-        'shared.router',
-
-        'json!./global/config/config.module.global.json'
-    ],
-
-    function( _, $, Backbone, Marionette, DialogRegion, Environment, EventManager, ModuleManager, Router, GlobalConfig ){
+require(['config'],
+    function() {
         'use strict';
 
-        _.extend( Marionette.Application.prototype, {
-            /**
-             * Navigate method. Handles Backbone.history.navigate behavior
-             * @param {string} route
-             * @param [{object}] options
-             */
-            navigate: function( route, options ) {
-                options || (options = {});
-                Backbone.history.navigate( route, options );
-            },
+        require([
+                'underscore',
+                'jquery', 
+                'backbone', 
+                'marionette',
+                'foundation',
 
-            /**
-             * Returns current route fragment
-             * @return {string}
-             */
-            getCurrentRoute: function() {
-                return Backbone.history.fragment;
+                'region.dialog',
+                
+                'global.environment',
+                'global.eventmanager',
+
+                'shared.modulemanager',
+                'router.app',
+
+                'json!./global/config/config.module.global.json'
+            ],
+
+            function( _, $, Backbone, Marionette, Foundation, DialogRegion, Environment, EventManager, ModuleManager, Router, GlobalConfig ){
+                'use strict';
+
+                _.extend( Marionette.Application.prototype, {
+                    /**
+                     * Navigate method. Handles Backbone.history.navigate behavior
+                     * @param {string} route
+                     * @param [{object}] options
+                     */
+                    navigate: function( route, options ) {
+                        options || (options = {});
+                        Backbone.history.navigate( route, options );
+                    },
+
+                    /**
+                     * Returns current route fragment
+                     * @return {string}
+                     */
+                    getCurrentRoute: function() {
+                        return Backbone.history.fragment;
+                    }
+                });
+
+                // Globalization
+                window.App = new Marionette.Application();
+
+                // Define the Application Regions
+                App.addRegions({
+                    headerRegion: '#header-region',
+                    mainRegion: '#main-region',
+                    footerRegion: '#footer-region',
+                    dialogRegion: DialogRegion.extend({
+                        el: '#dialog-region' // Application Dialog / Modal
+                    })
+                });
+
+                // Load app-level helper methods
+                App.EventManager = EventManager; // Initializes global event system
+                App.Environment = new Environment; // Initializes global environment model
+
+                App.ModuleManager = new ModuleManager(GlobalConfig); // Initialize modules manager collection
+
+                App.on('initialize:before', function(){
+                    App.Router = new Router(App); // Initializes modules router
+                });
+
+                // Application initialization handler
+                App.on('initialize:after', function(){
+                    var modules = App.ModuleManager.retrievePaths();
+
+                    require(modules, function(){
+                        // Kick off Backbone.history to resolve current url
+                        Backbone.history.start({ pushState: true, root: '/' });
+                    });
+
+                    // First time foundation initialization
+                    Foundation.libs.reveal.settings = _.extend(Foundation.libs.reveal.settings, {
+                        animation: 'fade',
+                        animation_speed: 100   
+                    });
+
+                    Foundation.libs.tooltip.settings = _.extend( Foundation.libs.tooltip.settings, {
+                        selector: '.has-tip'                
+                    });
+
+                    App.EventManager.trigger('global:app:start');
+                });
+
+                // return App;
+                App.start();
             }
-        });
-
-        // Globalization
-        window.App = new Marionette.Application();
-
-        // Define the Application Regions
-        App.addRegions({
-            headerRegion: '#header-region',
-            mainRegion: '#main-region',
-            footerRegion: '#footer-region',
-            dialogRegion: DialogRegion.extend({
-                el: '#dialog-region' // Application Dialog / Modal
-            })
-        });
-
-        // Load app-level helper methods
-        App.EventManager = EventManager; // Initializes global event system
-        App.Environment = new Environment; // Initializes global environment model
-
-        App.ModuleManager = new ModuleManager(GlobalConfig); // Initialize modules manager collection
-
-        App.on('initialize:before', function(){
-            App.Router = new Router(App); // Initializes modules router
-        });
-
-        // Application initialization handler
-        App.on('initialize:after', function(){
-            var modules = App.ModuleManager.retrievePaths();
-
-            require(modules, function(){
-                // Kick off Backbone.history to resolve current url
-                Backbone.history.start({ pushState: true, root: '/' });
-            });
-
-            App.EventManager.trigger('global:app:start');
-        });
-
-        return App;
+        );
     }
 );

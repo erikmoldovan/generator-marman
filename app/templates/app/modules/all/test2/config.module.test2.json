@@ -1,6 +1,7 @@
 {
 	"basePath": "modules/all/test2",
 	"baseRoute": "load_module",
+	"baseTrigger": "test2",
 	"modules": [
 		{
 			"title": "Stuff A",
