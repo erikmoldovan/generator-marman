@@ -13,7 +13,7 @@ define([
 
 		    	_.each(config.modules, function(module){
 		    		module.path = config.basePath + "/" + module.path;
-		    		module.route = config.baseRoute + "_" + module.route;
+		    		module.route = config.baseRoute + "_" + module.url;
 
 	        		self.add(new Backbone.Model(module), {merge: true});
 	        	});

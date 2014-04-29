@@ -7,11 +7,13 @@ define([
 
         return Marionette.AppRouter.extend({
             initialize: function(){
+                this._processRoutes();
+
                 App.EventManager.trigger('global:router:loaded');
             },
 
             // Fetches the global module routing data from App.ModuleManager
-            processRoutes: function(){
+            _processRoutes: function(){
                 this.appRoutes = App.ModuleManager.retrieveRoutes();
             },
 
