@@ -7,7 +7,7 @@ define([
 
         App.module( 'Example', function( Example ) {
             Example.on( 'start', function(){
-                var config = [
+                var moduleConfig = [
                     {
                         title: "Sub Example A",
                         path: "modules/all/example/sub/module.suba",
@@ -27,7 +27,7 @@ define([
                     }
                 ];
 
-                this.ModuleManager = new ModuleManager(config);
+                this.ModuleManager = new ModuleManager(moduleConfig);
 
                 console.log('[MODULE] Example loaded');
             });

@@ -26,8 +26,6 @@ define([
 	        		self.modulesCollection.add(new_entry, {merge: true}); // Local module dependency collection
 	        		App.ModulesList.add(new_entry, {merge: true}); // Global module dependency collection
 	        	});
-
-	        	console.log(App.ModulesList);
 		    },
 
 		    // Retrieves module paths (for module loading via Require)

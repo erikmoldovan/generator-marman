@@ -9,14 +9,16 @@ define([
 		return Backbone.Collection.extend({
 		    // Retrieves module routes (for module routers)
 		    retrieveRoutes: function(){
-		    	var routes = {},
+		    	var routes = [],
 		    		self = this;
 
 		    	_.each(this.models, function(module){
-			    	routes[module.get('url')] = module.get('route');
+		    		routes.push({
+		    			url: module.get('url'),
+		    			route: module.get('route'),
+		    			callback: module.get('callback')
+		    		})
 		    	});
-
-		    	console.log(routes);
 
 		    	return routes;
 		    }

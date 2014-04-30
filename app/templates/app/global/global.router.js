@@ -7,56 +7,47 @@ define([
 
         return Marionette.AppRouter.extend({
             initialize: function(){
+                // Initialize the properties!
                 this.controller = {};
                 this.appRoutes = {};
 
-                // Should only be called upon by App instantiation
-                // this.addRoutes(context, controller);
+                // Load the config!
+                var config = App.ModulesList.retrieveRoutes();
+
+                // FIRE!!!
+                this._processController(config);
+                this._processRoutes(config);
             },
 
-            // // Sets thiis router's controller
-            // _processController: function(controller){
-            //     delete this.controller.default; // Kludgey
+            // Sets the router's controller
+            _processController: function(config){
+                var self = this;
 
-            //     var self = this;
+                _.each(config, function(data){
+                    self.controller[data.route] = data.callback;
+                });
 
-            //     _.each(controller, function(value, key){
-            //         self.controller[key] = value;
-            //     });
+                this.controller[this.default.route] = this.default.callback; // Sets default controller
+            },
 
-            //     this.controller.default = this.default.controller; // McKludgerson
-            // },
+            // Sets tje router's controller
+            _processRoutes: function(config){
+                var self = this;
 
-            // // Fetches the global module routing data from App.ModuleManager
-            // _processRoutes: function(context){
-            //     delete this.appRoutes["*default"];
+                _.each(config, function(data){
+                    self.appRoutes[data.url] = data.route;
+                });
 
-            //     var routes = context.ModuleManager.retrieveRoutes(),
-            //         self = this;
+                this.appRoutes[this.default.url] = this.default.route; // Sets default route
+            },
 
-            //     _.each(routes, function(value, key){
-            //         self.appRoutes[key] = value;
-            //     });
-
-            //     this.appRoutes["*default"] = "default";
-            // },
-
-            // // Adds routes from modules when called upon
-            // addRoutes: function(context, controller){
-            //     this._processController(controller);
-            //     this._processRoutes(context);
-            // },
-
-            // default: {
-            //     // approute: {
-            //     //     "*default": "default"
-            //     // },
-            //     controller: function(){
-            //         console.log(App.Router.appRoutes);
-            //         console.log(App.Router.controller);
-            //         console.log('[ROUTE] Default fired');
-            //     }
-            // }
+            default: {
+                url: "*default",
+                route: "default",
+                callback: function(){
+                    console.log('[ROUTE] Default fired');
+                }
+            }
         });
     }
 );

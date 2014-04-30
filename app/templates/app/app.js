@@ -42,6 +42,18 @@ require(['config'],
                     }
                 });
 
+                var moduleConfig = [
+                    {
+                        title: "Example",
+                        path: "modules/all/example/module.example",
+                        url: "example",
+                        route: "load_module_example",
+                        callback: function(){
+                            console.log('[ROUTE] Example fired');
+                        }
+                    }
+                ];
+
                 // Globalization
                 window.App = new Marionette.Application();
 
@@ -60,31 +72,17 @@ require(['config'],
                 App.Environment = new Environment; // Initializes global environment model
 
                 // Initialize new collection to store master modules list
-                App.ModulesList = new ModulesList;
+                App.ModulesList = new ModulesList;              
 
-                var config = [
-                    {
-                        title: "Example",
-                        path: "modules/all/example/module.example",
-                        url: "example",
-                        route: "load_module_example",
-                        callback: function(){
-                            console.log('[ROUTE] Example fired');
-                        }
-                    }
-                ];                
-
-                App.ModuleManager = new ModuleManager(config); // Initialize modules manager collection
+                App.ModuleManager = new ModuleManager(moduleConfig); // Initialize modules manager collection
 
                 // Application initialization handler
                 App.on('initialize:before', function(){
                     var modules = App.ModuleManager.retrievePaths();
 
                     require(modules, function(){
-                        // App.Router = new Router(App, controller); // Initializes modules router
+                        App.Router = new Router; // Initialize the router
                         
-                        App.ModulesList.retrieveRoutes();
-
                         // Kick off Backbone.history to resolve current url
                         Backbone.history.start({ pushState: true, root: '/' });
                     });
