@@ -50,6 +50,7 @@ require(['config'],
 
                 var moduleConfig = [
                     {
+                        title: "Example",
                         url: "example",
                         path: "modules/all/example/module.example",
                         route: "load_module_example",

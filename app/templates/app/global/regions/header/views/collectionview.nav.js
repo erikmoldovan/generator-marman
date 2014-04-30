@@ -13,8 +13,6 @@ define([
 
 			initialize: function(options){
 				_.bindAll(this);
-
-				console.log(options);
 			}
 		});
 	}

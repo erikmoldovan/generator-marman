@@ -24,7 +24,9 @@ define([
 			},
 
 			onRender: function(){
-				this.nav.show(new NavView(App.ModuleManager.modulesCollection));
+				this.nav.show(new NavView({
+					collection: App.ModuleManager.modulesCollection
+				}));
 			}
 		});
 	}
