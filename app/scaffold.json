@@ -58,6 +58,14 @@
 			"app/global/modules/header/layout.header.js",
 			"app/global/modules/header/template.layout.header.hbs",
 
+			"app/global/modules/content/global.module.content.js",
+			"app/global/modules/content/layout.content.js",
+			"app/global/modules/content/template.layout.content.hbs",
+
+			"app/global/modules/footer/global.module.footer.js",
+			"app/global/modules/footer/layout.footer.js",
+			"app/global/modules/footer/template.layout.footer.hbs",
+
 			"assets/styles/sass/app.scss"
 		]
 	},

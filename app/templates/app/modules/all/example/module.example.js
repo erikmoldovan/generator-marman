@@ -11,7 +11,6 @@ define([
                     {
                         url: "example/suba",
                         path: "modules/all/example/sub/module.suba",
-                        module: true,
                         route: "load_module_example_suba",
                         callback: function(){
                             console.log('[ROUTE] Sub A fired');
@@ -19,7 +18,6 @@ define([
                     },{
                         url: "example/subb",
                         path: "modules/all/example/sub/module.subb",
-                        module: true,
                         route: "load_module_example_subb",
                         callback: function(){
                             console.log('[ROUTE] Sub B fired');

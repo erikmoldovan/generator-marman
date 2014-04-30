@@ -45,12 +45,19 @@ require(['config'],
                 var moduleConfig = [
                     {
                         path: "global/modules/header/global.module.header",
-                        module: false
+                        global: true
+                    },
+                    {
+                        path: "global/modules/content/global.module.content",
+                        global: true
+                    },
+                    {
+                        path: "global/modules/footer/global.module.footer",
+                        global: true
                     },
                     {
                         url: "example",
                         path: "modules/all/example/module.example",
-                        module: true,
                         route: "load_module_example",
                         callback: function(){
                             console.log('[ROUTE] Example fired');

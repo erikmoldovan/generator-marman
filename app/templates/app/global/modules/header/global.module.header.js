@@ -7,7 +7,7 @@ define([
 
         App.module( 'Header', function( Header ) {
             Header.on( 'start', function(){
-                console.log('[MODULE] Header loaded');
+                console.log('[GLOBAL][MODULE] Header loaded');
             });
         });
 
