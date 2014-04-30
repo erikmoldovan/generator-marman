@@ -22,7 +22,7 @@ define([
 
 	        		self.modulesCollection.add(new_entry, {merge: true}); // Local module dependency collection
 
-		    		if(!module.global && module.url){
+		    		if(module.url && module.path && module.callback){ // Be strict about having all params	
 		        		App.ModulesList.add(new_entry, {merge: true}); // Global module dependency collection
 	        		}
 	        	});

@@ -3,7 +3,7 @@ define([
 		'backbone',
 		'marionette',
 
-		"hbs!template.layout.header.hbs"
+		"hbs!global/regions/footer/template.layout.footer"
 	],
 
 	function( _, Backbone, Marionette, Template ){
@@ -13,9 +13,11 @@ define([
 			template: Template,
 
 			regions: {
-				topbar: "#topbar",
-				nav: "#nav",
-				subnav: "#subnav"
+				
+			},
+
+			initialize: function(options){
+				_.bindAll(this);
 			}
 		});
 	}

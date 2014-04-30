@@ -11,6 +11,7 @@ define([
         // Also takes care of destroying views and unbinding from 'reveal' event
         // The application should always use the dialog region to display Modals
         return Marionette.Region.extend({
+            el: '#dialog-region', // Application Dialog / Modal
 
             // When the Dialog Region shows
             onShow: function( view ) {                

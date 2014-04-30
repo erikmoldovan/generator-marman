@@ -51,20 +51,18 @@
 
 			"app/global/config/config.environment.json",
 
-			"app/global/helpers/region.dialog.js",
-			"app/global/helpers/helper.handlebars.js",
+			"app/global/helpers/helpers.handlebars.js",
 
-			"app/global/modules/header/global.module.header.js",
-			"app/global/modules/header/layout.header.js",
-			"app/global/modules/header/template.layout.header.hbs",
+			"app/global/regions/region.dialog.js",
 
-			"app/global/modules/content/global.module.content.js",
-			"app/global/modules/content/layout.content.js",
-			"app/global/modules/content/template.layout.content.hbs",
+			"app/global/regions/header/layout.header.js",
+			"app/global/regions/header/template.layout.header.hbs",
+			"app/global/regions/header/views/collectionview.nav.js",
+			"app/global/regions/header/views/itemview.nav.js",
+			"app/global/regions/header/views/template.item.nav.hbs",
 
-			"app/global/modules/footer/global.module.footer.js",
-			"app/global/modules/footer/layout.footer.js",
-			"app/global/modules/footer/template.layout.footer.hbs",
+			"app/global/regions/footer/layout.footer.js",
+			"app/global/regions/footer/template.layout.footer.hbs",
 
 			"assets/styles/sass/app.scss"
 		]

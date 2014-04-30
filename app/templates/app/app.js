@@ -8,18 +8,24 @@ require(['config'],
                 'backbone', 
                 'marionette',
                 'foundation',
-
-                'region.dialog',
                 
                 'global.environment',
                 'global.eventmanager',
                 'global.moduleslist',
                 'global.router',
 
+                'region.header',
+                'region.footer',
+                'region.dialog',
+
                 'shared.modulemanager'
             ],
 
-            function( _, $, Backbone, Marionette, Foundation, DialogRegion, Environment, EventManager, ModulesList, Router, ModuleManager ){
+            function( _, $, Backbone, Marionette, Foundation,
+                    Environment, EventManager, ModulesList, Router,
+                    HeaderRegion, FooterRegion, DialogRegion,
+                    ModuleManager )
+            {
                 'use strict';
 
                 _.extend( Marionette.Application.prototype, {
@@ -44,18 +50,6 @@ require(['config'],
 
                 var moduleConfig = [
                     {
-                        path: "global/modules/header/global.module.header",
-                        global: true
-                    },
-                    {
-                        path: "global/modules/content/global.module.content",
-                        global: true
-                    },
-                    {
-                        path: "global/modules/footer/global.module.footer",
-                        global: true
-                    },
-                    {
                         url: "example",
                         path: "modules/all/example/module.example",
                         route: "load_module_example",
@@ -73,9 +67,7 @@ require(['config'],
                     headerRegion: '#header-region',
                     mainRegion: '#main-region',
                     footerRegion: '#footer-region',
-                    dialogRegion: DialogRegion.extend({
-                        el: '#dialog-region' // Application Dialog / Modal
-                    })
+                    dialogRegion: DialogRegion.extend()
                 });
 
                 // Load app-level helper methods
@@ -110,6 +102,8 @@ require(['config'],
 
                     App.EventManager.trigger('global:app:start');
                 });
+
+                App.headerRegion.show(new HeaderRegion({}));
 
                 // return App;
                 App.start();

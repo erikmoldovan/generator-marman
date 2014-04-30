@@ -75,10 +75,16 @@ require.config({
         // === Helpers ===
 
         // Handlebar helpers
-        'handlebar.helper': 'global/helpers/helper.handlebars',
+        'handlebar.helpers': 'global/helpers/helpers.handlebars',
 
         // Dialog region
-        'region.dialog': 'global/helpers/region.dialog',
+        'region.dialog': 'global/regions/region.dialog',
+
+        // Header region
+        'region.header': 'global/regions/header/layout.header',
+
+        // Footer region
+        'region.footer': 'global/regions/footer/layout.footer',
 
 
         //
