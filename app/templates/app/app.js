@@ -44,7 +44,7 @@ require(['config'],
 
                 var moduleConfig = [
                     {
-                        path: "modules/shared/header/shared.module.header",
+                        path: "global/modules/header/global.module.header",
                         module: false
                     },
                     {

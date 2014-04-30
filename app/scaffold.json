@@ -54,16 +54,16 @@
 			"app/global/helpers/region.dialog.js",
 			"app/global/helpers/helper.handlebars.js",
 
+			"app/global/modules/header/global.module.header.js",
+			"app/global/modules/header/layout.header.js",
+			"app/global/modules/header/template.layout.header.hbs",
+
 			"assets/styles/sass/app.scss"
 		]
 	},
 	"module_files": {
 		"method": "copy",
 		"list": [
-			"app/modules/shared/header/shared.module.header.js",
-			"app/modules/shared/header/layout.header.js",
-			"app/modules/shared/header/template.layout.header.hbs",
-
 			"app/modules/shared/shared.modulemanager.js",
 
 			"app/modules/all/example/module.example.js"
