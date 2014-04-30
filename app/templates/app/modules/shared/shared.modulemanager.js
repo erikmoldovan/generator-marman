@@ -21,10 +21,12 @@ define([
 		    		// module.path = config.basePath + "/" + module.path;
 		    		// module.route = config.baseRoute + "_" + module.url.replace('/', '_');
 
-		    		var new_entry = new Backbone.Model(module);
+		    		if(module.module){
+		    			var new_entry = new Backbone.Model(module);
 
-	        		self.modulesCollection.add(new_entry, {merge: true}); // Local module dependency collection
-	        		App.ModulesList.add(new_entry, {merge: true}); // Global module dependency collection
+		        		self.modulesCollection.add(new_entry, {merge: true}); // Local module dependency collection
+		        		App.ModulesList.add(new_entry, {merge: true}); // Global module dependency collection
+	        		}
 	        	});
 		    },
 

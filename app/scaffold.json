@@ -6,14 +6,6 @@
 			"app/libs",
 			"app/global",
 			"app/modules",
-			"app/modules/shared",
-			"app/modules/shared/extensions",
-			"app/modules/shared/models",
-			"app/modules/shared/views",
-			"app/modules/all",
-
-			"app/modules/all/test1",
-			"app/modules/all/test2",
 
 			"assets",
 			"assets/styles",
@@ -68,6 +60,10 @@
 	"module_files": {
 		"method": "copy",
 		"list": [
+			"app/modules/shared/header/shared.module.header.js",
+			"app/modules/shared/header/layout.header.js",
+			"app/modules/shared/header/template.layout.header.hbs",
+
 			"app/modules/shared/shared.modulemanager.js",
 
 			"app/modules/all/example/module.example.js"

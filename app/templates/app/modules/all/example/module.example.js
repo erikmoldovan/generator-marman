@@ -9,17 +9,17 @@ define([
             Example.on( 'start', function(){
                 var moduleConfig = [
                     {
-                        title: "Sub Example A",
-                        path: "modules/all/example/sub/module.suba",
                         url: "example/suba",
+                        path: "modules/all/example/sub/module.suba",
+                        module: true,
                         route: "load_module_example_suba",
                         callback: function(){
                             console.log('[ROUTE] Sub A fired');
                         }
                     },{
-                        title: "Sub Example B",
-                        path: "modules/all/example/sub/module.subb",
                         url: "example/subb",
+                        path: "modules/all/example/sub/module.subb",
+                        module: true,
                         route: "load_module_example_subb",
                         callback: function(){
                             console.log('[ROUTE] Sub B fired');

@@ -44,9 +44,13 @@ require(['config'],
 
                 var moduleConfig = [
                     {
-                        title: "Example",
-                        path: "modules/all/example/module.example",
+                        path: "modules/shared/header/shared.module.header",
+                        module: false
+                    },
+                    {
                         url: "example",
+                        path: "modules/all/example/module.example",
+                        module: true,
                         route: "load_module_example",
                         callback: function(){
                             console.log('[ROUTE] Example fired');
