@@ -17,15 +17,17 @@ define([
 		    	var self = this;
 		    	this.modulesCollection = new Backbone.Collection();
 
-		    	_.each(config.modules, function(module){
-		    		module.path = config.basePath + "/" + module.path;
-		    		module.route = config.baseRoute + "_" + module.url.replace('/', '_');
+		    	_.each(config, function(module){
+		    		// module.path = config.basePath + "/" + module.path;
+		    		// module.route = config.baseRoute + "_" + module.url.replace('/', '_');
 
 		    		var new_entry = new Backbone.Model(module);
 
 	        		self.modulesCollection.add(new_entry, {merge: true}); // Local module dependency collection
 	        		App.ModulesList.add(new_entry, {merge: true}); // Global module dependency collection
 	        	});
+
+	        	console.log(App.ModulesList);
 		    },
 
 		    // Retrieves module paths (for module loading via Require)

@@ -16,6 +16,8 @@ define([
 			    	routes[module.get('url')] = module.get('route');
 		    	});
 
+		    	console.log(routes);
+
 		    	return routes;
 		    }
 		});

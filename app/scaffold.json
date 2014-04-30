@@ -58,7 +58,6 @@
 			"app/global/global.router.js",
 
 			"app/global/config/config.environment.json",
-			"app/global/config/config.module.global.json",
 
 			"app/global/helpers/region.dialog.js",
 			"app/global/helpers/helper.handlebars.js",
@@ -71,8 +70,7 @@
 		"list": [
 			"app/modules/shared/shared.modulemanager.js",
 
-			"app/modules/all/example/module.example.js",
-			"app/modules/all/example/config.module.example.json"
+			"app/modules/all/example/module.example.js"
 		]
 	}
 }
