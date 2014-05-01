@@ -21,19 +21,13 @@ define([
                             title: "Sub 1",
                             url: "sub1",
                             path: "sub1/module.sub1",
-                            route: "sub1",
-                            callback: function(){
-                                console.log('[ROUTE] Sub 1 fired');
-                            }
+                            route: "sub1"
                         },{
                             title: "Sub 2",
                             url: "sub2",
-                            default: true,
                             path: "sub2/module.sub2",
                             route: "sub2",
-                            callback: function(){
-                                console.log('[ROUTE] Sub 2 fired');
-                            }
+                            default: true
                         }
                     ]
                 };

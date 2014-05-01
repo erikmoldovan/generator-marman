@@ -9,7 +9,17 @@ define([
 		'use strict';
 
 		return Marionette.ItemView.extend({
-			template: Template
+			template: Template,
+
+			events: {
+				"click a": "stopit"
+			},
+
+			stopit: function(e){
+				e.preventDefault();
+
+				App.navigate(this.model.get('url'), {trigger: true}); // I feel as though this may be a kludge
+			}
 		});
 	}
 );

@@ -10,18 +10,18 @@ define([
 		return Marionette.Controller.extend({
 			initialize: function(options){
 				this._List = new Backbone.Collection();
-				this._config = new Backbone.Model();
+				this._Config = new Backbone.Model();
 
 				this._setList(options.list, options.config);
 				this._setConfig(options.config);
 			},
 
-			// "Initializes" the List Collection
+			// Populates the List Collection
 		    _setList: function(list, config){
 		    	var self = this;
 
 		    	_.each(list, function(entry){
-		    		if(entry.url && entry.path && entry.callback && entry.path){ // Be strict about having all params	
+		    		if(entry.url && entry.path && entry.path){ // Be strict about having all params	
 	        			var baseURL = "",
 	        				basePath = "";
 
@@ -30,18 +30,21 @@ define([
 	        			entry.url =  baseURL + entry.url;
 	        			entry.path = config.basePath + "/" + entry.path;
 	        			entry.route = config.baseRoute + "_" + entry.route;
+	        			entry.callback = function(){
+	        				console.log("[ROUTE] " + entry.title);
+	        			}
 
 	        			self._List.add(new Backbone.Model(entry), {merge: true}); // Local module dependency collection
 	        		}
 	        	});
 		    },
 
-		    // "Initializes" the Config Model
+		    // Populates the Config Model
 		    _setConfig: function(config){
 		    	var self = this;
 
 		    	_.each(config, function(value, key){
-		    		self._config.set(key, value);
+		    		self._Config.set(key, value);
 		    	});
 		    },
 
@@ -50,14 +53,13 @@ define([
 		    },
 
 		    getConfig: function(){
-		    	return this._config;
+		    	return this._Config;
 		    },
 
 		    // Returns module paths for AMD loading
 		    retrievePaths: function(){
 	            var paths = [];
 
-	            // Not strictly decoupled, but...
 	            this._List.each(function(module){
 	                paths.push(module.get('path'));
 	            });

@@ -52,10 +52,7 @@ require(['config'],
                             title: "Example",
                             url: "example",
                             path: "example/module.example",
-                            route: "example",
-                            callback: function(){
-                                console.log('[ROUTE] Example fired');
-                            }
+                            route: "example"
                         }
                     ]
                 };

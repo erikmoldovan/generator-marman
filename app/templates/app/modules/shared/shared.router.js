@@ -48,13 +48,13 @@ define([
             },
 
             _setDefaultRoute: function(config){
-                console.log(config);
+                // console.log(config);
 
                 this.controller["default"] = this._defaultRoute.get('callback');
                 this.appRoutes[config.get('baseURL') + "(/)"] = this._defaultRoute.get('route');
                 // this.appRoutes[""] = "default"; // Alternate way of doing the default route
             
-                console.log(this.appRoutes);
+                // console.log(this.appRoutes);
             }
         });
     }
