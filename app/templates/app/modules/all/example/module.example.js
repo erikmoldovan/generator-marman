@@ -1,9 +1,11 @@
 define([
         'shared.modulemanager',
-        'shared.router'
+        'shared.router',
+
+        'global/regions/header/layout.header'
     ],
 
-    function( ModuleManager, Router ){
+    function( ModuleManager, Router, HeaderView ){
         'use strict';
 
         App.module( 'Example', function( Example ) {
@@ -37,6 +39,8 @@ define([
 
                 this.ModuleManager = new ModuleManager(modules);
                 this.Router = new Router(this);
+
+                App.headerRegion.show(new HeaderView(this));
                 
                 console.log('[MODULE] Example loaded');
             });

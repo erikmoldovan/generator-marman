@@ -12,12 +12,12 @@ define([
 				this.List = new Backbone.Collection();
 				this.Config = new Backbone.Model();
 
-				this._setModules(options.list, options.config);
+				this._setList(options.list, options.config);
 				this._setConfig(options.config);
 			},
 
 			// "Initializes" the collection with the passed in config JSON blob
-		    _setModules: function(list, config){
+		    _setList: function(list, config){
 		    	var self = this;
 
 		    	_.each(list, function(entry){
@@ -32,6 +32,10 @@ define([
 	        			self.List.add(new Backbone.Model(entry), {merge: true}); // Local module dependency collection
 	        		}
 	        	});
+		    },
+
+		    getList: function(){
+		    	return this.List;
 		    },
 
 		    _setConfig: function(config){

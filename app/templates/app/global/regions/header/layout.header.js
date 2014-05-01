@@ -20,12 +20,17 @@ define([
 				subnav: "#subnav"
 			},
 
+			initialize: function(options){
+				this.context = options;
+			},
+
 			onRender: function(){
 				this.nav.show(new NavView({
-					collection: App.ModuleManager.modulesCollection
+					collection: App.ModuleManager.getList()
 				}));
+
 				this.subnav.show(new NavView({
-					collection: new Backbone.Collection()
+					collection: this.context.ModuleManager.getList()
 				}));
 			}
 		});

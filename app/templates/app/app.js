@@ -18,7 +18,7 @@ require(['config'],
                 './global/regions/region.dialog'
             ],
 
-            function( _, $, Backbone, Marionette, Foundation, Environment, Router, ModuleManager, HeaderRegion, FooterRegion, DialogRegion ){
+            function( _, $, Backbone, Marionette, Foundation, Environment, Router, ModuleManager, HeaderView, FooterView, DialogRegion ){
                 'use strict';
 
                 _.extend( Marionette.Application.prototype, {
@@ -67,6 +67,14 @@ require(['config'],
                 App.on('initialize:before', function(){
                     App.Environment = new Environment; // Initializes global environment model
                     App.ModuleManager = new ModuleManager(modules); // Initialize app level module manager
+                
+                    // Define Regions
+                    App.addRegions({
+                        headerRegion: '#header-region',
+                        mainRegion: '#main-region',
+                        footerRegion: '#footer-region',
+                        dialogRegion: DialogRegion.extend()
+                    });
                 });
 
                 // Load Custom Modules
@@ -92,16 +100,6 @@ require(['config'],
                     Foundation.libs.tooltip.settings = _.extend( Foundation.libs.tooltip.settings, {
                         selector: '.has-tip'                
                     });
-
-                    // Define Regions
-                    App.addRegions({
-                        headerRegion: '#header-region',
-                        mainRegion: '#main-region',
-                        footerRegion: '#footer-region',
-                        dialogRegion: DialogRegion.extend()
-                    });
-
-                    App.headerRegion.show(new HeaderRegion({}));
 
                     console.log('[GLOBAL] App started');
                 });
