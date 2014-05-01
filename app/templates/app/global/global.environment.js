@@ -1,7 +1,7 @@
 define([
 		'underscore',
 		'backbone',
-		'json!./global/config/config.environment.json'
+		'json!./config/config.environment.json'
 	],
 
 	function( _, Backbone, Environment ){
@@ -17,7 +17,7 @@ define([
 		        	this._loadProdEnvironment();
 		        }
 
-		        App.EventManager.trigger('global:environment:loaded');
+		        console.log('[GLOBAL] Environment loaded');
 		    },
 
 		    // Loads dev environment variables if file is present

@@ -12,11 +12,13 @@ define([
                 this.appRoutes = {};
 
                 // Load the config!
-                var config = App.ModulesList.retrieveRoutes();
+                var config = App.ModuleManager.retrieveRoutes();
 
                 // FIRE!!!
                 this._processController(config);
                 this._processRoutes(config);
+
+                console.log('[GLOBAL] Router loaded');
             },
 
             // Sets the router's controller

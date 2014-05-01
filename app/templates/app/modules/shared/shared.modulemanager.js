@@ -9,34 +9,52 @@ define([
 
 		return Marionette.Controller.extend({
 			initialize: function(config){
+				this.ModuleList = new Backbone.Collection();
+
 				this._loadModules(config);
 			},
 
 			// "Initializes" the collection with the passed in config JSON blob
 		    _loadModules: function(config){
 		    	var self = this;
-		    	this.modulesCollection = new Backbone.Collection();
 
-		    	_.each(config, function(module){
-		    		var new_entry = new Backbone.Model(module);
+		    	_.each(config, function(entry){
+		    		var module = new Backbone.Model(entry);
 
-	        		self.modulesCollection.add(new_entry, {merge: true}); // Local module dependency collection
+	        		self.ModuleList.add(module, {merge: true}); // Local module dependency collection
 
-		    		if(module.url && module.path && module.callback){ // Be strict about having all params	
-		        		App.ModulesList.add(new_entry, {merge: true}); // Global module dependency collection
+		    		if(entry.url && entry.path && entry.callback){ // Be strict about having all params	
+		        		App.ModuleList.add(module, {merge: true}); // Global module dependency collection
 	        		}
 	        	});
 		    },
 
-		    // Retrieves module paths (for module loading via Require)
+		    // Returns module paths for AMD loading
 		    retrievePaths: function(){
 	            var paths = [];
 
-	            _.each(this.modulesCollection.models, function(module){
+	            // Not strictly decoupled, but...
+	            this.ModuleList.each(function(module){
 	                paths.push(module.get('path'));
 	            });
 
 				return paths;
+		    },
+
+		    // Returns module routes
+		    retrieveRoutes: function(){
+		    	var routes = [],
+		    		self = this;
+
+		    	App.ModuleList.each(function(module){
+		    		routes.push({
+		    			url: module.get('url'),
+		    			route: module.get('route'),
+		    			callback: module.get('callback')
+		    		})
+		    	});
+
+		    	return routes;
 		    }
 		});
 	}

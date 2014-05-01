@@ -2,7 +2,7 @@ define([
 		'underscore',
 		'marionette',
 
-		'global/regions/header/views/collectionview.nav',
+		'global/regions/header/nav/collectionview.nav',
 
 		"hbs!global/regions/header/template.layout.header"
 	],
@@ -17,10 +17,6 @@ define([
 				topbar: "#topbar",
 				nav: "#nav",
 				subnav: "#subnav"
-			},
-
-			initialize: function(options){
-				_.bindAll(this);
 			},
 
 			onRender: function(){

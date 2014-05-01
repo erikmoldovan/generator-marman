@@ -2,18 +2,14 @@ define([
 		'underscore',
 		'marionette',
 
-		'hbs!global/regions/header/views/template.item.nav'
+		'hbs!global/regions/header/nav/template.item.nav'
 	],
 
 	function( _, Marionette, Template ){
 		'use strict';
 
 		return Marionette.ItemView.extend({
-			template: Template,
-
-			initialize: function(options){
-				_.bindAll(this);
-			}
+			template: Template
 		});
 	}
 );

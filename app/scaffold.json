@@ -45,8 +45,6 @@
 			"app/app.js",
 
 			"app/global/global.environment.js",
-			"app/global/global.eventmanager.js",
-			"app/global/global.moduleslist.js",
 			"app/global/global.router.js",
 
 			"app/global/config/config.environment.json",
@@ -55,11 +53,12 @@
 
 			"app/global/regions/region.dialog.js",
 
+			"app/global/regions/header/controller.header.js",
 			"app/global/regions/header/layout.header.js",
 			"app/global/regions/header/template.layout.header.hbs",
-			"app/global/regions/header/views/collectionview.nav.js",
-			"app/global/regions/header/views/itemview.nav.js",
-			"app/global/regions/header/views/template.item.nav.hbs",
+			"app/global/regions/header/nav/collectionview.nav.js",
+			"app/global/regions/header/nav/itemview.nav.js",
+			"app/global/regions/header/nav/template.item.nav.hbs",
 
 			"app/global/regions/footer/layout.footer.js",
 			"app/global/regions/footer/template.layout.footer.hbs",

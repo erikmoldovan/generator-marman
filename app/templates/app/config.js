@@ -1,11 +1,5 @@
 require.config({
     paths: {
-        //
-        // === Global libraries ===
-
-        // Make this easier to access
-        'libs': '/app/libs',
-
         // Underscore functionality provided by lo-dash
         'underscore': 'libs/lodash/dist/lodash.underscore',
 
@@ -70,40 +64,8 @@ require.config({
         // RequireJS Plugin - JSON
         'json': 'libs/requirejs-plugins/src/json',
 
-
-        //
-        // === Helpers ===
-
         // Handlebar helpers
         'handlebar.helpers': 'global/helpers/helpers.handlebars',
-
-        // Dialog region
-        'region.dialog': 'global/regions/region.dialog',
-
-        // Header region
-        'region.header': 'global/regions/header/layout.header',
-
-        // Footer region
-        'region.footer': 'global/regions/footer/layout.footer',
-
-
-        //
-        // === Global extensions ===
-
-        // App.Environment
-        'global.environment': 'global/global.environment',
-
-        // App.EventManager
-        "global.eventmanager": 'global/global.eventmanager',
-
-        // App.ModuleList
-        'global.moduleslist': 'global/global.moduleslist',
-
-        // App.Router
-        'global.router': 'global/global.router',
-
-        //
-        // === Shared ===
 
         // shared.modulemanager
         'shared.modulemanager': 'modules/shared/shared.modulemanager'
