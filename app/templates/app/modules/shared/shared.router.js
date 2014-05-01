@@ -6,19 +6,20 @@ define([
         'use strict';
 
         return Marionette.AppRouter.extend({
-            initialize: function(){
+            initialize: function(context){
                 // Initialize the properties!
                 this.controller = {};
                 this.appRoutes = {};
 
                 // Load the config!
-                var config = App.ModuleManager.retrieveRoutes();
+                var config = context.ModuleManager.retrieveRoutes();
 
                 // FIRE!!!
                 this._processController(config);
                 this._processRoutes(config);
+                this._addDefaults(context.ModuleManager.getConfig());
 
-                console.log('[GLOBAL] Router loaded');
+                console.log('Router loaded');
             },
 
             // Sets the router's controller
@@ -28,8 +29,6 @@ define([
                 _.each(config, function(data){
                     self.controller[data.route] = data.callback;
                 });
-
-                this.controller[this.default.route] = this.default.callback; // Sets default controller
             },
 
             // Sets tje router's controller
@@ -39,16 +38,22 @@ define([
                 _.each(config, function(data){
                     self.appRoutes[data.url] = data.route;
                 });
-
-                this.appRoutes[this.default.url] = this.default.route; // Sets default route
             },
 
-            default: {
-                url: "*default",
-                route: "default",
-                callback: function(){
-                    console.log('[ROUTE] Default fired');
-                }
+            _addDefaults: function(config){
+                var baseURL = "";
+                if(!_.isEmpty(config.get('baseURL'))) baseURL = config.get('baseURL') + "/";
+
+                var d = {
+                    url: baseURL + "",
+                    route: config.get('baseRoute') + "_" + "default",
+                    callback: function(){
+                        console.log('[ROUTE] Default fired');
+                    }
+                };
+
+                this.controller[d.route] = d.callback; // Sets default controller
+                this.appRoutes[d.url] = d.route; // Sets default route
             }
         });
     }

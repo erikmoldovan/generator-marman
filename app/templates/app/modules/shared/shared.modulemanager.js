@@ -8,25 +8,42 @@ define([
 		'use strict';
 
 		return Marionette.Controller.extend({
-			initialize: function(config){
-				this.ModuleList = new Backbone.Collection();
+			initialize: function(options){
+				this.List = new Backbone.Collection();
+				this.Config = new Backbone.Model();
 
-				this._loadModules(config);
+				this._setModules(options.list, options.config);
+				this._setConfig(options.config);
 			},
 
 			// "Initializes" the collection with the passed in config JSON blob
-		    _loadModules: function(config){
+		    _setModules: function(list, config){
 		    	var self = this;
 
-		    	_.each(config, function(entry){
-		    		var module = new Backbone.Model(entry);
+		    	_.each(list, function(entry){
+		    		if(entry.url && entry.path && entry.callback && entry.path){ // Be strict about having all params	
+	        			var baseURL = "";
+	        			if(!_.isEmpty(config.baseURL)) baseURL = config.baseURL + "/";
 
-	        		self.ModuleList.add(module, {merge: true}); // Local module dependency collection
+	        			entry.url =  baseURL + entry.url;
+	        			entry.path = config.basePath + "/" + entry.path;
+	        			entry.route = config.baseRoute + "_" + entry.route;
 
-		    		if(entry.url && entry.path && entry.callback){ // Be strict about having all params	
-		        		App.ModuleList.add(module, {merge: true}); // Global module dependency collection
+	        			self.List.add(new Backbone.Model(entry), {merge: true}); // Local module dependency collection
 	        		}
 	        	});
+		    },
+
+		    _setConfig: function(config){
+		    	var self = this;
+
+		    	_.each(config, function(value, key){
+		    		self.Config.set(key, value);
+		    	});
+		    },
+
+		    getConfig: function(){
+		    	return this.Config;
 		    },
 
 		    // Returns module paths for AMD loading
@@ -34,7 +51,7 @@ define([
 	            var paths = [];
 
 	            // Not strictly decoupled, but...
-	            this.ModuleList.each(function(module){
+	            this.List.each(function(module){
 	                paths.push(module.get('path'));
 	            });
 
@@ -43,10 +60,9 @@ define([
 
 		    // Returns module routes
 		    retrieveRoutes: function(){
-		    	var routes = [],
-		    		self = this;
+		    	var routes = [];
 
-		    	App.ModuleList.each(function(module){
+		    	this.List.each(function(module){
 		    		routes.push({
 		    			url: module.get('url'),
 		    			route: module.get('route'),

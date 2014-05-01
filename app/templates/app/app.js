@@ -10,7 +10,7 @@ require(['config'],
                 'foundation',
                 
                 './global/global.environment',
-                './global/global.router',
+                'shared.router',
                 'shared.modulemanager',
 
                 './global/regions/header/layout.header',
@@ -41,17 +41,24 @@ require(['config'],
                     }
                 });
 
-                var moduleConfig = [
-                    {
-                        title: "Example",
-                        url: "example",
-                        path: "./modules/all/example/module.example",
-                        route: "load_module_example",
-                        callback: function(){
-                            console.log('[ROUTE] Example fired');
+                var modules = {
+                    config: {
+                        baseURL: "",
+                        basePath: "modules/all",
+                        baseRoute: "load_module"
+                    },
+                    list: [
+                        {
+                            title: "Example",
+                            url: "example",
+                            path: "example/module.example",
+                            route: "example",
+                            callback: function(){
+                                console.log('[ROUTE] Example fired');
+                            }
                         }
-                    }
-                ];
+                    ]
+                };
 
                 // Instantiate App
                 window.App = new Marionette.Application();
@@ -59,8 +66,7 @@ require(['config'],
                 // Instantiate App Modules
                 App.on('initialize:before', function(){
                     App.Environment = new Environment; // Initializes global environment model
-                    App.ModuleList = new Backbone.Collection(); // Initialize global module list collection
-                    App.ModuleManager = new ModuleManager(moduleConfig); // Initialize app level module manager
+                    App.ModuleManager = new ModuleManager(modules); // Initialize app level module manager
                 });
 
                 // Load Custom Modules
@@ -68,7 +74,7 @@ require(['config'],
                     var modules = App.ModuleManager.retrievePaths();
 
                     require(modules, function(){
-                        App.Router = new Router; // Initialize the router
+                        App.Router = new Router(App); // Initialize the router
                         
                         // Kick off Backbone.history to resolve current url
                         Backbone.history.start({ pushState: true, root: '/' });

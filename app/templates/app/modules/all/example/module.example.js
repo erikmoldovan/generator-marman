@@ -1,32 +1,43 @@
 define([
-        'shared.modulemanager'
+        'shared.modulemanager',
+        'shared.router'
     ],
 
-    function( ModuleManager ){
+    function( ModuleManager, Router ){
         'use strict';
 
         App.module( 'Example', function( Example ) {
             Example.on( 'start', function(){
-                var moduleConfig = [
-                    {
-                        url: "example/suba",
-                        path: "modules/all/example/sub/module.suba",
-                        route: "load_module_example_suba",
-                        callback: function(){
-                            console.log('[ROUTE] Sub A fired');
+                var modules = {
+                    config: {
+                        baseURL: "example",
+                        basePath: "modules/all/example",
+                        baseRoute: "load_module_example"
+                    },
+                    list: [
+                        {
+                            title: "Sub 1",
+                            url: "sub1",
+                            path: "sub1/module.sub1",
+                            route: "sub1",
+                            callback: function(){
+                                console.log('[ROUTE] Sub 1 fired');
+                            }
+                        },{
+                            title: "Sub 2",
+                            url: "sub2",
+                            path: "sub2/module.sub2",
+                            route: "sub2",
+                            callback: function(){
+                                console.log('[ROUTE] Sub 2 fired');
+                            }
                         }
-                    },{
-                        url: "example/subb",
-                        path: "modules/all/example/sub/module.subb",
-                        route: "load_module_example_subb",
-                        callback: function(){
-                            console.log('[ROUTE] Sub B fired');
-                        }
-                    }
-                ];
+                    ]
+                };
 
-                this.ModuleManager = new ModuleManager(moduleConfig);
-
+                this.ModuleManager = new ModuleManager(modules);
+                this.Router = new Router(this);
+                
                 console.log('[MODULE] Example loaded');
             });
         });

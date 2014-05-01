@@ -68,7 +68,10 @@ require.config({
         'handlebar.helpers': 'global/helpers/helpers.handlebars',
 
         // shared.modulemanager
-        'shared.modulemanager': 'modules/shared/shared.modulemanager'
+        'shared.modulemanager': 'modules/shared/shared.modulemanager',
+
+        // shared.router
+        'shared.router': 'modules/shared/shared.router'
     },
 
     shim: {
