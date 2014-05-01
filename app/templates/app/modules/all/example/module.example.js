@@ -28,6 +28,7 @@ define([
                         },{
                             title: "Sub 2",
                             url: "sub2",
+                            default: true,
                             path: "sub2/module.sub2",
                             route: "sub2",
                             callback: function(){

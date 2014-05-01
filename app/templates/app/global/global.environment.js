@@ -17,7 +17,7 @@ define([
 		        	this._loadProdEnvironment();
 		        }
 
-		        console.log('[GLOBAL] Environment loaded');
+		        // console.log('[GLOBAL] Environment loaded');
 		    },
 
 		    // Loads dev environment variables if file is present
