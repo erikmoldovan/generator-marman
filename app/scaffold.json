@@ -43,9 +43,10 @@
 			"README.md",
 			"app/config.js",
 			"app/app.js",
+			"app/config.module.app.json",
 
 			"app/global/global.environment.js",
-			"app/global/config/config.environment.json",
+			"app/global/config.environment.json",
 
 			"app/global/helpers/helpers.handlebars.js",
 
@@ -68,7 +69,10 @@
 			"app/modules/shared/shared.modulemanager.js",
 			"app/modules/shared/shared.router.js",
 
-			"app/modules/all/example/module.example.js"
+			"app/modules/all/example/module.example.js",
+			"app/modules/all/example/config.module.example.json",
+			"app/modules/all/example/sub1/module.sub1.js",
+			"app/modules/all/example/sub2/module.sub2.js"
 		]
 	}
 }

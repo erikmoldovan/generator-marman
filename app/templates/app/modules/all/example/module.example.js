@@ -2,41 +2,26 @@ define([
         'shared.modulemanager',
         'shared.router',
 
-        'global/regions/header/layout.header'
+        'global/regions/header/layout.header',
+
+        'json!./config.module.example.json'
     ],
 
-    function( ModuleManager, Router, HeaderView ){
+    function( ModuleManager, Router, HeaderView, ModuleConfig ){
         'use strict';
 
         App.module( 'Example', function( Example ) {
             Example.on( 'start', function(){
-                var modules = {
-                    config: {
-                        baseURL: "example",
-                        basePath: "modules/all/example",
-                        baseRoute: "load_module_example"
-                    },
-                    list: [
-                        {
-                            title: "Sub 1",
-                            url: "sub1",
-                            path: "sub1/module.sub1",
-                            route: "sub1"
-                        },{
-                            title: "Sub 2",
-                            url: "sub2",
-                            path: "sub2/module.sub2",
-                            route: "sub2",
-                            default: true
-                        }
-                    ]
-                };
+                this.ModuleManager = new ModuleManager(ModuleConfig);
+                this.Router = new Router(this); // Initialize the router
 
-                this.ModuleManager = new ModuleManager(modules);
-                this.Router = new Router(this);
+                var modules = this.ModuleManager.retrievePaths();
+                var self = this;
 
-                App.headerRegion.show(new HeaderView(this));
-                
+                require(modules, function(){
+                    App.headerRegion.show(new HeaderView(self)); // Probably shouldnt do module linking like this....
+                });
+
                 console.log('[MODULE] Example loaded');
             });
         });

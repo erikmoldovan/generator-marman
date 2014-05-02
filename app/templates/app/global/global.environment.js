@@ -1,7 +1,7 @@
 define([
 		'underscore',
 		'backbone',
-		'json!./config/config.environment.json'
+		'json!./config.environment.json'
 	],
 
 	function( _, Backbone, Environment ){

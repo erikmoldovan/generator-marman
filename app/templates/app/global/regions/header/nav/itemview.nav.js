@@ -12,10 +12,10 @@ define([
 			template: Template,
 
 			events: {
-				"click a": "stopit"
+				"click a": "loadLink"
 			},
 
-			stopit: function(e){
+			loadLink: function(e){
 				e.preventDefault();
 
 				App.navigate(this.model.get('url'), {trigger: true}); // I feel as though this may be a kludge

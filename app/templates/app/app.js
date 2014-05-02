@@ -15,10 +15,12 @@ require(['config'],
 
                 './global/regions/header/layout.header',
                 './global/regions/footer/layout.footer',
-                './global/regions/region.dialog'
+                './global/regions/region.dialog',
+
+                'json!./config.module.app.json'
             ],
 
-            function( _, $, Backbone, Marionette, Foundation, Environment, Router, ModuleManager, HeaderView, FooterView, DialogRegion ){
+            function( _, $, Backbone, Marionette, Foundation, Environment, Router, ModuleManager, HeaderView, FooterView, DialogRegion, ModuleConfig ){
                 'use strict';
 
                 _.extend( Marionette.Application.prototype, {
@@ -41,29 +43,13 @@ require(['config'],
                     }
                 });
 
-                var modules = {
-                    config: {
-                        baseURL: "",
-                        basePath: "modules/all",
-                        baseRoute: "load_module"
-                    },
-                    list: [
-                        {
-                            title: "Example",
-                            url: "example",
-                            path: "example/module.example",
-                            route: "example"
-                        }
-                    ]
-                };
-
                 // Instantiate App
                 window.App = new Marionette.Application();
 
                 // Instantiate App Modules
                 App.on('initialize:before', function(){
                     App.Environment = new Environment; // Initializes global environment model
-                    App.ModuleManager = new ModuleManager(modules); // Initialize app level module manager
+                    App.ModuleManager = new ModuleManager(ModuleConfig); // Initialize app level module manager
                 
                     // Define Regions
                     App.addRegions({
