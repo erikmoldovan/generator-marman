@@ -20,17 +20,22 @@ define([
 				subnav: "#subnav"
 			},
 
-			initialize: function(options){
-				this.context = options;
+			initialize: function(context){
+				this.populateCollections(context);
+			},
+
+			populateCollections: function(context){
+				this.NavCollection = App.ModuleManager.getList(),
+				this.SubNavCollection = context.ModuleManager.getList();
 			},
 
 			onRender: function(){
 				this.nav.show(new NavView({
-					collection: App.ModuleManager.getList()
+					collection: this.NavCollection
 				}));
 
 				this.subnav.show(new NavView({
-					collection: this.context.ModuleManager.getList()
+					collection: this.SubNavCollection
 				}));
 			}
 		});
