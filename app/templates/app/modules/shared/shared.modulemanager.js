@@ -32,6 +32,7 @@ define([
 	        			entry.route = config.baseRoute + "_" + entry.route;
 	        			entry.callback = function(){
 	        				console.log("[ROUTE] " + entry.title);
+	        				// console.log(entry);
 	        			}
 
 	        			self._List.add(new Backbone.Model(entry), {merge: true}); // Local module dependency collection

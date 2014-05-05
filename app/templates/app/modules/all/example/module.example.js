@@ -28,4 +28,4 @@ define([
 
         return App.Example;
     }
-);
+);  

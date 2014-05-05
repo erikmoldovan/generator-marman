@@ -50,7 +50,8 @@ require(['config'],
                 App.on('initialize:before', function(){
                     App.Environment = new Environment; // Initializes global environment model
                     App.ModuleManager = new ModuleManager(ModuleConfig); // Initialize app level module manager
-                
+                    App.Router = new Router(App); // Initialize the router
+
                     // Define Regions
                     App.addRegions({
                         headerRegion: '#header-region',
@@ -65,8 +66,6 @@ require(['config'],
                     var modules = App.ModuleManager.retrievePaths();
 
                     require(modules, function(){
-                        App.Router = new Router(App); // Initialize the router
-                        
                         // Kick off Backbone.history to resolve current url
                         Backbone.history.start({ pushState: true, root: '/' });
                     });
