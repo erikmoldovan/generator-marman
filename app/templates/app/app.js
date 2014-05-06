@@ -1,4 +1,4 @@
-require(['config'],
+require(['../config'],
     function() {
         'use strict';
 
@@ -9,66 +9,53 @@ require(['config'],
                 'marionette',
                 'foundation',
                 
-                './global/global.environment',
-                'shared.router',
-                'shared.modulemanager',
+                './controller.app',
+                'json!./config.app.json',
+                './modules/shared/shared.router',
 
                 './global/regions/header/layout.header',
-                './global/regions/footer/layout.footer',
-                './global/regions/region.dialog',
-
-                'json!./config.module.app.json'
+                './global/regions/region.dialog'
             ],
 
-            function( _, $, Backbone, Marionette, Foundation, Environment, Router, ModuleManager, HeaderView, FooterView, DialogRegion, ModuleConfig ){
+            function( _, $, Backbone, Marionette, Foundation,
+                    Controller, ModuleConfig, Router,
+                    HeaderView, DialogRegion ){
                 'use strict';
 
                 _.extend( Marionette.Application.prototype, {
-                    /**
-                     * Navigate method. Handles Backbone.history.navigate behavior
-                     * @param {string} route
-                     * @param [{object}] options
-                     */
                     navigate: function( route, options ) {
                         options || (options = {});
-                        Backbone.history.navigate( route, options );
+
+                        Backbone.history.navigate(route, options);
                     },
 
-                    /**
-                     * Returns current route fragment
-                     * @return {string}
-                     */
                     getCurrentRoute: function() {
                         return Backbone.history.fragment;
                     }
                 });
 
-                // Instantiate App
+                // Instantiate the App
                 window.App = new Marionette.Application();
 
                 // Instantiate App Modules
                 App.on('initialize:before', function(){
-                    App.Environment = new Environment; // Initializes global environment model
-                    App.ModuleManager = new ModuleManager(ModuleConfig); // Initialize app level module manager
-                    App.Router = new Router(App); // Initialize the router
+                    App.Controller = new Controller( ModuleConfig );
+                    App.Router = new Router( App.Controller );
 
                     // Define Regions
                     App.addRegions({
                         headerRegion: '#header-region',
                         mainRegion: '#main-region',
-                        footerRegion: '#footer-region',
                         dialogRegion: DialogRegion.extend()
                     });
                 });
 
-                // Load Custom Modules
                 App.addInitializer(function(){
-                    var modules = App.ModuleManager.retrievePaths();
+                    // var modules = App.ModuleManager.retrievePaths();
 
-                    require(modules, function(){
-                        // Kick off Backbone.history to resolve current url
+                    // require(modules, function(){
                         Backbone.history.start({ pushState: true, root: '/' });
-                    });
+                    // });
                 });
 
                 // Define App View Configuration
@@ -82,6 +69,11 @@ require(['config'],
                     Foundation.libs.tooltip.settings = _.extend( Foundation.libs.tooltip.settings, {
                         selector: '.has-tip'                
                     });
+
+                    // Populate App Regions
+                    App.NavCollection = App.Controller.getModulesList(); // Each module handles its own top level nav. So App is main nav, module is sub nav
+                    // App.SubNavCollection = new Backbone.Collection();
+                    App.headerRegion.show(new HeaderView());
 
                     console.log('[GLOBAL] App started');
                 });

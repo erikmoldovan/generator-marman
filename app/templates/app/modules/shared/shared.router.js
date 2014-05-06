@@ -7,21 +7,19 @@ define([
         'use strict';
 
         return Marionette.AppRouter.extend({
-            initialize: function(context){
+            initialize: function(controller){
                 // Initialize the properties!
                 this._defaultRoute = new Backbone.Model();
-                this.controller = {};
+
+                this.controller = controller.getRouterController();
                 this.appRoutes = {};
 
-                // Load the config!
-                var list = context.ModuleManager.retrieveRoutes();
+                var modulesList = controller.getModulesList();
+                var modulesConfig = controller.getModulesConfig();
 
-                // FIRE!!!
-                this._createRoutes(list);
+                this._createRoutes(modulesList);
 
-                var config = context.ModuleManager.getConfig();
-
-                this.on('routes:created', this._setDefaultRoute(config));
+                this.on('routes:created', this._setDefaultRoute(modulesConfig));
             },
 
             // Sets the router's controller
@@ -29,11 +27,10 @@ define([
                 var self = this;
 
                 list.each(function(data, index){
-                    self.controller[data.get('route')] = data.get('callback');
                     self.appRoutes[data.get('url') + "(/)"] = data.get('route');
 
                     // First loaded module is always the default, unless overriden by the default flag
-                    if(index == 0 || data.get('default')) self._updateDefaultRoute(data);
+                    if(index == 0 || data.get('default') == true) self._updateDefaultRoute(data);
                 });
 
                 this.trigger('routes:created');
@@ -42,19 +39,15 @@ define([
             _updateDefaultRoute: function(entry){
                 var self = this;
 
+                console.log(entry);
+
                 _.each(entry.attributes, function(value, key){
                     self._defaultRoute.set(key, value);
                 });
             },
 
             _setDefaultRoute: function(config){
-                // console.log(config);
-
-                this.controller["default"] = this._defaultRoute.get('callback');
                 this.appRoutes[config.get('baseURL') + "(/)"] = this._defaultRoute.get('route');
-                // this.appRoutes[""] = "default"; // Alternate way of doing the default route
-            
-                // console.log(this.appRoutes);
             }
         });
     }

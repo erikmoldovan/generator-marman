@@ -6,6 +6,8 @@
 			"app/libs",
 			"app/global",
 			"app/modules",
+			"app/modules/all",
+			"app/modules/shared",
 
 			"assets",
 			"assets/styles",
@@ -41,12 +43,13 @@
 		"method": "copy",
 		"list": [
 			"README.md",
-			"app/config.js",
+			"config.js",
 			"app/app.js",
-			"app/config.module.app.json",
 
-			"app/global/global.environment.js",
-			"app/global/config.environment.json",
+			"app/modules/shared/shared.controller.js",
+			"app/controller.app.js",
+			"app/config.app.json",
+			"app/modules/shared/shared.router.js",
 
 			"app/global/helpers/helpers.handlebars.js",
 
@@ -56,18 +59,14 @@
 			"app/global/regions/header/nav/collectionview.nav.js",
 			"app/global/regions/header/nav/itemview.nav.js",
 			"app/global/regions/header/nav/template.item.nav.hbs",
-			"app/global/regions/footer/layout.footer.js",
-			"app/global/regions/footer/template.layout.footer.hbs",
 
-			"assets/styles/sass/app.scss"
+			"assets/styles/sass/app.scss",
+			"assets/styles/sass/_app-overrides.scss"
 		]
 	},
 	"module_files": {
 		"method": "copy",
 		"list": [
-			"app/modules/shared/shared.modulemanager.js",
-			"app/modules/shared/shared.router.js",
-
 			"app/modules/all/example/module.example.js",
 			"app/modules/all/example/config.module.example.json",
 			"app/modules/all/example/sub1/module.sub1.js",

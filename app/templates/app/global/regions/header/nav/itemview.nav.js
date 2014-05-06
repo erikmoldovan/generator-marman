@@ -18,6 +18,8 @@ define([
 			loadLink: function(e){
 				e.preventDefault();
 
+				this.$el.addClass('active');
+
 				App.navigate(this.model.get('url'), {trigger: true}); // I feel as though this may be a kludge
 			}
 		});

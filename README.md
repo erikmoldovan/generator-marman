@@ -45,3 +45,7 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 ## License
 
 MIT
+
+### Known Issues
+
+- App.Router is extraneous. All it handles, if all modules load properly, is the default page route for the app's base URL

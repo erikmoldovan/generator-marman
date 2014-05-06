@@ -15,12 +15,8 @@ define([
                 this.ModuleManager = new ModuleManager(ModuleConfig);
                 this.Router = new Router(this); // Initialize the router
 
-                var modules = this.ModuleManager.retrievePaths();
-                var self = this;
-
-                require(modules, function(){
-                    App.headerRegion.show(new HeaderView(self)); // Probably shouldnt do module linking like this....
-                });
+                App.SubNavCollection = this.ModuleManager.getList();
+                App.headerRegion.show(new HeaderView());
 
                 console.log('[MODULE] Example loaded');
             });
@@ -28,4 +24,4 @@ define([
 
         return App.Example;
     }
-);  
+);
