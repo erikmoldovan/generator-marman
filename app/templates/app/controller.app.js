@@ -10,16 +10,17 @@ define([
 		return Controller.extend({
 			getRouterController: function(){
 				return {
-					default: function(){
-						console.log('default woo');
-					},
+					// Default is optional, in case you want to use an action not already defined
+					/*default: function(){
+						console.log('[ROUTE} Default fired');
+					},*/
 
 					load_module_example: function(){
-						console.log('example woo')
+						console.log('[ROUTE] Example fired')
 					},
 
 					load_module_example2: function(){
-						console.log('example 2 woo')
+						console.log('[ROUTE] Example 2 fired')
 					}
 				}
 			}

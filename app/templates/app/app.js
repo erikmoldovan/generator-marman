@@ -14,12 +14,13 @@ require(['../config'],
                 './modules/shared/shared.router',
 
                 './global/regions/header/layout.header',
-                './global/regions/region.dialog'
+                './global/regions/region.dialog',
+                './global/global.navcollection'
             ],
 
             function( _, $, Backbone, Marionette, Foundation,
                     Controller, ModuleConfig, Router,
-                    HeaderView, DialogRegion ){
+                    HeaderView, DialogRegion, NavCollection ){
                 'use strict';
 
                 _.extend( Marionette.Application.prototype, {
@@ -71,15 +72,18 @@ require(['../config'],
                     });
 
                     // Populate App Regions
-                    App.NavCollection = App.Controller.getModulesList(); // Each module handles its own top level nav. So App is main nav, module is sub nav
-                    // App.SubNavCollection = new Backbone.Collection();
+                    console.log('hue3');
+                    App.NavCollection = new NavCollection(); // Each module handles its own top level nav. So App is main nav, module is sub nav
+                    // App.SubNavCollection = new NavCollection();
                     App.headerRegion.show(new HeaderView());
 
                     console.log('[GLOBAL] App started');
                 });
 
                 // Start the App
+                console.log('hue');
                 App.start();
+                console.log('hue2');
             }
         );
     }

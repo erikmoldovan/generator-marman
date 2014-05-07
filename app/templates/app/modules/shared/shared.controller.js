@@ -2,15 +2,11 @@ define([
 		'marionette'
 	],
 
-	function( Marionette ){
+	function( Marionette, NavCollection ){
 		'use strict';
 
 		return Marionette.Controller.extend({
-			initialize: function(config){
-				this._setData(config);
-			},
-
-			_setData: function(data){
+			initialize: function(data){
 				this._modulesList = new Backbone.Collection(data.list);
 				this._modulesConfig = new Backbone.Model(data.config);
 			},

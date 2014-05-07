@@ -23,13 +23,13 @@ define([
 			onRender: function(){
 				// this.topbar.show();
 
-				this.nav.show(new NavView({
-					collection: App.NavCollection
-				}));
+				// this.nav.show(new NavView({
+				// 	collection: App.NavCollection
+				// }));
 
-				this.subnav.show(new NavView({
-					collection: App.SubNavCollection
-				}));
+				// this.subnav.show(new NavView({
+				// 	collection: App.SubNavCollection
+				// }));
 			}
 		});
 	}

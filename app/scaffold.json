@@ -53,6 +53,7 @@
 
 			"app/global/helpers/helpers.handlebars.js",
 
+			"app/global/global.navcollection.js",
 			"app/global/regions/region.dialog.js",
 			"app/global/regions/header/layout.header.js",
 			"app/global/regions/header/template.layout.header.hbs",
