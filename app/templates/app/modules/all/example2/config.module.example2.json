@@ -1,0 +1,19 @@
+{
+    "config": {
+        "baseURL": "example2"
+    },
+    "modules": [
+        {
+            "title": "Sub 1",
+            "url": "example2/sub1",
+            "path": "modules/all/example2/sub1/module.sub1",
+            "route": "load_module_example2_sub1"
+        },{
+            "title": "Sub 2",
+            "url": "example2/sub2",
+            "path": "modules/all/example2/sub2/module.sub2",
+            "route": "load_module_example2_sub2",
+            "default": true
+        }
+    ]
+}

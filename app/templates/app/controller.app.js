@@ -15,12 +15,12 @@ define([
 						console.log('[ROUTE} Default fired');
 					},*/
 
-					load_module_example: function(){
-						console.log('[ROUTE] Example fired')
+					load_module_example1: function(){
+						console.log('[ROUTE] Example1 fired')
 					},
 
 					load_module_example2: function(){
-						console.log('[ROUTE] Example 2 fired')
+						console.log('[ROUTE] Example2 fired')
 					}
 				}
 			}

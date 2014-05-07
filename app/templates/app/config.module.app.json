@@ -1,0 +1,23 @@
+{
+    "config": {
+        "baseURL": ""
+    },
+    "modules": [
+        {
+            "title": "Example1",
+            "url": "example1",
+            "path": "modules/all/example1/module.example1",
+            "route": "load_module_example1"
+        },
+        {
+            "title": "Example2",
+            "url": "example2",
+            "path": "modules/all/example2/module.example2",
+            "route": "load_module_example2"
+        }
+    ],
+    "global": [
+        {   "path": "global/regions/header/module.header"   },
+        {   "path": "global/regions/content/module.content" }
+    ]
+}

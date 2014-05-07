@@ -9,18 +9,17 @@ require(['../config'],
                 'marionette',
                 'foundation',
                 
+                './modules/shared/shared.controller',
                 './controller.app',
-                'json!./config.app.json',
+                'json!./config.module.app.json',
                 './modules/shared/shared.router',
 
-                './global/regions/header/layout.header',
-                './global/regions/region.dialog',
-                './global/global.navcollection'
+                './global/regions/region.dialog'
             ],
 
             function( _, $, Backbone, Marionette, Foundation,
-                    Controller, ModuleConfig, Router,
-                    HeaderView, DialogRegion, NavCollection ){
+                    test, Controller, ModuleConfig, Router,
+                    DialogRegion ){
                 'use strict';
 
                 _.extend( Marionette.Application.prototype, {
@@ -38,25 +37,24 @@ require(['../config'],
                 // Instantiate the App
                 window.App = new Marionette.Application();
 
-                // Instantiate App Modules
-                App.on('initialize:before', function(){
-                    App.Controller = new Controller( ModuleConfig );
-                    App.Router = new Router( App.Controller );
+                // Instantiate main App Modules
+                App.Controller = new Controller( ModuleConfig );
+                App.Router = new Router( App.Controller );
 
-                    // Define Regions
-                    App.addRegions({
-                        headerRegion: '#header-region',
-                        mainRegion: '#main-region',
-                        dialogRegion: DialogRegion.extend()
-                    });
+                // Define App Regions
+                App.addRegions({
+                    headerRegion: '#header-region',
+                    contentRegion: '#main-region',
+                    dialogRegion: DialogRegion.extend({
+                        el: '#dialog-region'
+                    })
                 });
-
+                
                 App.addInitializer(function(){
-                    // var modules = App.ModuleManager.retrievePaths();
-
-                    // require(modules, function(){
+                    // Require regional App Modules (Header & Content)
+                    require( App.Controller.getPaths() , function(){
                         Backbone.history.start({ pushState: true, root: '/' });
-                    // });
+                    });
                 });
 
                 // Define App View Configuration
@@ -71,19 +69,11 @@ require(['../config'],
                         selector: '.has-tip'                
                     });
 
-                    // Populate App Regions
-                    console.log('hue3');
-                    App.NavCollection = new NavCollection(); // Each module handles its own top level nav. So App is main nav, module is sub nav
-                    // App.SubNavCollection = new NavCollection();
-                    App.headerRegion.show(new HeaderView());
-
                     console.log('[GLOBAL] App started');
                 });
 
                 // Start the App
-                console.log('hue');
                 App.start();
-                console.log('hue2');
             }
         );
     }
