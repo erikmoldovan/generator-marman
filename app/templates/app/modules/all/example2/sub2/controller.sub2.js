@@ -1,7 +1,7 @@
 define([
 		'marionette',
 
-		'./view/itemview.sub2'
+		'./views/itemview.sub2'
 	],
 
 	function( Marionette, ExampleSubView ){

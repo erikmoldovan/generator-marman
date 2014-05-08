@@ -58,9 +58,9 @@
 			"app/global/regions/header/module.header.js",
 			"app/global/regions/header/layout.header.js",
 			"app/global/regions/header/template.layout.header.hbs",
-			"app/global/regions/header/nav/collectionview.nav.js",
-			"app/global/regions/header/nav/itemview.nav.js",
-			"app/global/regions/header/nav/template.item.nav.hbs",
+			"app/global/regions/header/views/nav/collectionview.nav.js",
+			"app/global/regions/header/views/nav/itemview.nav.js",
+			"app/global/regions/header/views/nav/template.item.nav.hbs",
 
 			"assets/styles/sass/app.scss",
 			"assets/styles/sass/_app-overrides.scss"
@@ -71,8 +71,8 @@
 		"list": [
 			"app/modules/all/example1/module.example1.js",
 			"app/modules/all/example1/controller.example1.js",
-			"app/modules/all/example1/view/itemview.example1.js",
-			"app/modules/all/example1/view/template.itemview.example1.hbs",
+			"app/modules/all/example1/views/itemview.example1.js",
+			"app/modules/all/example1/views/template.itemview.example1.hbs",
 
 			"app/modules/all/example2/module.example2.js",
 			"app/modules/all/example2/controller.example2.js",
@@ -80,13 +80,13 @@
 
 			"app/modules/all/example2/sub1/module.sub1.js",
 			"app/modules/all/example2/sub1/controller.sub1.js",
-			"app/modules/all/example2/sub1/view/itemview.sub1.js",
-			"app/modules/all/example2/sub1/view/template.itemview.sub1.hbs",
+			"app/modules/all/example2/sub1/views/itemview.sub1.js",
+			"app/modules/all/example2/sub1/views/template.itemview.sub1.hbs",
 
 			"app/modules/all/example2/sub2/module.sub2.js",
 			"app/modules/all/example2/sub2/controller.sub2.js",
-			"app/modules/all/example2/sub2/view/itemview.sub2.js",
-			"app/modules/all/example2/sub2/view/template.itemview.sub2.hbs"
+			"app/modules/all/example2/sub2/views/itemview.sub2.js",
+			"app/modules/all/example2/sub2/views/template.itemview.sub2.hbs"
 		]
 	}
 }
