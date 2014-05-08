@@ -9,17 +9,17 @@ require(['../config'],
                 'marionette',
                 'foundation',
 
-                './modules/shared/shared.controller',
                 './controller.app',
                 'json!./config.module.app.json',
                 './modules/shared/shared.router',
 
+                './global/regions/header/controller.header',
                 './global/regions/region.dialog'
             ],
 
             function( _, $, Backbone, Marionette, Foundation,
-                    test, Controller, ModuleConfig, Router,
-                    DialogRegion ){
+                    Controller, ModuleConfig, Router,
+                    Header, DialogRegion ){
                 'use strict';
 
                 // Extend the App prototype

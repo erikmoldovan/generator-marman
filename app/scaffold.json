@@ -55,7 +55,6 @@
 
 			"app/global/regions/region.dialog.js",
 
-			"app/global/regions/header/module.header.js",
 			"app/global/regions/header/controller.header.js",
 
 			"app/global/regions/header/views/layout.header.js",
