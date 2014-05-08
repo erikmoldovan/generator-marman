@@ -21,8 +21,6 @@ define([
             this.Controller = new Controller();
             this.Controller.loadListeners();
 
-            var self = this;
-
             Sub2.on( 'start', function(){
                 console.log('[MODULE] Example2:Sub2 started');
             });

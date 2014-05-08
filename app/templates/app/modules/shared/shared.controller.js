@@ -26,7 +26,7 @@ define([
 
 				if(!_.isUndefined(this._globalModules)){
 					this._globalModules.each(function(data){
-						paths.push(data.get('path'));
+						paths.unshift(data.get('path'));
 					});
 				}
 

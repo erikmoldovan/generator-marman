@@ -6,7 +6,7 @@ define([
 		'use strict';
 
 		return Marionette.Controller.extend({
-			initialize: function(data){
+			initialize: function(){
 				
 			}
 		});

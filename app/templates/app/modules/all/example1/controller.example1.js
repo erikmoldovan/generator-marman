@@ -8,8 +8,15 @@ define([
 		'use strict';
 
 		return Marionette.Controller.extend({
-			loadModule: function(){
-				console.log('example1');
+			loadListeners: function(){
+				var self = this;
+
+	            App.vent.on('route:module:example1', function(){
+	                self.loadView();
+	            });
+			},
+
+			loadView: function(){
 				App.contentRegion.show(new ExampleView());
 			}
 		});

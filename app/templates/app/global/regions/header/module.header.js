@@ -1,24 +1,28 @@
+/*
+ *  Header global module
+ *
+ *  This is the header. It displays the topbar section, the nav bar section and the subnav
+ *  bar section.
+ *
+ */
+
 define([
-        './layout.header'
+        './controller.header'
     ],
 
-    function( Layout ){
+    function( Controller ){
         'use strict';
 
         App.module( 'Header', function( Header ) {
+
+            // Instantiate Module components
+            // this.Controller = new Controller();
+
             Header.on( 'start', function(){
-
-                // Controller
-                
-                // Router
-
-                // App.SubNavCollection = this.ModuleManager.getList();
-                // App.headerRegion.show(new HeaderView());
-
                 console.log('[MODULE] Header loaded');
             });
         });
 
-        return App.Example;
+        return App.Header;
     }
 );

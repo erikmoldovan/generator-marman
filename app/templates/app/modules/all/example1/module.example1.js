@@ -19,16 +19,10 @@ define([
 
             // Instantiate Module components
             this.Controller = new Controller();
-            // No Router needed
+            this.Controller.loadListeners();
 
             Example1.on( 'start', function(){
                 console.log('[MODULE] Example1 loaded');
-            });
-
-            var self = this;
-
-            App.vent.on('route:module:example1', function(){
-                self.Controller.loadModule();
             });
         });
 

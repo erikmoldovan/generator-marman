@@ -12,11 +12,11 @@ define([
 				var self = this;
 
 	            App.vent.on('route:module:example2:sub1', function(){
-	                self.loadModule();
+	                self.loadView();
 	            });
 			},
 
-			loadModule: function(){
+			loadView: function(){
 				App.contentRegion.show(new ExampleSubView());
 			}
 		});
