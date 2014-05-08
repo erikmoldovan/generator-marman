@@ -15,8 +15,5 @@
             "path": "modules/all/example2/module.example2",
             "route": "load_module_example2"
         }
-    ],
-    "global": [
-        {   "path": "global/regions/header/module.header"   }
     ]
 }
