@@ -15,7 +15,7 @@ define([
                 // App.SubNavCollection = this.ModuleManager.getList();
                 // App.headerRegion.show(new HeaderView());
 
-                console.log('[MODULE] Header loaded');
+                // console.log('[MODULE] Header loaded');
             });
         });
 

@@ -16,11 +16,11 @@ define([
         'use strict';
 
         App.module( 'Example2', function( Example2 ) {
-            Example2.on( 'start', function(){
+            // Instantiate Module components
+            this.Controller = new Controller( ModuleConfig );
+            this.Router = new Router( this.Controller );
 
-                this.Controller = new Controller( ModuleConfig );
-                this.Router = new Router( this.Controller );
-
+            define( this.Controller.getPaths() , function(){
                 console.log('[MODULE] Example2 loaded');
             });
         });

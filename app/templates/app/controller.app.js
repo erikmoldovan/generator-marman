@@ -16,11 +16,11 @@ define([
 					},*/
 
 					load_module_example1: function(){
-						console.log('[ROUTE] Example1 fired')
+						App.vent.trigger('route:module:example1');
 					},
 
 					load_module_example2: function(){
-						console.log('[ROUTE] Example2 fired')
+						App.vent.trigger('route:module:example2');
 					}
 				}
 			}

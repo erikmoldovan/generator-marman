@@ -8,7 +8,7 @@ require(['../config'],
                 'backbone', 
                 'marionette',
                 'foundation',
-                
+
                 './modules/shared/shared.controller',
                 './controller.app',
                 'json!./config.module.app.json',
@@ -22,6 +22,7 @@ require(['../config'],
                     DialogRegion ){
                 'use strict';
 
+                // Extend the App prototype
                 _.extend( Marionette.Application.prototype, {
                     navigate: function( route, options ) {
                         options || (options = {});
@@ -37,27 +38,28 @@ require(['../config'],
                 // Instantiate the App
                 window.App = new Marionette.Application();
 
-                // Instantiate main App Modules
-                App.Controller = new Controller( ModuleConfig );
-                App.Router = new Router( App.Controller );
-
-                // Define App Regions
-                App.addRegions({
-                    headerRegion: '#header-region',
-                    contentRegion: '#main-region',
-                    dialogRegion: DialogRegion.extend({
-                        el: '#dialog-region'
-                    })
+                App.on('initialize:before', function(){
+                    // Initialize App modules
+                    App.Controller = new Controller( ModuleConfig );
+                    App.Router = new Router( App.Controller );
+                    
+                    // Define App Regions
+                    App.addRegions({
+                        headerRegion: '#header-region',
+                        contentRegion: '#main-region',
+                        dialogRegion: DialogRegion.extend({
+                            el: '#dialog-region'
+                        })
+                    });
                 });
                 
                 App.addInitializer(function(){
-                    // Require regional App Modules (Header & Content)
+                    // Require all other modules
                     require( App.Controller.getPaths() , function(){
                         Backbone.history.start({ pushState: true, root: '/' });
                     });
                 });
 
-                // Define App View Configuration
                 App.on('initialize:after', function(){
                     // First time foundation initialization
                     Foundation.libs.reveal.settings = _.extend(Foundation.libs.reveal.settings, {

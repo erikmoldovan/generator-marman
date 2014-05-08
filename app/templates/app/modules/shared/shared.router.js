@@ -25,17 +25,13 @@ define([
             _createRoutes: function(list){
                 var self = this;
 
-                if(list.length > 0){
-                    list.each(function(data, index){
-                        // { "url(/)" : "route" }
-                        self.appRoutes[data.get('url') + "(/)"] = data.get('route');
+                list.each(function(data, index){
+                    // { "url(/)" : "route" }
+                    self.appRoutes[data.get('url') + "(/)"] = data.get('route');
 
-                        // If first in list, or has a default flag, set as the default route placeholder
-                        if(index == 0 || data.get('default') == true) self._defaultRoute = data.clone();
-                    });
-                }else{
-                    this._defaultRoute = new Backbone.Model({'route': 'default'});
-                }
+                    // If first in list, or has a default flag, set as the default route placeholder
+                    if(index == 0 || data.get('default') == true) self._defaultRoute = data.clone();
+                });
 
                 this.trigger('routes:created');
             },
