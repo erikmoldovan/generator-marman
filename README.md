@@ -37,9 +37,9 @@ $ yo marionette-base-spa
 
 And build the app:
 
-...
+```
 $ npm install grunt && npm install && bower install && grunt sass && grunt serve
-...
+```
 
 ### Getting To Know Yeoman
 
