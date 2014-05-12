@@ -29,11 +29,17 @@ To install generator-marionette-base-spa from npm, run:
 $ npm install -g generator-marionette-base-spa
 ```
 
-Finally, initiate the generator:
+Initiate the generator:
 
 ```
 $ yo marionette-base-spa
 ```
+
+And build the app:
+
+...
+$ npm install grunt && npm install && bower install && grunt sass && grunt serve
+...
 
 ### Getting To Know Yeoman
 

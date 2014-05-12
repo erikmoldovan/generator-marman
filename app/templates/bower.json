@@ -22,19 +22,9 @@
     "handlebars": "1.3.0",
     "backbone": "1.1.0",
     "marionette": "1.6.0",
-    "backbone.picky": "0.2.0",
-    "requirejs-text": "2.0.10",
     "requirejs": "2.1.10",
+    "requirejs-text": "2.0.10",
     "requirejs-hbs": "",
-    "backgrid": "~0.3.5",
-    "backgrid-select-all": "~0.3.5",
-    "backgrid-filter": "~0.3.5",
-    "foundation": "master",
-    "backgrid-paginator": "~0.3.5",
-    "sticky": "",
     "requirejs-plugins": "~1.0.2"
-  },
-  "resolutions": {
-    "jquery": "1.10.2"
   }
 }

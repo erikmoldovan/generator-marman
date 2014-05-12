@@ -48,7 +48,7 @@
 
 			"app/modules/shared/shared.controller.js",
 			"app/controller.app.js",
-			"app/config.module.app.json",
+			"app/config.app.json",
 			"app/modules/shared/shared.router.js",
 
 			"app/global/helpers/helpers.handlebars.js",
@@ -71,24 +71,19 @@
 	"module_files": {
 		"method": "copy",
 		"list": [
-			"app/modules/all/example1/module.example1.js",
-			"app/modules/all/example1/controller.example1.js",
-			"app/modules/all/example1/views/itemview.example1.js",
-			"app/modules/all/example1/views/template.itemview.example1.hbs",
+			"app/modules/all/example/module.example.js",
+			"app/modules/all/example/controller.example.js",
+			"app/modules/all/example/config.example.json",
 
-			"app/modules/all/example2/module.example2.js",
-			"app/modules/all/example2/controller.example2.js",
-			"app/modules/all/example2/config.module.example2.json",
+			"app/modules/all/example/sub1/module.sub1.js",
+			"app/modules/all/example/sub1/controller.sub1.js",
+			"app/modules/all/example/sub1/views/itemview.sub1.js",
+			"app/modules/all/example/sub1/views/template.itemview.sub1.hbs",
 
-			"app/modules/all/example2/sub1/module.sub1.js",
-			"app/modules/all/example2/sub1/controller.sub1.js",
-			"app/modules/all/example2/sub1/views/itemview.sub1.js",
-			"app/modules/all/example2/sub1/views/template.itemview.sub1.hbs",
-
-			"app/modules/all/example2/sub2/module.sub2.js",
-			"app/modules/all/example2/sub2/controller.sub2.js",
-			"app/modules/all/example2/sub2/views/itemview.sub2.js",
-			"app/modules/all/example2/sub2/views/template.itemview.sub2.hbs"
+			"app/modules/all/example/sub2/module.sub2.js",
+			"app/modules/all/example/sub2/controller.sub2.js",
+			"app/modules/all/example/sub2/views/itemview.sub2.js",
+			"app/modules/all/example/sub2/views/template.itemview.sub2.hbs"
 		]
 	}
 }

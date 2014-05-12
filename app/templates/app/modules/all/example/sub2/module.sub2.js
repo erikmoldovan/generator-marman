@@ -1,5 +1,5 @@
 /*
- *  Example2 : Sub2 sub-module
+ *  Example : Sub2 sub-module
  *
  *  This module shows the most basic configuration: A module with no sub-modules.
  *  When you've reached the end of the road, you don't need a Router, and you don't need
@@ -15,17 +15,9 @@ define([
     function( Controller ){
         'use strict';
 
-        App.module( 'Example2.Sub2', function( Sub2 ) {
+        // Instantiate Module components
+        var Controller = new Controller();
 
-            // Instantiate Module components
-            this.Controller = new Controller();
-            this.Controller.loadListeners();
-
-            Sub2.on( 'start', function(){
-                console.log('[MODULE] Example2:Sub2 started');
-            });
-        });
-
-        return App.Example2.Sub2;
+        console.log('[MODULE] Example::Sub2 started');
     }
 );

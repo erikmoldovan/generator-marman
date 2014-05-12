@@ -15,12 +15,12 @@ define([
 						console.log('[ROUTE} Default fired');
 					},*/
 
-					load_module_example2_sub1: function(){
-						App.vent.trigger('route:module:example2:sub1');
+					load_module_example_sub1: function(){
+						App.vent.trigger('route:module:example:sub1');
 					},
 
-					load_module_example2_sub2: function(){
-						App.vent.trigger('route:module:example2:sub2');
+					load_module_example_sub2: function(){
+						App.vent.trigger('route:module:example:sub2');
 					}
 				}
 			}
