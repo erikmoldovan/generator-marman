@@ -43,7 +43,8 @@
 		"method": "copy",
 		"list": [
 			"README.md",
-			"config.js",
+			"require-config.js",
+			"init.js",
 			"app/app.js",
 
 			"app/modules/shared/shared.controller.js",

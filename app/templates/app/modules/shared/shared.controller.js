@@ -1,34 +1,31 @@
-define([
-		'marionette'
-	],
+define(function(require){
+	'use strict';
 
-	function( Marionette ){
-		'use strict';
+	var Marionette = require('marionette');
 
-		return Marionette.Controller.extend({
-			initialize: function(data){
-				this._modulesConfig = new Backbone.Model(data.config);
-				this._modulesList = new Backbone.Collection(data.modules);
-			},
+	return Marionette.Controller.extend({
+		initialize: function(data){
+			this._modulesConfig = new Backbone.Model(data.config);
+			this._modulesList = new Backbone.Collection(data.modules);
+		},
 
-			getModulesConfig: function(){
-				return this._modulesConfig;
-			},
+		getModulesConfig: function(){
+			return this._modulesConfig;
+		},
 
-			getModulesList: function(){
-				return this._modulesList;
-			},
+		getModulesList: function(){
+			return this._modulesList;
+		},
 
-			getPaths: function(){
-				var paths = this._modulesList.pluck('path');
+		getPaths: function(){
+			var paths = this._modulesList.pluck('path');
 
-				return paths;
-			},
+			return paths;
+		},
 
-			// Override with your own function
-			getRouterController: function(){
-				// return {controller object};
-			}
-		});
-	}
-);
+		// Override with your own function
+		getRouterController: function(){
+			// return {controller object};
+		}
+	});
+});

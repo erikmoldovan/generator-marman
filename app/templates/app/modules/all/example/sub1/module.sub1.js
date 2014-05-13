@@ -8,16 +8,17 @@
  *
  */
 
-define([
-        './controller.sub1'
-    ],
+define(function(require){
+	'use strict';
 
-    function( Controller ){
-        'use strict';
+	var Controller = require('./controller.sub1');
 
-        // Instantiate Module components
-        var Controller = new Controller();
+	var Module = function(){
+		// Instantiate Module components
+        var controller = new Controller();
 
         console.log('[MODULE] Example::Sub1 started');
-    }
-);
+	}
+
+	return Module();
+});

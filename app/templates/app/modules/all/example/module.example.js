@@ -5,24 +5,23 @@
  *
  */
 
-define([
-        'jquery',
+define(function(require){
+    'use strict';
 
-        './controller.example',
-        'modules/shared/shared.router',
-        'json!./config.example.json'
-    ],
+    var $ = require('jquery'),
 
-    function( $, SharedController, SharedRouter, ModuleConfig ){
-        'use strict';
+        Controller = require('./controller.example'),
+        Router = require('modules/shared/shared.router'),
+        ModuleConfig = require('json!./config.example.json');
 
+    var Module = function(){
         var deferred = $.Deferred();
 
         // Instantiate Module components
-        var Controller = new SharedController( ModuleConfig );
-        var Router = new SharedRouter( Controller );
+        var controller = new Controller( ModuleConfig ),
+            router = new Router( controller );
 
-        require( Controller.getPaths() , function(data){
+        require( controller.getPaths() , function(data){
             deferred.resolve(data);
 
             console.log('[MODULE] Example loaded');
@@ -30,4 +29,6 @@ define([
 
         return deferred.promise();
     }
-);
+
+    return Module();
+});

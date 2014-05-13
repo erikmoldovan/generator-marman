@@ -1,25 +1,25 @@
-define([
-		'marionette',
+/*
+ * App Controller module definition
+ */
 
-		'./modules/shared/shared.controller'
-	],
+define(function(require){
+	'use strict';
 
-	function( Marionette, Controller ){
-		'use strict';
+	var Marionette = require('marionette'),
+		Controller = require('modules/shared/shared.controller');
 
-		return Controller.extend({
-			getRouterController: function(){
-				return {
-					// Default is optional, in case you want to use an action not already defined
-					/*default: function(){
-						console.log('[ROUTE} Default fired');
-					},*/
+	return Controller.extend({
+		getRouterController: function(){
+			return {
+				// Default is optional, in case you want to use an action not already defined
+				/*default: function(){
+					console.log('[ROUTE} Default fired');
+				},*/
 
-					load_module_example: function(){
-						App.vent.trigger('route:module:example');
-					}
+				load_module_example: function(){
+					App.vent.trigger('route:module:example');
 				}
 			}
-		});
-	}
-);
+		}
+	});
+});

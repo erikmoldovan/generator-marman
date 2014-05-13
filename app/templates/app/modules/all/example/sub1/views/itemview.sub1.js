@@ -1,18 +1,14 @@
-define([
-		'marionette',
+define(function(require){
+	'use strict';
+	
+	var Marionette = require('marionette'),
+		Template = require('hbs!./template.itemview.sub1');
 
-		'hbs!./template.itemview.sub1'
-	],
+	return Marionette.ItemView.extend({
+		template: Template,
 
-	function( Marionette, Template ){
-		'use strict';
-
-		return Marionette.ItemView.extend({
-			template: Template,
-
-			initialize: function(){
-				
-			}
-		});
-	}
-);
+		initialize: function(){
+			
+		}
+	});
+});
