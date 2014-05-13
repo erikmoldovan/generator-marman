@@ -1,19 +1,31 @@
 {
-    "config": {
-        "baseURL": "example"
+    "base": {
+        "url": "example"
     },
     "modules": [
         {
-            "title": "Sub 1",
-            "url": "example/sub1",
-            "path": "modules/all/example/sub1/module.sub1",
-            "route": "load_module_example_sub1"
+            "load": {
+                "title": "Sub 1",
+                "url": "example/sub1",
+                "path": "modules/all/example/sub1/module.sub1"
+            },
+            "route": {
+                "callback": "load_module_example_sub1",
+                "trigger": "route:module:example:sub1"
+            }
         },{
-            "title": "Sub 2",
-            "url": "example/sub2",
-            "path": "modules/all/example/sub2/module.sub2",
-            "route": "load_module_example_sub2",
-            "default": true
+            "load": {
+                "title": "Sub 2",
+                "url": "example/sub2",
+                "path": "modules/all/example/sub2/module.sub2"  
+            },
+            "route": {
+                "callback": "load_module_example_sub2",
+                "trigger": "route:module:example:sub2"
+            },
+            "flags": {
+                "default": true
+            }
         }
     ]
 }

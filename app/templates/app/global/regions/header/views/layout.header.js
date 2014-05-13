@@ -1,36 +1,32 @@
-define([
-		'underscore',
-		'backbone',
-		'marionette',
+define(function(require){
+	'use strict';
 
-		'global/regions/header/nav/collectionview.nav',
+	var _ = require('underscore'),
+		Backbone = require('backbone'),
+		Marionette = require('marionette'),
 
-		"hbs!global/regions/header/template.layout.header"
-	],
+		NavView = require('global/regions/header/nav/collectionview.nav'),
+		Template = require('hbs!global/regions/header/template.layout.header');
 
-	function( _, Backbone, Marionette, NavView, Template ){
-		'use strict';
+	return Marionette.Layout.extend({
+		template: Template,
 
-		return Marionette.Layout.extend({
-			template: Template,
+		regions: {
+			topbar: "#topbar",
+			nav: "#nav",
+			subnav: "#subnav"
+		},
 
-			regions: {
-				topbar: "#topbar",
-				nav: "#nav",
-				subnav: "#subnav"
-			},
+		onRender: function(){
+			// this.topbar.show();
 
-			onRender: function(){
-				// this.topbar.show();
+			// this.nav.show(new NavView({
+			// 	collection: App.NavCollection
+			// }));
 
-				// this.nav.show(new NavView({
-				// 	collection: App.NavCollection
-				// }));
-
-				// this.subnav.show(new NavView({
-				// 	collection: App.SubNavCollection
-				// }));
-			}
-		});
-	}
-);
+			// this.subnav.show(new NavView({
+			// 	collection: App.SubNavCollection
+			// }));
+		}
+	});
+});

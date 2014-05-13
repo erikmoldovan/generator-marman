@@ -47,8 +47,6 @@
 			"init.js",
 			"app/app.js",
 
-			"app/modules/shared/shared.controller.js",
-			"app/controller.app.js",
 			"app/config.app.json",
 			"app/modules/shared/shared.router.js",
 
@@ -73,7 +71,6 @@
 		"method": "copy",
 		"list": [
 			"app/modules/all/example/module.example.js",
-			"app/modules/all/example/controller.example.js",
 			"app/modules/all/example/config.example.json",
 
 			"app/modules/all/example/sub1/module.sub1.js",

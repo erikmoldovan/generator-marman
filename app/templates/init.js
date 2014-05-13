@@ -11,10 +11,10 @@ require(['./require-config'], function(){
 	    baseUrl: '/app/'
 	});
 
-    require(['app'], function(App){
+    require(['app'], function(app){
     	'use strict';
 
     	// Start the app!
-        App.start();
+        app.start();
     });
 });

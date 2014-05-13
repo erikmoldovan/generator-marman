@@ -10,7 +10,6 @@ define(function(require){
         Backbone = require('backbone'),
         Marionette = require('marionette'),
 
-        Controller = require('./controller.app'),
         Router = require('./modules/shared/shared.router'),
         ModuleConfig = require('json!config.app.json'),
 
@@ -37,20 +36,19 @@ define(function(require){
             
             App.addInitializer(function(){
                 // Initialize App modules
-                App.Controller = new Controller( ModuleConfig );
-                App.Router = new Router( App.Controller );
+                App.Router = new Router( ModuleConfig );
                 
                 // Define App Regions
                 App.addRegions({
                     headerRegion: '#header-region',
                     contentRegion: '#main-region'
-                    // dialogRegion: DialogRegion.extend({
+                    // dialogRegion: Dialog.extend({
                     //     el: '#dialog-region'
                     // })
                 });
 
                 // Require all other modules
-                require( App.Controller.getPaths() , function(deferred){
+                require( App.Router.getPaths() , function(deferred){
                     deferred.done(function(){
                         Backbone.history.start({ pushState: true, root: '/' });
                     });

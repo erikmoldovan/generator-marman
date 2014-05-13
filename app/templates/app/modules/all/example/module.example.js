@@ -10,7 +10,6 @@ define(function(require){
 
     var $ = require('jquery'),
 
-        Controller = require('./controller.example'),
         Router = require('modules/shared/shared.router'),
         ModuleConfig = require('json!./config.example.json');
 
@@ -18,10 +17,9 @@ define(function(require){
         var deferred = $.Deferred();
 
         // Instantiate Module components
-        var controller = new Controller( ModuleConfig ),
-            router = new Router( controller );
+        var router = new Router( ModuleConfig );
 
-        require( controller.getPaths() , function(data){
+        require( router.getPaths() , function(data){
             deferred.resolve(data);
 
             console.log('[MODULE] Example loaded');

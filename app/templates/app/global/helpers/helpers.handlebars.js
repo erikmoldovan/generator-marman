@@ -1,12 +1,10 @@
-define([
-        'handlebars',
-        // 'common.utilities',
-        'exports'
-    ],
+define(function(require){
+    'use strict';
 
-    function( Handlebars, exports ){
-        'use strict';
+    var Handlebars = require('handlebars'),
+        exports = require('exports');
 
+    var helpers = function(){
         // Pluralize
         exports.pluralize = function( number, singular, plural ) {
             number = typeof number === 'function' ? number() : number;
@@ -37,4 +35,6 @@ define([
         Handlebars.registerHelper( 'toCurrency', exports.toCurrency );
         Handlebars.registerHelper( 'pluralize', exports.pluralize );
     }
-);
+
+    return helpers();
+});

@@ -1,13 +1,18 @@
 {
-    "config": {
-        "baseURL": ""
+    "base": {
+        "url": ""
     },
     "modules": [
         {
-            "title": "Example",
-            "url": "example",
-            "path": "modules/all/example/module.example",
-            "route": "load_module_example"
+            "load": {
+                "title": "Example",
+                "url": "example",
+                "path": "modules/all/example/module.example"
+            },
+            "route": {
+                "callback": "load_module_example",
+                "trigger": "route:module:example"
+            }
         }
     ]
 }

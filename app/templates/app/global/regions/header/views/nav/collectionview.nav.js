@@ -1,15 +1,12 @@
-define([
-		'underscore',
-		'marionette',
+define(function(require){
+	'use strict';
 
-		'global/regions/header/nav/itemview.nav'
-	],
+	var _ = require('underscore'),
+		Marionette = require('marionette'),
 
-	function( _, Marionette, ItemView ){
-		'use strict';
+		ItemView = require('global/regions/header/nav/itemview.nav');
 
-		return Marionette.CollectionView.extend({
-			itemView: ItemView
-		});
-	}
-);
+	return Marionette.CollectionView.extend({
+		itemView: ItemView
+	})
+});
