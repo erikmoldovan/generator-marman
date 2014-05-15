@@ -29,13 +29,11 @@ define(function(require){
                 var load = data.get('load'),
                     route = data.get('route');
 
-                // { "routeFunction": function(){ App.vent.trigger( "routeTrigger" ); } }
+                 // { "routeFunction": function(){ App.vent.trigger( "routeTrigger" ); } }
                 self.controller[ route.callback ] = function(){
-                    require([load.path], function(){
-                        console.log('[ROUTE] ' + route.trigger);
+                    console.log('[ROUTE] ' + route.trigger);
 
-                        // App.vent.trigger( route.trigger );
-                    })
+                    App.vent.trigger( route.trigger );
                 }
 
                 // { "url(/)" : "routeFunction" }
@@ -58,7 +56,7 @@ define(function(require){
             this.controller["default"] = this.controller[ this._defaultRoute.get('route').callback ];
 
             // Use the following if you want to set a callback called "default"
-            this.appRoutes[ base.get("baseURL") + "(/)" ] = "default";
+            this.appRoutes[ base.get("url") + "(/)" ] = "default";
         }
     });
 });

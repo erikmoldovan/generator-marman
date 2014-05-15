@@ -29,7 +29,7 @@ define(function(require){
 	        require(loader.getPaths(), function(){
 	            console.log('[MODULE] ' + loader.baseConfig.get('title') + ' loaded');
 
-	            self.deferred.resolve(loader.baseConfig.get('title'));
+	            self.deferred.resolve( loader.baseConfig.get('title') );
 	        });
 		}
 	});

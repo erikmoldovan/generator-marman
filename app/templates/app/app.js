@@ -16,7 +16,8 @@ define(function(require){
         Dialog = require('global/regions/region.dialog');
 
     return Marionette.Application.extend({
-        start: function(options){
+        start: function( options ){
+            // Instantiate the Module Loader component
             var loader = new SharedLoader({
                 moduleConfig: options.moduleConfig
             });
@@ -31,13 +32,15 @@ define(function(require){
             });
 
             // Require all other modules
-            require(loader.getPaths(), function(){
+            require(loader.getPaths(), function( /* arguments */ ){
                 var promises = [];
 
+                // Loop through the implicitly defined arguments array that require populates
                 for(var i = 0; i < arguments.length; i++){
-                    promises.push( arguments[i].deferred );
+                    promises.push( arguments[i].deferred ); // And push the module's deferred object to the promises array
                 }
 
+                // When all promises in the array are resolved, then start the global router
                 $.when.apply($, promises).done(function(){
                     console.log('[GLOBAL] History started');
 
@@ -48,12 +51,14 @@ define(function(require){
             console.log('[GLOBAL] App started');
         },
 
+        // Adds the global router's navigate function to the App prototype
         navigate: function( route, options ) {
             options || (options = {});
 
             Backbone.history.navigate(route, options);
         },
 
+        // Adds the global router's URL fragment function to the App prototype
         getCurrentRoute: function() {
             return Backbone.history.fragment;
         }
