@@ -4,7 +4,7 @@ define(function(require){
 	var _ = require('underscore'),
 		Marionette = require('marionette'),
 
-		Template = require('hbs!global/regions/header/nav/template.item.nav');
+		Template = require('hbs!./template.item.nav');
 
 	return Marionette.ItemView.extend({
 		template: Template,
@@ -18,7 +18,7 @@ define(function(require){
 
 			this.$el.addClass('active');
 
-			App.navigate(this.model.get('url'), {trigger: true}); // I feel as though this may be a kludge
+			App.navigate(this.model.get('load').url, {trigger: true}); // I feel as though this may be a kludge
 		}
 	});
 });

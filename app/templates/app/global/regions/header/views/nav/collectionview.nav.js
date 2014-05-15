@@ -4,7 +4,7 @@ define(function(require){
 	var _ = require('underscore'),
 		Marionette = require('marionette'),
 
-		ItemView = require('global/regions/header/nav/itemview.nav');
+		ItemView = require('./itemview.nav');
 
 	return Marionette.CollectionView.extend({
 		itemView: ItemView

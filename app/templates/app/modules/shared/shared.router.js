@@ -33,6 +33,10 @@ define(function(require){
                 self.controller[ route.callback ] = function(){
                     console.log('[ROUTE] ' + route.trigger);
 
+                    console.log(moduleslist);
+
+                    App.Header.populateSubnav( moduleslist );
+
                     // If method fired is default, then load the full URL
                     if(App.getCurrentRouter != load.url) App.navigate( load.url );
 

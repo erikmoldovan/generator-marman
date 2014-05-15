@@ -45,6 +45,8 @@ define(function(require){
                 $.when.apply($, promises).done(function(){
                     console.log('[GLOBAL] History started');
 
+                    App.Header = new Header( loader.getModulesList() );
+
                     // Start the global router
                     Backbone.history.start({ pushState: true, root: '/' });
 

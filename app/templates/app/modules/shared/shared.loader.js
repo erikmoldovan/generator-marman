@@ -6,16 +6,24 @@ define(function(require){
 
 	return Marionette.Controller.extend({
 		initialize: function(options){
-			this.baseConfig = new Backbone.Model( options.moduleConfig.base );
-            this.modulesList = new Backbone.Collection( options.moduleConfig.modules );
+			this._baseConfig = new Backbone.Model( options.moduleConfig.base );
+            this._modulesList = new Backbone.Collection( options.moduleConfig.modules );
 		},
 
 		getPaths: function(){
-			var paths = this.modulesList.map(function(model){
+			var paths = this._modulesList.map(function(model){
                 return model.get('load').path;
             });
 
             return paths;
+		},
+
+		getBaseConfig: function(){
+			return this._baseConfig;
+		},
+
+		getModulesList: function(){
+			return this._modulesList;
 		}
 	})
 });

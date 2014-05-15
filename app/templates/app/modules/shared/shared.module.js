@@ -17,9 +17,11 @@ define(function(require){
 	        	moduleConfig: options.moduleConfig
 	        });
 
+	        var baseConfig = loader.getBaseConfig();
+
 	        this.Router = new SharedRouter({
-	        	baseConfig: loader.baseConfig,
-	        	modulesList: loader.modulesList
+	        	baseConfig: baseConfig,
+	        	modulesList: loader.getModulesList()
 	        });
 
 	        this.deferred = $.Deferred();
@@ -27,9 +29,9 @@ define(function(require){
 	        var self = this;
 
 	        require(loader.getPaths(), function(){
-	            console.log('[MODULE] ' + loader.baseConfig.get('title') + ' loaded');
+	            console.log('[MODULE] ' + baseConfig.get('title') + ' loaded');
 
-	            self.deferred.resolve( loader.baseConfig.get('title') );
+	            self.deferred.resolve( baseConfig.get('title') );
 	        });
 		}
 	});

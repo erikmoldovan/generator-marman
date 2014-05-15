@@ -5,8 +5,8 @@ define(function(require){
 		Backbone = require('backbone'),
 		Marionette = require('marionette'),
 
-		NavView = require('global/regions/header/nav/collectionview.nav'),
-		Template = require('hbs!global/regions/header/template.layout.header');
+		NavView = require('./nav/collectionview.nav'),
+		Template = require('hbs!./template.layout.header');
 
 	return Marionette.Layout.extend({
 		template: Template,
@@ -17,16 +17,19 @@ define(function(require){
 			subnav: "#subnav"
 		},
 
+		initialize: function( options ){
+			this._navCollection = options.navCollection;
+			this._subnavCollection = options.subnavCollection;
+
+			App.vent.on('nav:changed', function(){ this.render; });
+		},
+
 		onRender: function(){
 			// this.topbar.show();
 
-			// this.nav.show(new NavView({
-			// 	collection: App.NavCollection
-			// }));
+			this.nav.show(new NavView({ collection: this._navCollection }));
 
-			// this.subnav.show(new NavView({
-			// 	collection: App.SubNavCollection
-			// }));
+			this.subnav.show(new NavView({ collection: this._subnavCollection }));
 		}
 	});
 });
