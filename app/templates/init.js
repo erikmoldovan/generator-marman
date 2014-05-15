@@ -21,7 +21,7 @@ require(['./require-config'], function(){
 
     	   // Initialize and start the app!
             window.App = new app;
-            App.start({ moduleConfig: ModuleConfig});
+            App.start({ moduleConfig: ModuleConfig });
         }
     );
 });

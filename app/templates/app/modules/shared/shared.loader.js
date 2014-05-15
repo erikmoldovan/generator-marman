@@ -8,10 +8,14 @@ define(function(require){
 		initialize: function(options){
 			this.baseConfig = new Backbone.Model( options.moduleConfig.base );
             this.modulesList = new Backbone.Collection( options.moduleConfig.modules );
+		},
 
-            this.paths = this.modulesList.map(function(model){
+		getPaths: function(){
+			var paths = this.modulesList.map(function(model){
                 return model.get('load').path;
             });
+
+            return paths;
 		}
 	})
 });

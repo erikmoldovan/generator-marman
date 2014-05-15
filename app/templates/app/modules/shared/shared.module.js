@@ -26,13 +26,11 @@ define(function(require){
 
 	        var self = this;
 
-	        require(loader.paths, function(){
+	        require(loader.getPaths(), function(){
 	            console.log('[MODULE] ' + loader.baseConfig.get('title') + ' loaded');
 
-	            self.deferred.resolve();
+	            self.deferred.resolve(loader.baseConfig.get('title'));
 	        });
-
-	        this.deferred.promise();
 		}
 	});
 });

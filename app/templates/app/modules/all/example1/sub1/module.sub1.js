@@ -13,12 +13,12 @@ define(function(require){
 
 	var Controller = require('./controller.sub1');
 
-	App.module( 'Example1.Sub1', function( Sub1 ){
-		// Instantiate Module components
-        Sub1.Controller = new Controller();
+	return App.module( 'Example1.Sub1', {
+		initialize: function(){
+			// Instantiate Module components
+	        this.Controller = new Controller();
 
-    	console.log('[MODULE] Example1::Sub1 started');
+	    	console.log('[MODULE] Example1::Sub1 loaded');
+		}
 	});
-
-	return App.Example1.Sub1;
 });

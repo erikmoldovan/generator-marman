@@ -16,21 +16,9 @@ define(function(require){
         Dialog = require('global/regions/region.dialog');
 
     return Marionette.Application.extend({
-     	start: function(options){
+        start: function(options){
             var loader = new SharedLoader({
-            	moduleConfig: options.moduleConfig
-            });
-
-            // Require all other modules
-            require(loader.paths, function(module, x){
-                // console.log(module);
-                // console.log(x);
-
-                x.deferred.done(function(){
-                    console.log('[GLOBAL] History started');
-
-                    Backbone.history.start({ pushState: true, root: '/' });
-                });
+                moduleConfig: options.moduleConfig
             });
 
             // Define App Regions
@@ -42,10 +30,25 @@ define(function(require){
                 // })
             });
 
-            console.log('[GLOBAL] App started');
-     	},
+            // Require all other modules
+            require(loader.getPaths(), function(){
+                var promises = [];
 
-     	navigate: function( route, options ) {
+                for(var i = 0; i < arguments.length; i++){
+                    promises.push( arguments[i].deferred );
+                }
+
+                $.when.apply($, promises).done(function(){
+                    console.log('[GLOBAL] History started');
+
+                    Backbone.history.start({ pushState: true, root: '/' });
+                });
+            });
+
+            console.log('[GLOBAL] App started');
+        },
+
+        navigate: function( route, options ) {
             options || (options = {});
 
             Backbone.history.navigate(route, options);
@@ -54,5 +57,5 @@ define(function(require){
         getCurrentRoute: function() {
             return Backbone.history.fragment;
         }
-	});
+    });
 });
