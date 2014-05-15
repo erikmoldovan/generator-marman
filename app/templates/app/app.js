@@ -34,17 +34,40 @@ define(function(require){
             // Require all other modules
             require(loader.getPaths(), function( /* arguments */ ){
                 var promises = [];
+                var defaultRoute;
 
                 // Loop through the implicitly defined arguments array that require populates
                 for(var i = 0; i < arguments.length; i++){
                     promises.push( arguments[i].deferred ); // And push the module's deferred object to the promises array
+                
+                    // console.log(arguments[i].Router);
+                    // if(i == 0) defaultRoute = arguments[i];
                 }
+
+                /* App.Router {
+                        controller: {
+                            default: function(){ App.trigger ( default )}
+                        },
+
+                        appRoutes: {
+                            "(/)" : "default"
+                        }
+                    }
+
+                    Backbone.history.route()
+                */
 
                 // When all promises in the array are resolved, then start the global router
                 $.when.apply($, promises).done(function(){
                     console.log('[GLOBAL] History started');
 
+                    // console.log(defaultRoute);
+
                     Backbone.history.start({ pushState: true, root: '/' });
+
+                    // console.log(App.getCurrentRoute());
+
+                    // if(App.getCurrentRoute() == "") defaultRoute.Router.controller.default();
                 });
             });
 
