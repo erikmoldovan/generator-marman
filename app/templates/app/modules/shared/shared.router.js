@@ -33,9 +33,8 @@ define(function(require){
                 self.controller[ route.callback ] = function(){
                     console.log('[ROUTE] ' + route.trigger);
 
-                    console.log(load);
-
-                    if(App.getCurrentRouter != load.url) App.navigate(load.url);
+                    // If method fired is default, then load the full URL
+                    if(App.getCurrentRouter != load.url) App.navigate( load.url );
 
                     App.vent.trigger( route.trigger );
                 }
