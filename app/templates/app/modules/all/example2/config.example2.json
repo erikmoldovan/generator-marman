@@ -1,0 +1,32 @@
+{
+    "base": {
+        "title": "Example2",
+        "url": "example2"
+    },
+    "modules": [
+        {
+            "load": {
+                "title": "Sub 1",
+                "url": "example2/sub1",
+                "path": "modules/all/example2/sub1/module.sub1"
+            },
+            "route": {
+                "callback": "load_module_example2_sub1",
+                "trigger": "route:module:example2:sub1"
+            }
+        },{
+            "load": {
+                "title": "Sub 2",
+                "url": "example2/sub2",
+                "path": "modules/all/example2/sub2/module.sub2"  
+            },
+            "route": {
+                "callback": "load_module_example2_sub2",
+                "trigger": "route:module:example2:sub2"
+            },
+            "flags": {
+                "default": true
+            }
+        }
+    ]
+}

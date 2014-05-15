@@ -48,6 +48,8 @@
 			"app/app.js",
 
 			"app/config.app.json",
+			"app/modules/shared/shared.app.js",
+			"app/modules/shared/shared.module.js",
 			"app/modules/shared/shared.router.js",
 
 			"app/global/helpers/helpers.handlebars.js",
@@ -70,18 +72,31 @@
 	"module_files": {
 		"method": "copy",
 		"list": [
-			"app/modules/all/example/module.example.js",
-			"app/modules/all/example/config.example.json",
+			"app/modules/all/example1/module.example1.js",
+			"app/modules/all/example1/config.example1.json",
 
-			"app/modules/all/example/sub1/module.sub1.js",
-			"app/modules/all/example/sub1/controller.sub1.js",
-			"app/modules/all/example/sub1/views/itemview.sub1.js",
-			"app/modules/all/example/sub1/views/template.itemview.sub1.hbs",
+			"app/modules/all/example1/sub1/module.sub1.js",
+			"app/modules/all/example1/sub1/controller.sub1.js",
+			"app/modules/all/example1/sub1/views/itemview.sub1.js",
+			"app/modules/all/example1/sub1/views/template.itemview.sub1.hbs",
 
-			"app/modules/all/example/sub2/module.sub2.js",
-			"app/modules/all/example/sub2/controller.sub2.js",
-			"app/modules/all/example/sub2/views/itemview.sub2.js",
-			"app/modules/all/example/sub2/views/template.itemview.sub2.hbs"
+			"app/modules/all/example1/sub2/module.sub2.js",
+			"app/modules/all/example1/sub2/controller.sub2.js",
+			"app/modules/all/example1/sub2/views/itemview.sub2.js",
+			"app/modules/all/example1/sub2/views/template.itemview.sub2.hbs",
+
+			"app/modules/all/example2/module.example2.js",
+			"app/modules/all/example2/config.example2.json",
+
+			"app/modules/all/example2/sub1/module.sub1.js",
+			"app/modules/all/example2/sub1/controller.sub1.js",
+			"app/modules/all/example2/sub1/views/itemview.sub1.js",
+			"app/modules/all/example2/sub1/views/template.itemview.sub1.hbs",
+
+			"app/modules/all/example2/sub2/module.sub2.js",
+			"app/modules/all/example2/sub2/controller.sub2.js",
+			"app/modules/all/example2/sub2/views/itemview.sub2.js",
+			"app/modules/all/example2/sub2/views/template.itemview.sub2.hbs"
 		]
 	}
 }

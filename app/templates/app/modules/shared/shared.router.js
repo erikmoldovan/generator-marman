@@ -1,3 +1,7 @@
+/*
+ *  Shared module definition
+ */
+
 define(function(require){
     'use strict';
 
@@ -11,32 +15,36 @@ define(function(require){
             this.appRoutes = {};
 
             // Populate the appRoutes object
-            this._modulesList = new Backbone.Collection( data.modules );
+            this._modulesList = data.modulesList;
             this._populateRouter( this._modulesList );
 
             // When all routes are generated, add default route to the router
-            var _modulesConfig = new Backbone.Model( data.base );
-
-            this.on('routes:created', this._setDefaultRoute( _modulesConfig ));
+            this.on('routes:created', this._setDefaultRoute( data.baseConfig ));
         },
 
-        _populateRouter: function(list){
+        _populateRouter: function(moduleslist){
             var self = this;
 
-            list.each(function(data, index){
+            moduleslist.each(function(data, index){
                 var load = data.get('load'),
                     route = data.get('route');
 
                 // { "routeFunction": function(){ App.vent.trigger( "routeTrigger" ); } }
                 self.controller[ route.callback ] = function(){
-                    App.vent.trigger( route.trigger );
+                    require([load.path], function(){
+                        console.log('[ROUTE] ' + route.trigger);
+
+                        // App.vent.trigger( route.trigger );
+                    })
                 }
 
                 // { "url(/)" : "routeFunction" }
                 self.appRoutes[ load.url + "(/)" ] = route.callback;
 
+                var flags = (!_.isUndefined(data.get('flags'))) ? data.get('flags') : {};
+
                 // If first in list, or has a default flag, set as the default route placeholder
-                if(index == 0 || data.get('flags').default == true) self._defaultRoute = data.clone();
+                if(index == 0 || flags.default) self._defaultRoute = data.clone();
             });
 
             this.trigger('routes:created');
@@ -45,18 +53,14 @@ define(function(require){
         // Sets default route placeholder to appRoutes when _createRoutes method is complete
         _setDefaultRoute: function(base){
             // { "baseURL(/)" : "self._defaultRoute" }
-            this.appRoutes[ base.get('url') + "(/)" ] = this._defaultRoute.get('route').callback;
-            
+            // this.appRoutes[ base.get('url') + "(/)" ] = this._defaultRoute.get('route').callback;
+
+            this.controller["default"] = this.controller[ this._defaultRoute.get('route').callback ];
+
+            console.log(this.controller);
+
             // Use the following if you want to set a callback called "default"
-            // this.appRoutes[config.get("baseURL") + "(/)"] = "default";
-        },
-
-        getPaths: function(){
-            var paths = this._modulesList.map(function(model){
-                return model.get('load').path;
-            });
-
-            return paths;
+            this.appRoutes[ base.get("baseURL") + "(/)" ] = "default";
         }
     });
 });

@@ -15,6 +15,7 @@ require(['./require-config'], function(){
     	'use strict';
 
     	// Start the app!
-        app.start();
+        window.App = new app;
+        App.start();
     });
 });

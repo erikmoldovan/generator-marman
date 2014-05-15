@@ -1,5 +1,5 @@
 /*
- *  Example : Sub2 sub-module
+ *  Example : Sub1 sub-module
  *
  *  This module shows the most basic configuration: A module with no sub-modules.
  *  When you've reached the end of the road, you don't need a Router, and you don't need
@@ -11,14 +11,16 @@
 define(function(require){
 	'use strict';
 
-	var Controller = require('./controller.sub2');
+	var Controller = require('./controller.sub1');
 
-	var Module = function(){
-		// Instantiate Module components
-        var controller = new Controller();
+	return App.module( 'Example2.Sub1', {
+		initialize: function(){
+			// Instantiate Module components
+	        this.Controller = new Controller();
 
-        console.log('[MODULE] Example::Sub2 started');
-	}
-
-	return Module();
+	        this.on('start', function(){
+	        	console.log('[MODULE] Example2::Sub1 started');
+	        });
+		}		
+	});
 });

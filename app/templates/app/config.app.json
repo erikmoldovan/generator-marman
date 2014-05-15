@@ -5,13 +5,24 @@
     "modules": [
         {
             "load": {
-                "title": "Example",
-                "url": "example",
-                "path": "modules/all/example/module.example"
+                "title": "Example1",
+                "url": "example1",
+                "path": "modules/all/example1/module.example1"
             },
             "route": {
-                "callback": "load_module_example",
-                "trigger": "route:module:example"
+                "callback": "load_module_example1",
+                "trigger": "route:module:example1"
+            }
+        },
+        {
+            "load": {
+                "title": "Example2",
+                "url": "example2",
+                "path": "modules/all/example2/module.example2"
+            },
+            "route": {
+                "callback": "load_module_example2",
+                "trigger": "route:module:example2"
             }
         }
     ]
