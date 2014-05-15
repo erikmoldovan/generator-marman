@@ -17,9 +17,7 @@ define(function(require){
 		// Instantiate Module components
         Sub2.Controller = new Controller();
 
-        this.on('start', function(){
-        	console.log('[MODULE] Example1::Sub2 started');
-        });
+    	console.log('[MODULE] Example1::Sub2 started');
 	});
 
 	return App.Example1.Sub2;

@@ -8,24 +8,26 @@ define(function(require){
 	var $ = require('jquery'),
 		Marionette = require('marionette'),
 
+		SharedLoader = require('modules/shared/shared.loader'),
 		SharedRouter = require('modules/shared/shared.router');
 
 	return Marionette.Module.extend({
 		initialize: function(options){
-			// Instantiate Module components
-	        var baseConfig = new Backbone.Model( options.moduleConfig.base );
-	        var modulesList = new Backbone.Collection( options.moduleConfig.modules );
-
-	        this.Router = new SharedRouter({ baseConfig: baseConfig, modulesList: modulesList });
-	        this.deferred = $.Deferred();
-
-	        var paths = modulesList.map(function(model){
-	            return model.get('load').path;
+	        var loader = new SharedLoader({
+	        	moduleConfig: options.moduleConfig
 	        });
 
+	        this.Router = new SharedRouter({
+	        	baseConfig: loader.baseConfig,
+	        	modulesList: loader.modulesList
+	        });
+
+	        this.deferred = $.Deferred();
+
 	        var self = this;
-	        require(paths, function(){
-	            console.log('[MODULE] ' + baseConfig.get('title') + ' loaded');
+
+	        require(loader.paths, function(){
+	            console.log('[MODULE] ' + loader.baseConfig.get('title') + ' loaded');
 
 	            self.deferred.resolve();
 	        });

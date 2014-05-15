@@ -11,11 +11,17 @@ require(['./require-config'], function(){
 	    baseUrl: '/app/'
 	});
 
-    require(['app'], function(app){
-    	'use strict';
+    require([
+            'app',
+            'json!config.app.json'
+        ], 
 
-    	// Start the app!
-        window.App = new app;
-        App.start();
-    });
+        function(app, ModuleConfig){
+    	   'use strict';
+
+    	   // Initialize and start the app!
+            window.App = new app;
+            App.start({ moduleConfig: ModuleConfig});
+        }
+    );
 });

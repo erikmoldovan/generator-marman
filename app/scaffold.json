@@ -48,7 +48,7 @@
 			"app/app.js",
 
 			"app/config.app.json",
-			"app/modules/shared/shared.app.js",
+			"app/modules/shared/shared.loader.js",
 			"app/modules/shared/shared.module.js",
 			"app/modules/shared/shared.router.js",
 

@@ -57,8 +57,6 @@ define(function(require){
 
             this.controller["default"] = this.controller[ this._defaultRoute.get('route').callback ];
 
-            console.log(this.controller);
-
             // Use the following if you want to set a callback called "default"
             this.appRoutes[ base.get("baseURL") + "(/)" ] = "default";
         }
