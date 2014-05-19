@@ -1,6 +1,9 @@
 {
     "base": {
-        "url": ""
+        "url": "",
+        "flags": {
+            "global": true
+        }
     },
     "modules": [
         {

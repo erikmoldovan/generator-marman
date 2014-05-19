@@ -13,12 +13,15 @@ define(function(require){
 			"click a": "loadLink"
 		},
 
-		loadLink: function(e){
+		onRender: function(){
+			if( this.model.get('active') ) this.$el.addClass('active');
+			else this.$el.removeClass('active');
+		},
+
+		loadLink: function( e ){
 			e.preventDefault();
 
-			this.$el.addClass('active');
-
-			App.navigate(this.model.get('load').url, {trigger: true}); // I feel as though this may be a kludge
+			App.navigate( this.model.get('load').url, {trigger: true} ); // I feel as though this may be a kludge
 		}
 	});
 });

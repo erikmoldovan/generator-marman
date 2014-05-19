@@ -6,7 +6,7 @@
     "modules": [
         {
             "load": {
-                "title": "Sub 1",
+                "title": "E1: Sub 1",
                 "url": "example1/sub1",
                 "path": "modules/all/example1/sub1/module.sub1"
             },
@@ -16,7 +16,7 @@
             }
         },{
             "load": {
-                "title": "Sub 2",
+                "title": "E1: Sub 2",
                 "url": "example1/sub2",
                 "path": "modules/all/example1/sub2/module.sub2"  
             },

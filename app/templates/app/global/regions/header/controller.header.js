@@ -5,8 +5,6 @@ define(function(require){
 
 	return Marionette.Controller.extend({
 		initialize: function( moduleslist ){
-			console.log('[GLOBAL] Header loaded');
-
 			this._navCollection = moduleslist;
 			this._subnavCollection = new Backbone.Collection();
 
@@ -14,15 +12,14 @@ define(function(require){
 				navCollection: this._navCollection,
 				subnavCollection: this._subnavCollection
 			}));
-		},
 
-		populateSubnav: function( moduleslist ){
-			if(moduleslist !== this._subnavCollection){
-				console.log('changing');
-				this._subnavCollection = moduleslist;
+			var self = this;
 
-				App.vent.trigger('nav:changed');
-			}
+			App.vent.on('route:changed', function( moduleslist ){
+				self._subnavCollection.reset( moduleslist.toJSON() );
+			});
+
+			console.log('[GLOBAL] Header loaded');
 		}
 	})
 });

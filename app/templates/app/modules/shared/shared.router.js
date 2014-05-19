@@ -9,7 +9,7 @@ define(function(require){
         Marionette = require('marionette');
 
     return Marionette.AppRouter.extend({
-        initialize: function(data){
+        initialize: function( data ){
             // Initialize router properties
             this.controller = {};
             this.appRoutes = {};
@@ -22,10 +22,10 @@ define(function(require){
             this.on('routes:created', this._setDefaultRoute( data.baseConfig ));
         },
 
-        _populateRouter: function(moduleslist){
+        _populateRouter: function( modulesList ){
             var self = this;
 
-            moduleslist.each(function(data, index){
+            modulesList.each(function( data, index ){
                 var load = data.get('load'),
                     route = data.get('route');
 
@@ -33,36 +33,33 @@ define(function(require){
                 self.controller[ route.callback ] = function(){
                     console.log('[ROUTE] ' + route.trigger);
 
-                    console.log(moduleslist);
-
-                    App.Header.populateSubnav( moduleslist );
-
                     // If method fired is default, then load the full URL
-                    if(App.getCurrentRouter != load.url) App.navigate( load.url );
+                    if( App.getCurrentRoute() != load.url ) App.navigate( load.url );
 
-                    App.vent.trigger( route.trigger );
+                    App.vent.trigger( 'route:changed', modulesList ); // Fires Header update event
+                    App.vent.trigger( route.trigger ); // Fire module routing event
                 }
 
                 // { "url(/)" : "routeFunction" }
                 self.appRoutes[ load.url + "(/)" ] = route.callback;
 
-                var flags = (!_.isUndefined(data.get('flags'))) ? data.get('flags') : {};
+                var flags = ( !_.isUndefined( data.get('flags')) ) ? data.get('flags') : {};
 
                 // If first in list, or has a default flag, set as the default route placeholder
-                if(index == 0 || flags.default) self._defaultRoute = data.clone();
+                if( index == 0 || flags.default ) self._defaultRoute = data.clone();
             });
 
             this.trigger('routes:created');
         },
 
         // Sets default route placeholder to appRoutes when _createRoutes method is complete
-        _setDefaultRoute: function(base){
-            // { "baseURL(/)" : "self._defaultRoute" }
-            // this.appRoutes[ base.get('url') + "(/)" ] = this._defaultRoute.get('route').callback;
+        _setDefaultRoute: function( base ){
+            /* Controller */
+            // { "default" : default route's function }
+            this.controller[ "default" ] = this.controller[ this._defaultRoute.get('route').callback ];
 
-            this.controller["default"] = this.controller[ this._defaultRoute.get('route').callback ];
-
-            // Use the following if you want to set a callback called "default"
+            /* AppRoutes */
+            // { "baseURL(/)" : "default" }
             this.appRoutes[ base.get("url") + "(/)" ] = "default";
         }
     });

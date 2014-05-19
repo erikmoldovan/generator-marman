@@ -20,16 +20,14 @@ define(function(require){
 		initialize: function( options ){
 			this._navCollection = options.navCollection;
 			this._subnavCollection = options.subnavCollection;
-
-			App.vent.on('nav:changed', function(){ this.render; });
 		},
 
 		onRender: function(){
 			// this.topbar.show();
 
-			this.nav.show(new NavView({ collection: this._navCollection }));
+			this.nav.show( new NavView({ collection: this._navCollection }) );
 
-			this.subnav.show(new NavView({ collection: this._subnavCollection }));
+			this.subnav.show( new NavView({ collection: this._subnavCollection }) );
 		}
 	});
 });

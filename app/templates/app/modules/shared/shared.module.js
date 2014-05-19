@@ -12,7 +12,8 @@ define(function(require){
 		SharedRouter = require('modules/shared/shared.router');
 
 	return Marionette.Module.extend({
-		initialize: function(options){
+		initialize: function( options ){
+			// Load module components
 	        var loader = new SharedLoader({
 	        	moduleConfig: options.moduleConfig
 	        });
@@ -24,13 +25,14 @@ define(function(require){
 	        	modulesList: loader.getModulesList()
 	        });
 
+	        // Set up the deferred object
 	        this.deferred = $.Deferred();
-
 	        var self = this;
 
-	        require(loader.getPaths(), function(){
+	        require( loader.getPaths(), function(){
 	            console.log('[MODULE] ' + baseConfig.get('title') + ' loaded');
 
+	            // Resolve the deferred object when requireJS is done loading the sub modules
 	            self.deferred.resolve( baseConfig.get('title') );
 	        });
 		}
