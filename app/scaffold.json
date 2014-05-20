@@ -66,6 +66,10 @@
 			"app/global/regions/header/views/nav/itemview.nav.js",
 			"app/global/regions/header/views/nav/template.item.nav.hbs",
 
+			"app/global/regions/footer/controller.footer.js",
+			"app/global/regions/footer/views/itemview.footer.js",
+			"app/global/regions/footer/views/template.item.footer.hbs",
+
 			"assets/styles/sass/app.scss",
 			"assets/styles/sass/_app-overrides.scss"
 		]
