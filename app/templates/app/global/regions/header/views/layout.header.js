@@ -6,6 +6,7 @@ define(function(require){
 		Marionette = require('marionette'),
 
 		NavView = require('./nav/collectionview.nav'),
+		SubNavView = require('./nav/collectionview.subnav'),
 		Template = require('hbs!./template.layout.header');
 
 	return Marionette.Layout.extend({
@@ -27,7 +28,7 @@ define(function(require){
 
 			this.nav.show( new NavView({ collection: this._navCollection }) );
 
-			this.subnav.show( new NavView({ collection: this._subnavCollection }) );
+			this.subnav.show( new SubNavView({ collection: this._subnavCollection }) );
 		}
 	});
 });

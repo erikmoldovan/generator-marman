@@ -41,7 +41,7 @@ define(function(require){
                 var promises = [];
                 var defaultRoute = arguments[0].Router.controller; // Default route is always equal to the first defined module's controller
 
-                // Loop through the implicitly defined arguments array that require populates
+                // Loop through the implicitly defined arguments array that requireJS populates
                 for( var i = 0; i < arguments.length; i++ ){
                     promises.push( arguments[i].deferred ); // And push the module's deferred object to the promises array
                 }

@@ -16,7 +16,20 @@ define(function(require){
 			var self = this;
 
 			App.vent.on('route:changed', function( moduleslist ){
+				// set subnav collection to new submodules list
 				self._subnavCollection.reset( moduleslist.toJSON() );
+
+				var currentURL = App.getCurrentRoute().substring(0, App.getCurrentRoute().indexOf('/'));
+
+				self._navCollection.each( function(model){
+					var modelURL = model.get('load').url;
+
+					if( modelURL == currentURL ){
+						model.set('active', true);
+					}else{
+						model.set('active', false);
+					}
+				});
 			});
 
 			console.log('[GLOBAL] Header loaded');

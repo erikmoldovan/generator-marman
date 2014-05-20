@@ -62,6 +62,7 @@
 			"app/global/regions/header/views/template.layout.header.hbs",
 			
 			"app/global/regions/header/views/nav/collectionview.nav.js",
+			"app/global/regions/header/views/nav/collectionview.subnav.js",
 			"app/global/regions/header/views/nav/itemview.nav.js",
 			"app/global/regions/header/views/nav/template.item.nav.hbs",
 
