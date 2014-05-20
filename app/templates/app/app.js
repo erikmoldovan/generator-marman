@@ -13,7 +13,6 @@ define(function(require){
         SharedLoader = require('modules/shared/shared.loader'),
 
         Header = require('global/regions/header/controller.header'),
-        Dialog = require('global/regions/region.dialog'),
         Footer = require('global/regions/footer/controller.footer');
 
     return Marionette.Application.extend({
@@ -27,10 +26,8 @@ define(function(require){
             this.addRegions({
                 headerRegion: '#header-region',
                 contentRegion: '#main-region',
-                footerRegion: '#footer-region'
-                // dialogRegion: Dialog.extend({
-                //     el: '#dialog-region'
-                // })
+                footerRegion: '#footer-region',
+                dialogRegion: '#dialog-region'
             });
 
             this.Header = new Header( loader.getModulesList() );

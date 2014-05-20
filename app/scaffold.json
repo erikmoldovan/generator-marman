@@ -54,8 +54,6 @@
 
 			"app/global/helpers/helpers.handlebars.js",
 
-			"app/global/regions/region.dialog.js",
-
 			"app/global/regions/header/controller.header.js",
 
 			"app/global/regions/header/views/layout.header.js",
