@@ -1,3 +1,7 @@
+/*
+ *	Header module base layout view
+ */
+
 define(function(require){
 	'use strict';
 
@@ -5,8 +9,10 @@ define(function(require){
 		Backbone = require('backbone'),
 		Marionette = require('marionette'),
 
+		TopBarView = require('./topbar/layout.topbar'),
 		NavView = require('./nav/collectionview.nav'),
 		SubNavView = require('./nav/collectionview.subnav'),
+
 		Template = require('hbs!./template.layout.header');
 
 	return Marionette.Layout.extend({
@@ -19,15 +25,15 @@ define(function(require){
 		},
 
 		initialize: function( options ){
+			// Sets collections to this Layout's scope
 			this._navCollection = options.navCollection;
 			this._subnavCollection = options.subnavCollection;
 		},
 
 		onRender: function(){
-			// this.topbar.show();
-
+			// Populate regions with views
+			this.topbar.show( new TopBarView() );
 			this.nav.show( new NavView({ collection: this._navCollection }) );
-
 			this.subnav.show( new SubNavView({ collection: this._subnavCollection }) );
 		}
 	});

@@ -1,6 +1,6 @@
 {
   "name": "marionette-base-spa",
-  "version": "0.0.1",
+  "version": "0.1",
   "authors": [
   	"moldyman <monkofakan@gmail.com>"
   ],
@@ -17,11 +17,11 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "1.10.2",
+    "jquery": "2.1.0",
     "lodash": "2.4.1",
     "handlebars": "1.3.0",
     "backbone": "1.1.0",
-    "marionette": "1.6.0",
+    "marionette": "1.8.5",
     "requirejs": "2.1.10",
     "requirejs-text": "2.0.10",
     "requirejs-hbs": "",

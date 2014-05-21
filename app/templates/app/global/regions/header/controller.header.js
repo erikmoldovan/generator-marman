@@ -1,3 +1,7 @@
+/*
+ *	Header controller
+ */
+
 define(function(require){
 	var Marionette = require('marionette'),
 
@@ -5,8 +9,8 @@ define(function(require){
 
 	return Marionette.Controller.extend({
 		initialize: function( moduleslist ){
-			this._navCollection = moduleslist;
-			this._subnavCollection = new Backbone.Collection();
+			this._navCollection = moduleslist; // Set main nav collection to global modules list
+			this._subnavCollection = new Backbone.Collection(); // Set sub nav collection to empty
 
 			App.headerRegion.show(new HeaderView({
 				navCollection: this._navCollection,
@@ -19,15 +23,17 @@ define(function(require){
 				// set subnav collection to new submodules list
 				self._subnavCollection.reset( moduleslist.toJSON() );
 
+				// Ex: /example1/sub1 -> example1
 				var currentURL = App.getCurrentRoute().substring(0, App.getCurrentRoute().indexOf('/'));
 
 				self._navCollection.each( function(model){
 					var modelURL = model.get('load').url;
 
+					// If top nav elements matches substringed URL...
 					if( modelURL == currentURL ){
-						model.set('active', true);
+						model.set('active', true); // Then set its model to active
 					}else{
-						model.set('active', false);
+						model.set('active', false); // Else, deactivate it
 					}
 				});
 			});

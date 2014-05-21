@@ -2,24 +2,20 @@
  * App initialization script
  */
 
-// Requires the require config file
+// Load RequireJS configuration file
 require(['./require-config'], function(){
     'use strict';
 
-    // Force baseURL to set before app definition is loaded
+    // Force baseURL setting
     require.config({
 	    baseUrl: '/app/'
 	});
 
-    require([
-            'app',
-            'json!config.app.json'
-        ], 
-
-        function(app, ModuleConfig){
+    require( ['app', 'json!config.app.json'] ,
+        function( app, ModuleConfig ){
     	   'use strict';
 
-    	   // Initialize and start the app!
+    	    // Initialize and start the app!
             window.App = new app;
             App.start({ moduleConfig: ModuleConfig });
         }

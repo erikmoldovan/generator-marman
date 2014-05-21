@@ -30,6 +30,7 @@ define(function(require){
                 dialogRegion: '#dialog-region'
             });
 
+            // Populate the App regions with views
             this.Header = new Header( loader.getModulesList() );
             this.Footer = new Footer();
 
@@ -37,13 +38,18 @@ define(function(require){
             require( loader.getPaths(), function( /* arguments */ ){
                  // The arguments array is an implicit object returned by Javascript in this situation.
                  // It contains the modules loaded by require, allowing us to set up the Synchronized loading system later on.
-
-                var promises = [];
-                var defaultRoute = arguments[0].Router.controller; // Default route is always equal to the first defined module's controller
+                var promises = [],
+                    defaultRoute;
 
                 // Loop through the implicitly defined arguments array that requireJS populates
                 for( var i = 0; i < arguments.length; i++ ){
-                    promises.push( arguments[i].deferred ); // And push the module's deferred object to the promises array
+                    var module = arguments[i];
+                    var flags = module.options.moduleConfig.base.flags || {};
+
+                    // If first in list, or has a default flag, set as the default route placeholder
+                    if( i == 0 || flags.default ) defaultRoute = module.Router.getDefaultRoute();
+
+                    promises.push( module.deferred ); // And push the module's deferred object to the promises array
                 }
 
                 // When all promises in the array are resolved, then start the global router
@@ -53,7 +59,7 @@ define(function(require){
                     Backbone.history.start({ pushState: true, root: '/' });
 
                     // If the app loads at the base URL, fire the default route of the default (first) module
-                    if(App.getCurrentRoute() == "") defaultRoute.default();
+                    if(App.getCurrentRoute() == "") defaultRoute();
                 });
             });
 

@@ -1,3 +1,7 @@
+/*
+ *	Subnav collection view
+ */
+
 define(function(require){
 	'use strict';
 
@@ -10,17 +14,19 @@ define(function(require){
 		itemView: ItemView,
 
 		initialize: function(){
-			// This is for the subnav active state
+			// When a new module/submodule is set to active, the subnav collection resets
 			this.collection.on('reset', function( collection ){
-				var currentURL = App.getCurrentRoute();
+				var currentURL = App.getCurrentRoute(); // Grab the current URL, minus the app's base URL
 
+				// Loop through the subnav collection...
 				collection.each( function(model){
 					var modelURL = model.get('load').url;
 
+					// ...and match the current URL to the URL's assigned to each submodule
 					if( modelURL == currentURL ){
-						model.set('active', true);
+						model.set('active', true); // If they match, set the model's active attribute
 					}else{
-						model.set('active', false);
+						model.set('active', false); // Else, set model.active to false
 					}
 				});
 			});

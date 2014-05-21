@@ -1,3 +1,7 @@
+/*
+ *	Individual nav item view
+ */
+
 define(function(require){
 	'use strict';
 
@@ -14,14 +18,15 @@ define(function(require){
 		},
 
 		onRender: function(){
+			// Load nav item active state based on model attribute
 			if( this.model.get('active') ) this.$el.addClass('active');
 			else this.$el.removeClass('active');
 		},
 
 		loadLink: function( e ){
-			e.preventDefault();
+			e.preventDefault(); // Prevent page refresh
 
-			App.navigate( this.model.get('load').url, {trigger: true} ); // I feel as though this may be a kludge
+			App.navigate( this.model.get('load').url, {trigger: true} ); // Use Backbone.history to load the new url
 		}
 	});
 });

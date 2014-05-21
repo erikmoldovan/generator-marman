@@ -1,3 +1,7 @@
+/*
+ *	Footer Item View
+ */
+
 define(function(require){
 	'use strict';
 

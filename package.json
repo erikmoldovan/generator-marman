@@ -1,7 +1,7 @@
 {
   "name": "generator-marionette-base-spa",
-  "version": "0.0.1",
-  "description": "Yeoman generator",
+  "version": "0.1",
+  "description": "Backbone/Marionette SPA Generator",
   "license": "MIT",
   "main": "app/index.js",
   "repository": "moldyman/generator-marionette-base-spa",

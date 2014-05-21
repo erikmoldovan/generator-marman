@@ -20,6 +20,7 @@ define(function(require){
 
 	        var baseConfig = loader.getBaseConfig();
 
+	        // Instantiate module router
 	        this.Router = new SharedRouter({
 	        	baseConfig: baseConfig,
 	        	modulesList: loader.getModulesList()

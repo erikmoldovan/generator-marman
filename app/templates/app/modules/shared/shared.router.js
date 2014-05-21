@@ -22,6 +22,11 @@ define(function(require){
             this.on('routes:created', this._setDefaultRoute( data.baseConfig ));
         },
 
+        onRoute: function(route, params){
+            console.log(route);
+            console.log(params);
+        },
+
         _populateRouter: function( modulesList ){
             var self = this;
 
@@ -29,7 +34,7 @@ define(function(require){
                 var load = data.get('load'),
                     route = data.get('route');
 
-                 // { "routeFunction": function(){ App.vent.trigger( "routeTrigger" ); } }
+                // Ex: { "routeFunction": function(){ App.vent.trigger( "routeTrigger" ); } }
                 self.controller[ route.callback ] = function(){
                     console.log('[ROUTE] ' + route.trigger);
 
@@ -40,9 +45,10 @@ define(function(require){
                     App.vent.trigger( route.trigger ); // Fire module routing event
                 }
 
-                // { "url(/)" : "routeFunction" }
+                // Ex: { "url(/)" : "routeFunction" }
                 self.appRoutes[ load.url + "(/)" ] = route.callback;
 
+                // Load flags
                 var flags = ( !_.isUndefined( data.get('flags')) ) ? data.get('flags') : {};
 
                 // If first in list, or has a default flag, set as the default route placeholder
@@ -55,12 +61,16 @@ define(function(require){
         // Sets default route placeholder to appRoutes when _createRoutes method is complete
         _setDefaultRoute: function( base ){
             /* Controller */
-            // { "default" : default route's function }
+            // Ex: { "default" : default route's function }
             this.controller[ "default" ] = this.controller[ this._defaultRoute.get('route').callback ];
 
             /* AppRoutes */
-            // { "baseURL(/)" : "default" }
+            // Ex: { "baseURL(/)" : "default" }
             this.appRoutes[ base.get("url") + "(/)" ] = "default";
+        },
+
+        getDefaultRoute: function(){
+            return this.controller.default;
         }
     });
 });

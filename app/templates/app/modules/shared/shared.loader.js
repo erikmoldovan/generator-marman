@@ -1,5 +1,7 @@
 /*	
  *  Shared module loader definition
+ *
+ *	This component handles the loading, and parsing, of a module's configuration file
  */
 
 define(function(require){
@@ -10,6 +12,7 @@ define(function(require){
 
 	return Marionette.Controller.extend({
 		initialize: function( options ){
+			// Sets loader model and collection
 			this._baseConfig = new Backbone.Model( options.moduleConfig.base );
             this._modulesList = new Backbone.Collection( options.moduleConfig.modules );
 
