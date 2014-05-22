@@ -22,11 +22,6 @@ define(function(require){
             this.on('routes:created', this._setDefaultRoute( data.baseConfig ));
         },
 
-        onRoute: function(route, params){
-            console.log(route);
-            console.log(params);
-        },
-
         _populateRouter: function( modulesList ){
             var self = this;
 

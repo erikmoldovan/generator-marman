@@ -10,6 +10,7 @@ define(function(require){
         Backbone = require('backbone'),
         Marionette = require('marionette'),
 
+        Environment = require('global/global.environment'),
         SharedLoader = require('modules/shared/shared.loader'),
 
         Header = require('global/regions/header/controller.header'),
@@ -17,6 +18,9 @@ define(function(require){
 
     return Marionette.Application.extend({
         start: function( options ){
+            // Load initial App components
+            this.Environment = new Environment();
+
             // Instantiate the Module Loader component
             var loader = new SharedLoader({
                 moduleConfig: options.moduleConfig
@@ -25,7 +29,7 @@ define(function(require){
             // Define App Regions
             this.addRegions({
                 headerRegion: '#header-region',
-                contentRegion: '#main-region',
+                mainRegion: '#main-region',
                 footerRegion: '#footer-region',
                 dialogRegion: '#dialog-region'
             });

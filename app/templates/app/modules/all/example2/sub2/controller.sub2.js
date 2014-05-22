@@ -7,7 +7,7 @@ define(function(require){
 	return Marionette.Controller.extend({
 		initialize: function(){
             App.vent.on('route:module:example2:sub2', function(){
-                App.contentRegion.show(new Sub2View());
+                App.mainRegion.show(new Sub2View());
             });
 		}
 	});

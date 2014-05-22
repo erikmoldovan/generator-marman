@@ -52,16 +52,15 @@
 			"app/modules/shared/shared.module.js",
 			"app/modules/shared/shared.router.js",
 
+			"app/global/global.environment.js",
+
 			"app/global/helpers/helpers.handlebars.js",
 
 			"app/global/regions/header/controller.header.js",
-
 			"app/global/regions/header/views/layout.header.js",
 			"app/global/regions/header/views/template.layout.header.hbs",
-
 			"app/global/regions/header/views/topbar/layout.topbar.js",
 			"app/global/regions/header/views/topbar/template.layout.topbar.hbs",
-			
 			"app/global/regions/header/views/nav/collectionview.nav.js",
 			"app/global/regions/header/views/nav/collectionview.subnav.js",
 			"app/global/regions/header/views/nav/itemview.nav.js",

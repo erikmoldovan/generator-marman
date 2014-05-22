@@ -32,7 +32,6 @@ var MarionetteBaseSpaGenerator = yeoman.generators.Base.extend({
       // this.styleFramework = props.styleFramework;
       // this.unitTestingFramework = props.unitTestingFramework;
       // this.webServer = props.webServer;
-      // this.extraModules = props.extraModules;
 
       done();
     // }.bind(this));
@@ -83,13 +82,6 @@ MarionetteBaseSpaGenerator.prototype.generateApp = function generateApp(){
 // MarionetteBaseSpaGenerator.prototype.webServer = function webServer(){
 //   if(this.webServer != "None"){
 //     console.log('ws');
-
-//   }
-// };
-
-// MarionetteBaseSpaGenerator.prototype.extraModules = function extraModules(){
-//   if(this.extraModules.length > 0){
-//     console.log('em');
 
 //   }
 // };

@@ -19,7 +19,7 @@
       {
         "name": "None"
       },{
-        "name": "Foundation"
+        "name": "Bootstrap"
       }
     ]
   },
@@ -44,24 +44,6 @@
         "name": "None"
       },{
         "name": "Node.js"
-      }
-    ]
-  },
-  {
-    "type": "checkbox",
-    "name": "extraModules",
-    "message": "What extra modules would you like to include?",
-    "choices": [
-      {
-        "name": "Backgrid"
-      },{
-        "name": "Backbone extras"
-      },{
-        "name": "lunr"
-      },{
-        "name": "SinonJS"
-      },{
-        "name": "Sticky JS"
       }
     ]
   }
