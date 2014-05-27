@@ -1,0 +1,19 @@
+{
+	"base": {
+		"title": "<%= titleCaseName %>",
+		"url": "<%= lowerCaseName %>"
+	},
+	"modules": []
+}
+
+// {
+// 	"load": {
+// 		"title": "My Module", //this will be the displayed text in the sub-navigaiton
+// 		"url": "myModule/mySubmodule", //this will be the route in the url
+// 		"path": "modules/all/my_module/my_submodule/module.my_submodule" //this is the path to the module that require will use
+// 	},
+// 	"route": {  
+// 	"callback": "load_module_mymodule_mysubmodule",
+// 		"trigger": "route:module:mymodule:mysubmodule"
+// 	}
+// }
