@@ -29,22 +29,23 @@ define(function(require){
                 var load = data.get('load'),
                     route = data.get('route');
 
-                // Ex: { "routeFunction": function(){ App.vent.trigger( "routeTrigger" ); } }
+                var flags = ( !_.isUndefined( data.get('flags')) ) ? data.get('flags') : {};
+
+                 // { "routeFunction": function(){ App.vent.trigger( "routeTrigger" ); } }
                 self.controller[ route.callback ] = function(){
                     console.log('[ROUTE] ' + route.trigger);
 
                     // If method fired is default, then load the full URL
-                    // if( App.getCurrentRoute() != load.url ) App.navigate( load.url ); // Temporarily disabling this
+                    if(!flags.hidden){
+                        if( App.getCurrentRoute() != load.url ) App.navigate( load.url );
+                    }
 
                     App.vent.trigger( 'route:changed', modulesList ); // Fires Header update event
-                    App.vent.trigger( route.trigger ); // Fire module routing event
+                    App.vent.trigger( route.trigger, arguments ); // Fire module routing event
                 }
 
-                // Ex: { "url(/)" : "routeFunction" }
+                // { "url(/)" : "routeFunction" }
                 self.appRoutes[ load.url + "(/)" ] = route.callback;
-
-                // Load flags
-                var flags = ( !_.isUndefined( data.get('flags')) ) ? data.get('flags') : {};
 
                 // If first in list, or has a default flag, set as the default route placeholder
                 if( index == 0 || flags.default ) self._defaultRoute = data.clone();
