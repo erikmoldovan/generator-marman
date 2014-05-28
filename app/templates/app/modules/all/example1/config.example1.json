@@ -23,6 +23,9 @@
             "route": {
                 "callback": "load_module_example1_sub2",
                 "trigger": "route:module:example1:sub2"
+            },
+            "flags": {
+                "hidden": true
             }
         }
     ]

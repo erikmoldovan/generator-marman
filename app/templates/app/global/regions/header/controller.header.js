@@ -20,25 +20,46 @@ define(function(require){
 			var self = this;
 
 			App.vent.on('route:changed', function( moduleslist ){
-				// set subnav collection to new submodules list
-				self._subnavCollection.reset( moduleslist.toJSON() );
-
-				// Ex: /example1/sub1 -> example1
-				var currentURL = App.getCurrentRoute().substring(0, App.getCurrentRoute().indexOf('/'));
-
-				self._navCollection.each( function(model){
-					var modelURL = model.get('load').url;
-
-					// If top nav elements matches substringed URL...
-					if( modelURL == currentURL ){
-						model.set('active', true); // Then set its model to active
-					}else{
-						model.set('active', false); // Else, deactivate it
-					}
-				});
+				self.updateNav();
+				self.updateSubnav( moduleslist );
 			});
 
 			console.log('[GLOBAL] Header loaded');
+		},
+
+		updateNav: function(){
+			// Ex: /example1/sub1 -> example1
+			var currentURL = App.getCurrentRoute().substring(0, App.getCurrentRoute().indexOf('/'));
+
+			this._navCollection.each( function(model){
+				var modelURL = model.get('load').url;
+
+				// If top nav elements matches substringed URL...
+				if( modelURL == currentURL ){
+					model.set('active', true); // Then set its model to active
+				}else{
+					model.set('active', false); // Else, deactivate it
+				}
+
+				var flags = (!_.isUndefined( model.get('flags') )) ? model.get('flags') : {};
+			
+	            if(flags.hidden){
+	            	model.collection.remove( model );
+	            }
+			});
+		},
+
+		updateSubnav: function( moduleslist ){
+			// set subnav collection to new submodules list
+			this._subnavCollection.reset( moduleslist.toJSON() );
+
+			this._subnavCollection.each( function(model){
+	            var flags = (!_.isUndefined( model.get('flags') )) ? model.get('flags') : {};
+			
+	            if(flags.hidden){
+	            	model.collection.remove( model );
+	            }
+			});
 		}
 	})
 });

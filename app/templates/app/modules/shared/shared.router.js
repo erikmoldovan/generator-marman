@@ -34,7 +34,7 @@ define(function(require){
                     console.log('[ROUTE] ' + route.trigger);
 
                     // If method fired is default, then load the full URL
-                    if( App.getCurrentRoute() != load.url ) App.navigate( load.url );
+                    // if( App.getCurrentRoute() != load.url ) App.navigate( load.url ); // Temporarily disabling this
 
                     App.vent.trigger( 'route:changed', modulesList ); // Fires Header update event
                     App.vent.trigger( route.trigger ); // Fire module routing event
