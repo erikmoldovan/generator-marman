@@ -7,7 +7,7 @@
         {
             "load": {
                 "title": "E1: Sub 1",
-                "url": "example1/sub1",
+                "url": ["example1/sub1"],
                 "path": "modules/all/example1/sub1/module.sub1"
             },
             "route": {

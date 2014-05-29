@@ -45,7 +45,16 @@ define(function(require){
                 }
 
                 // { "url(/)" : "routeFunction" }
-                self.appRoutes[ load.url + "(/)" ] = route.callback;
+                if(_.isArray( load.url ) ){
+                    for(var i = 0; i < load.url.length; i++){
+                        console.log(load.url[i]);
+                        self.appRoutes[ load.url[i] + "(/)" ] = route.callback;
+                    }
+                }else{
+                    self.appRoutes[ load.url + "(/)" ] = route.callback;
+                }
+
+                console.log(self.appRoutes);
 
                 // If first in list, or has a default flag, set as the default route placeholder
                 if( index == 0 || flags.default ) self._defaultRoute = data.clone();
