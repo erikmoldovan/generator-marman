@@ -48,6 +48,7 @@
 			"app/app.js",
 
 			"app/config.app.json",
+			"app/environment.json",
 			"app/modules/shared/shared.loader.js",
 			"app/modules/shared/shared.module.js",
 			"app/modules/shared/shared.router.js",

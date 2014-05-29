@@ -1,11 +1,15 @@
 define(function(require){
-	'use strict';
+	var Backbone = require('backbone');
 
-	var Marionette = require('marionette');
+	return Backbone.Model.extend({
+		url: '/app/environment.json',
 
-	return Marionette.Controller.extend({
+		defaults: {
+			'target': 'production'
+		},
+
 		initialize: function(){
-			console.log('[GLOBAL] Environment loaded');
+			this.fetch();
 		}
 	});
 });

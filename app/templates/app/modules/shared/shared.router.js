@@ -37,7 +37,10 @@ define(function(require){
 
                     // If method fired is default, then load the full URL
                     if(!flags.hidden){
-                        if( App.getCurrentRoute() != load.url ) App.navigate( load.url );
+                        if( App.getCurrentRoute() != (load.url || load.url[0]) ) {
+                            if(_.isArray(load.url)) App.navigate( load.url[0] );
+                            else App.navigate( load.url );
+                        }
                     }
 
                     App.vent.trigger( 'route:changed', modulesList ); // Fires Header update event
@@ -47,14 +50,11 @@ define(function(require){
                 // { "url(/)" : "routeFunction" }
                 if(_.isArray( load.url ) ){
                     for(var i = 0; i < load.url.length; i++){
-                        console.log(load.url[i]);
                         self.appRoutes[ load.url[i] + "(/)" ] = route.callback;
                     }
                 }else{
                     self.appRoutes[ load.url + "(/)" ] = route.callback;
                 }
-
-                console.log(self.appRoutes);
 
                 // If first in list, or has a default flag, set as the default route placeholder
                 if( index == 0 || flags.default ) self._defaultRoute = data.clone();
