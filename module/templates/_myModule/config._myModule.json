@@ -1,7 +1,7 @@
 {
 	"base": {
-		"title": "<%= titleCaseName %>",
-		"url": "<%= lowerCaseName %>"
+		"title": "<%= moduleTitleCaseName %>",
+		"url": "<%= moduleLowerCaseName %>"
 	},
 	"modules": []
 }
