@@ -11,6 +11,7 @@ define(function(require){
         Marionette = require('marionette'),
 
         Environment = require('global/global.environment'),
+        Sync = require('global/global.sync'),
         SharedLoader = require('modules/shared/shared.loader'),
 
         Header = require('global/regions/header/controller.header'),
@@ -20,6 +21,7 @@ define(function(require){
         start: function( options ){
             // Load initial App components
             this.Environment = new Environment();
+            this.Sync = new Sync();
 
             // Instantiate the Module Loader component
             var loader = new SharedLoader({
@@ -38,12 +40,15 @@ define(function(require){
             this.Header = new Header( loader.getModulesList() );
             this.Footer = new Footer();
 
+            var self = this;
+
             // Require all modules
             require( loader.getPaths(), function( /* arguments */ ){
                  // The arguments array is an implicit object returned by Javascript in this situation.
                  // It contains the modules loaded by require, allowing us to set up the Synchronized loading system later on.
                 var promises = [],
-                    defaultRoute;
+                    defaultRoute,
+                    root = self.Environment.getRoot();
 
                 // Loop through the implicitly defined arguments array that requireJS populates
                 for( var i = 0; i < arguments.length; i++ ){
@@ -60,7 +65,7 @@ define(function(require){
                 $.when.apply( $, promises).done( function(){
                     // Start the global router
                     console.log('[GLOBAL] History started');
-                    Backbone.history.start({ pushState: true, root: '/' });
+                    Backbone.history.start({ pushState: true, root: root });
 
                     // If the app loads at the base URL, fire the default route of the default (first) module
                     if(App.getCurrentRoute() == "") defaultRoute();

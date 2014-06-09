@@ -54,6 +54,7 @@
 			"app/modules/shared/shared.router.js",
 
 			"app/global/global.environment.js",
+			"app/global/global.sync.js",
 
 			"app/global/helpers/helpers.handlebars.js",
 
