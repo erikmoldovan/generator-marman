@@ -1,3 +1,9 @@
+/*
+ *	Global Environment definition
+ *
+ *	Instantiates for every app instance based on the environment the app is served from
+ */
+
 define(function(require){
 	var Backbone = require('backbone');
 
@@ -5,8 +11,8 @@ define(function(require){
 		url: '/app/environment.json',
 
 		defaults: {
-			'target': 'production',
 			'api': {
+				'protocol': 'https',
 				'url': 'localhost',
 				'port': '80'
 			},
@@ -22,7 +28,8 @@ define(function(require){
 		},
 
 		getApiUrl: function(){
-			return 'http://' + this.get('api').url + ':' + this.get('api').port + this.get('root');
+			/* Example: http://localhost:80/ */
+			return this.get('api').protocol + '://' + this.get('api').url + ':' + this.get('api').port + this.get('root');
 		}
 	});
 });

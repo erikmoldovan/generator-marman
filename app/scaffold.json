@@ -55,6 +55,8 @@
 
 			"app/global/global.environment.js",
 			"app/global/global.sync.js",
+			"app/global/global.user.js",
+			"app/global/global.cache.js",
 
 			"app/global/helpers/helpers.handlebars.js",
 

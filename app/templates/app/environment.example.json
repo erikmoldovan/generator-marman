@@ -1,6 +1,6 @@
 {
-	"target": "development",
 	"api": {
+		"protocol": "http",
 		"url": "localhost",
 		"port": "9999"
 	},
