@@ -55,15 +55,14 @@ define(function(require){
                     root = self.Environment.getRoot();
 
                 // Loop through the implicitly defined arguments array that requireJS populates
-                for( var i = 0; i < arguments.length; i++ ){
-                    var module = arguments[i];
+                _.each(arguments, function( module, i ){
                     var flags = module.options.moduleConfig.base.flags || {};
 
                     // If first in list, or has a default flag, set as the default route placeholder
-                    if( i == 0 || flags.default ) defaultRoute = module.Router.getDefaultRoute();
+                    if( i === 0 || flags.default ) defaultRoute = module.Router.getDefaultRoute();
 
                     promises.push( module.deferred ); // And push the module's deferred object to the promises array
-                }
+                });
 
                 // When all promises in the array are resolved, then start the global router
                 $.when.apply( $, promises).done( function(){
