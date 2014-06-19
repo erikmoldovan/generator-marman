@@ -29,7 +29,7 @@ define(function(require){
 
 		updateNav: function(){
 			// Ex: /example1/sub1 -> example1
-			var currentURL = App.getCurrentRoute().substring(0, App.getCurrentRoute().indexOf('/'));
+			var currentURL = App.getCurrentRoute().split("/")[0];
 
 			this._navCollection.each( function(model){
 				var modelURL = model.get('load').url;
