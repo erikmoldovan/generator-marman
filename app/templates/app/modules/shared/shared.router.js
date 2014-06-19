@@ -36,12 +36,12 @@ define(function(require){
                     console.log('[ROUTE] ' + route.trigger);
 
                     // If method fired is default, then load the full URL
-                    if(!flags.hidden){
-                        if( App.getCurrentRoute() != (load.url || load.url[0]) ) {
-                            if(_.isArray(load.url)) App.navigate( load.url[0] );
-                            else App.navigate( load.url );
-                        }
-                    }
+                    // if(!flags.hidden){
+                    //     if( App.getCurrentRoute() != (load.url || load.url[0]) ) {
+                    //         if(_.isArray(load.url)) App.navigate( load.url[0] );
+                    //         else App.navigate( load.url );
+                    //     }
+                    // }
 
                     App.vent.trigger( 'route:changed', modulesList ); // Fires Header update event
                     App.vent.trigger( route.trigger, arguments ); // Fire module routing event
@@ -49,9 +49,9 @@ define(function(require){
 
                 // { "url(/)" : "routeFunction" }
                 if(_.isArray( load.url ) ){
-                    for(var i = 0; i < load.url.length; i++){
-                        self.appRoutes[ load.url[i] + "(/)" ] = route.callback;
-                    }
+                    _.each(load.url, function( url ){
+                        self.appRoutes[ url + "(/)" ] = route.callback;
+                    });
                 }else{
                     self.appRoutes[ load.url + "(/)" ] = route.callback;
                 }

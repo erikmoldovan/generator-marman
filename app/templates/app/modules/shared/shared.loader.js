@@ -18,6 +18,22 @@ define(function(require){
 
             // Check for flags that may affect module load logic
             var flags = (!_.isUndefined( this._baseConfig.get('flags') )) ? this._baseConfig.get('flags') : {};
+
+            if(!_.isEmpty(this._baseConfig.get('url'))){
+            	var self = this;
+
+            	this._modulesList.each(function(model){
+	            	var load = model.get('load');
+
+	            	if(_.isArray(load.url)){
+	            		for( var i = 0; i < load.url.length; i++ ){
+	            			load.url[i] = self._baseConfig.get('url') + "/" + load.url[i];
+	            		}
+	            	}else{
+            			load.url = self._baseConfig.get('url') + "/" + load.url;
+	            	}
+	            });
+            }
 		},
 
 		getPaths: function(){
