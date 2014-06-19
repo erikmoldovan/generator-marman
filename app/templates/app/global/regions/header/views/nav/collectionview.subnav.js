@@ -23,10 +23,21 @@ define(function(require){
 					var modelURL = model.get('load').url;
 
 					// ...and match the current URL to the URL's assigned to each submodule
-					if( modelURL == currentURL ){
-						model.set('active', true); // If they match, set the model's active attribute
+					if(_.isArray( modelURL )){
+						_.each(modelURL, function(url){
+							if( url == currentURL ){
+								model.set('active', true);
+								return;
+							}
+						});
+
+						// model.set('active', false);
 					}else{
-						model.set('active', false); // Else, set model.active to false
+						if( modelURL == currentURL ){
+							model.set('active', true); // If they match, set the model's active attribute
+						}else{
+							model.set('active', false); // Else, set model.active to false
+						}
 					}
 				});
 			});
