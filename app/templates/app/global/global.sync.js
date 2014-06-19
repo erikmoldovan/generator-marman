@@ -25,11 +25,10 @@ define(function(require){
 		},
 
 		// {options}, {callbacks}, context
-		call: function( options, callbacks, context ){
+		call: function( options, callbacks, context ){			
 			// Set the options object for the AJAX call
-			options || (options = {}),
-			url = App.Environment.getApiUrl() + (options.url || ''),
-			interval = (options.interval || 0); // Use explicitly defined interval value, or default to single poll request
+			var url = App.Environment.getApiUrl() + (options.url || '');
+			var interval = !_.isUndefined(options.interval) ? options.interval : 0; // Use explicitly defined interval value, or default to single poll request
 
 			// Initial poll hit (regardless of request type)
 			this.poll( url, 0, callbacks, context );
@@ -47,16 +46,15 @@ define(function(require){
 				$.ajax({
 					url: url,
 					success: function( data ){
-						try{
-							data = JSON.parse( data );
-						}catch(e){
-							console.log(e);
-							return;
-						}
+						if(!_.isObject(data)) data = $.parseJSON(data);
 
-						if(!callbacks.condition( data, context ) && interval != 0){
-							callbacks.update( data, context );
-							self.poll( url, interval, callbacks, context );
+						if(interval !== 0){
+							if(!_.isUndefined(callbacks.condition) && !callbacks.condition( data, context )){
+								callbacks.complete( data, context );
+							}else{
+								callbacks.update( data, context );
+								self.poll( url, interval, callbacks, context );
+							}
 						}
 						else callbacks.complete( data, context );
 					},
@@ -68,4 +66,4 @@ define(function(require){
 			}, interval);
 		}
 	});
-})
+});
