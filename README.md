@@ -2,11 +2,7 @@
 
 ![alt tag](https://raw.github.com/moldyman/generator-marman/master/marman_logo.jpg)
 
-## Getting Started
-
-### Marman, man, man, man...
-
-Who is Marman? Marman 
+## Marman, man, man, man...
 
 To install generator-marman from npm, run:
 
