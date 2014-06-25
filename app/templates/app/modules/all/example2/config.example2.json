@@ -7,7 +7,7 @@
         {
             "load": {
                 "title": "E2: Sub 1",
-                "url": "example2/sub1",
+                "url": "sub1",
                 "path": "modules/all/example2/sub1/module.sub1"
             },
             "route": {
@@ -17,7 +17,7 @@
         },{
             "load": {
                 "title": "E2: Sub 2",
-                "url": "example2/sub2",
+                "url": "sub2",
                 "path": "modules/all/example2/sub2/module.sub2"  
             },
             "route": {

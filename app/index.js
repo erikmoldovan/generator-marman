@@ -4,7 +4,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 
-var MarionetteBaseSpaGenerator = yeoman.generators.Base.extend({
+var MarmanGenerator = yeoman.generators.Base.extend({
   initialize: function () {
     this.pkg = require('../package.json');
 
@@ -22,7 +22,7 @@ var MarionetteBaseSpaGenerator = yeoman.generators.Base.extend({
     this.log(this.yeoman);
 
     // replace it with a short and sweet description of your generator
-    this.log(chalk.magenta('Marionette SPAs made simple: RequireJS/Backbone/Marionette'));
+    this.log(chalk.magenta('Modular Marionette Apps'));
 
     // Read the prompts config file
     // var prompts = JSON.parse(this.readFileAsString(path.join(__dirname, './prompts.json')));
@@ -42,7 +42,7 @@ var MarionetteBaseSpaGenerator = yeoman.generators.Base.extend({
   // }
 });
 
-MarionetteBaseSpaGenerator.prototype.generateApp = function generateApp(){
+MarmanGenerator.prototype.generateApp = function generateApp(){
   var scaffold_config = JSON.parse(this.readFileAsString(path.join(__dirname, './scaffold.json')));
 
   var parent = this;
@@ -57,7 +57,7 @@ MarionetteBaseSpaGenerator.prototype.generateApp = function generateApp(){
   });
 };
 
-// MarionetteBaseSpaGenerator.prototype.stylePreprocessor = function stylePreprocessor(){
+// MarmanGenerator.prototype.stylePreprocessor = function stylePreprocessor(){
 //   if(this.stylePreprocessor != "None"){
 //     console.log('spp');
 
@@ -65,25 +65,25 @@ MarionetteBaseSpaGenerator.prototype.generateApp = function generateApp(){
 //   }
 // };
 
-// MarionetteBaseSpaGenerator.prototype.styleFramework = function styleFramework(){
+// MarmanGenerator.prototype.styleFramework = function styleFramework(){
 //   if(this.styleFramework != "None"){
 //     console.log('sf');
 
 //   }
 // };
 
-// MarionetteBaseSpaGenerator.prototype.unitTestingFramework = function unitTestingFramework(){
+// MarmanGenerator.prototype.unitTestingFramework = function unitTestingFramework(){
 //   if(this.unitTestingFramework != "None"){
 //     console.log('utf');
 
 //   }
 // };
 
-// MarionetteBaseSpaGenerator.prototype.webServer = function webServer(){
+// MarmanGenerator.prototype.webServer = function webServer(){
 //   if(this.webServer != "None"){
 //     console.log('ws');
 
 //   }
 // };
 
-module.exports = MarionetteBaseSpaGenerator;
+module.exports = MarmanGenerator;

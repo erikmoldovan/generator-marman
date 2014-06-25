@@ -1,6 +1,6 @@
 {
-  "name": "marionette-base-spa",
-  "version": "0.0.1",
+  "name": "marman",
+  "version": "0.1.0",
   "description": "Grunt build dependencies",
   "main": "Gruntfile.js",
   "dependencies": {
