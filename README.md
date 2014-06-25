@@ -1,4 +1,6 @@
-# generator-marman[![Build Status](https://secure.travis-ci.org/moldyman/generator-marman.png?branch=master)](https://travis-ci.org/moldyman/generator-marman)
+# generator-marman
+
+![alt tag](https://raw.github.com/moldyman/generator-marman/master/marman_logo.jpg)
 
 ## Getting Started
 
