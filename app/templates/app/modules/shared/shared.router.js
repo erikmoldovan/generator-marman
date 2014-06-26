@@ -3,8 +3,6 @@
  */
 
 define(function(require){
-    'use strict';
-
     var Backbone = require('backbone'),
         Marionette = require('marionette');
 
@@ -16,10 +14,20 @@ define(function(require){
 
             // Populate the appRoutes object
             this._modulesList = data.modulesList;
-            this._populateRouter( this._modulesList );
+            this._baseConfig = data.baseConfig;
+            this._populateRouter( this._modulesList, this._baseConfig );
 
             // When all routes are generated, add default route to the router
             this.on('routes:created', this._setDefaultRoute( data.baseConfig ));
+
+             this.on('route:default', function(){
+            //     var load = this.appRoutes,
+            //         currentURL = App.getCurrentRoute();
+
+            //     _.each(load, function(key, url){
+            //         if(url.slice(0, -3) == currentURL) return;
+            //     });
+            });
         },
 
         _populateRouter: function( modulesList ){

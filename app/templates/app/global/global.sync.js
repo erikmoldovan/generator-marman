@@ -15,55 +15,64 @@ define(function(require){
 		post: function( options, callbacks, context ){
 			options.type = {post: true};
 
-			this.call( options, callbacks, context );
+			this._call( options, callbacks, context );
 		},
 
 		get: function( options, callbacks, context ){
 			options.type = {get: true};
 
-			this.call( options, callbacks, context );
+			this._call( options, callbacks, context );
 		},
 
 		// {options}, {callbacks}, context
-		call: function( options, callbacks, context ){			
+		_call: function( options, callbacks, context ){	
 			// Set the options object for the AJAX call
-			var url = App.Environment.getApiUrl() + (options.url || '');
-			var interval = !_.isUndefined(options.interval) ? options.interval : 0; // Use explicitly defined interval value, or default to single poll request
+			var url = App.Environment.getApiUrl() + ( options.url || '' );
+			var interval = !_.isUndefined( options.interval ) ? options.interval : 0; // Use explicitly defined interval value, or default to single poll request
 
-			// Initial poll hit (regardless of request type)
-			this.poll( url, 0, callbacks, context );
+			this.firstFlag = true;
 
 			// GET requests, with polling functonality. Poller automatically activates if an interval greater than 0 is set
-			if(options.type.get && interval > 0) this.poll( url, interval, callbacks, context );
+			if(options.type.get) this._poll( url, interval, callbacks, context );
 		},
 
-		poll: function( url, interval, callbacks, context ){
+		_poll: function( url, interval, callbacks, context ){
 			var self = this;
 
+			if( this.firstFlag && interval !== 0 ){
+				interval = 1;
+				this.firstFlag = false;
+			}
+
 			// Sets the timeout for polling
-			setTimeout(function(){
+			var poller = setTimeout( function(){
 				// AJAX call
 				$.ajax({
 					url: url,
+					cache: false,
 					success: function( data ){
-						if(!_.isObject(data)) data = $.parseJSON(data);
+						if(!_.isObject( data )) data = $.parseJSON( data );
 
-						if(interval !== 0){
-							if(!_.isUndefined(callbacks.condition) && !callbacks.condition( data, context )){
+						if( interval !== 0 ){
+							if(!_.isUndefined( callbacks.condition ) && !callbacks.condition( data, context )){
 								callbacks.complete( data, context );
 							}else{
 								callbacks.update( data, context );
-								self.poll( url, interval, callbacks, context );
+								self._poll( url, interval, callbacks, context );
 							}
 						}
 						else callbacks.complete( data, context );
 					},
 					error: function( xhr, status, error ){
-						if(!_.isUndefined(callbacks.error)) context.callbacks.error( xhr, status, error );
+						if(!_.isUndefined( callbacks.error )) context.callbacks.error( xhr, status, error );
 						else console.error('[ERROR] Sync:', xhr, status, error );
 					}
 				});
-			}, interval);
+			}, interval );
+
+			App.vent.on('route:changed', function(){
+				clearTimeout( poller );
+			});
 		}
 	});
 });

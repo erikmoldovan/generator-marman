@@ -10,16 +10,34 @@ define(function(require){
 		Marionette = require('marionette');
 
 	return Marionette.Controller.extend({
-		initialize: function(){
-			// console.log(localStorage);
-		},
+        // Saves a preference to localStorage
+        savePreference: function(key, data) {
+            // If there are preference keys that don't belong
+            // to the current serverSessionId, remove those keys
+            // before saving the new preference
+            for (var i = 0; i < localStorage.length; i++) {
+                if (localStorage.key(i).indexOf(this.getPrefrenceKeyPrefix()) !== 0) {
+                    console.log("savePreference.removeItem " + localStorage.key(i));
+                    localStorage.removeItem(localStorage.key(i));
+                }
+            }
 
-		retrieveLocal: function(){
-			return localStorage;
-		},
+            var newKey = this.getPrefrenceKeyPrefix() + key;
+            data =  JSON.stringify(data);
+            localStorage.setItem(newKey, data);
+            console.log("savePreference " + newKey + " -- " + data);
+         },
 
-		retrieveSession: function(){
-			return sessionStorage;
-		}
+        // Reads a preference from localStorage
+        getPreference: function(key) {
+            var newKey = this.getPrefrenceKeyPrefix() + key;
+            var data = $.parseJSON(localStorage.getItem(newKey));
+            console.log("getPreference " + newKey + " -- " + data);
+            return data;
+        },
+
+        getPrefrenceKeyPrefix: function() {
+            return "Pref:" + window.serverSessionId + ":";
+        }
 	});
-})
+});

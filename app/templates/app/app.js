@@ -17,6 +17,8 @@ define(function(require){
         SharedLoader = require('modules/shared/shared.loader'),
 
         Header = require('global/regions/header/controller.header'),
+        Main = require('global/regions/region.main'),
+        Dialog = require('global/regions/region.dialog'),
         Footer = require('global/regions/footer/controller.footer');
 
     return Marionette.Application.extend({
@@ -35,9 +37,13 @@ define(function(require){
             // Define App Regions
             this.addRegions({
                 headerRegion: '#header-region',
-                mainRegion: '#main-region',
+                mainRegion: Main.extend({
+                    el: "#main-region"
+                }),
                 footerRegion: '#footer-region',
-                dialogRegion: '#dialog-region'
+                dialogRegion: Dialog.extend({
+                    el: '#dialog-region'
+                })
             });
 
             // Populate the App regions with views
