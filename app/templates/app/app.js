@@ -12,7 +12,6 @@ define(function(require){
 
         Environment = require('global/global.environment'),
         Cache = require('global/global.cache'),
-        Sync = require('global/global.sync'),
         User = require('global/global.user'),
         SharedLoader = require('modules/shared/shared.loader'),
 
@@ -26,7 +25,6 @@ define(function(require){
             // Load initial App components
             this.Environment = new Environment();
             this.Cache = new Cache();
-            this.Sync = new Sync();
             this.User = new User();
 
             // Instantiate the Module Loader component
