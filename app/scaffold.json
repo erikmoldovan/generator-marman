@@ -52,9 +52,9 @@
 			"app/modules/shared/shared.loader.js",
 			"app/modules/shared/shared.module.js",
 			"app/modules/shared/shared.router.js",
+			"app/modules/shared/shared.poller.js",
 
 			"app/global/global.environment.js",
-			"app/global/global.sync.js",
 			"app/global/global.user.js",
 			"app/global/global.cache.js",
 
