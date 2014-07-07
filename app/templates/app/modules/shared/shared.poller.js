@@ -1,21 +1,25 @@
 define(function( require ){
 
-	var Poller = function Poller( model, options ){
-		this.model = model;
-		options = (options || {});
+	var Poller = function Poller( call, options ){
+		this.call = call;
+		options = !_.isUndefined( options ) ? options : {};
 
-		this.firstLoadFlag = true;
+		this.firstLoadFlag = !_.isUndefined(options.firstLoadFlag) ? options.firstLoadFlag : true;
+		this.suicideFlag = !_.isUndefined(options.suicideFlag) ? options.suicideFlag : true;
+
 		this.maxRequests = options.maxRequests;
 		this.maxFailures = options.maxFailures;
-		this.suicideFlag = (options.suicideFlag || true);
+
+		this.deferred = $.Deferred();
+		this.HALT_FLAG = false;
 
 		this.poll = function( interval ){
-			deferred = $.Deferred();
+			if( this.HALT_FLAG ) return;
 
 			var self = this,
 				timer;
 
-			if( this.firstLoadFlag ){
+			if( this.firstLoadFlag === true ){
 				timer = 0;
 				this.firstLoadFlag = false;
 			}else{
@@ -23,20 +27,37 @@ define(function( require ){
 			}
 
 			this.tick = setTimeout( function(){
-				model.fetch()
-					.done( function( data ){
-						deferred.resolve( data );
+				if( self.call instanceof Backbone.Model || Backbone.Collection ){
+					self.call.fetch({
+						success: function( data ){
+							self.deferred.notify( data );
 
-						if( --this.maxRequests <= 0) return;
+							if( --self.maxRequests <= 0) return;
+							else self.poll( interval );
+						},
+						error: function( xhr, status, error ){
+							self.deferred.notify( {xhr: xhr, status: status, error: error} );
+
+							if( --self.maxFailures <= 0) return;
+							else{
+								self.poll( interval );
+							}
+						}
+					});		
+				}else{
+					self.call.done( function( data ){
+						self.deferred.notify( data );
+
+						if( --self.maxRequests <= 0) return;
 						else self.poll( interval );
 					})
 					.error( function( xhr, status, error ){
-						// console.error('[ERROR] Sync:', xhr, status, error );
-						deferred.resolve( {xhr: xhr, status: status, error: error} );
+						self.deferred.notify( {xhr: xhr, status: status, error: error} );
 
-						if( --this.maxFailures <= 0) return;
+						if( --self.maxFailures <= 0) return;
 						else self.poll( interval );
 					});
+				}
 			}, timer);
 
 			if( this.suicideFlag ){
@@ -45,11 +66,12 @@ define(function( require ){
 				});
 			}
 
-			return deferred;
+			return self.deferred;
 		};
 
 		this.stop = function(){
 			clearTimeout( this.tick );
+			this.HALT_FLAG = true;
 		};
 	};
 
