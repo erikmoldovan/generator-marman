@@ -44,10 +44,6 @@ define(function(require){
                 })
             });
 
-            // Populate the App regions with views
-            this.Header = new Header( loader.getModulesList() );
-            this.Footer = new Footer();
-
             var self = this;
 
             // Require all modules
@@ -70,6 +66,10 @@ define(function(require){
 
                 // When all promises in the array are resolved, then start the global router
                 $.when.apply( $, promises).done( function(){
+                    // Populate the App regions with views
+                    this.Header = new Header( loader.getModulesList() );
+                    this.Footer = new Footer();
+
                     // Start the global router
                     console.log('[GLOBAL] History started');
                     Backbone.history.start({ pushState: true, root: root });
