@@ -3,8 +3,6 @@
  */
 
 define(function(require){
-    var Backbone = require('backbone'),
-        Marionette = require('marionette');
 
     return Marionette.AppRouter.extend({
         initialize: function( data ){
@@ -19,15 +17,6 @@ define(function(require){
 
             // When all routes are generated, add default route to the router
             this.on('routes:created', this._setDefaultRoute( data.baseConfig ));
-
-             this.on('route:default', function(){
-            //     var load = this.appRoutes,
-            //         currentURL = App.getCurrentRoute();
-
-            //     _.each(load, function(key, url){
-            //         if(url.slice(0, -3) == currentURL) return;
-            //     });
-            });
         },
 
         _populateRouter: function( modulesList ){
@@ -41,16 +30,6 @@ define(function(require){
 
                  // { "routeFunction": function(){ App.vent.trigger( "routeTrigger" ); } }
                 self.controller[ route.callback ] = function(){
-                    console.log('[ROUTE] ' + route.trigger);
-
-                    // If method fired is default, then load the full URL
-                    // if(!flags.hidden){
-                    //     if( App.getCurrentRoute() != (load.url || load.url[0]) ) {
-                    //         if(_.isArray(load.url)) App.navigate( load.url[0] );
-                    //         else App.navigate( load.url );
-                    //     }
-                    // }
-
                     App.vent.trigger( 'route:changed', modulesList ); // Fires Header update event
                     App.vent.trigger( route.trigger, arguments ); // Fire module routing event
                 }
@@ -73,9 +52,24 @@ define(function(require){
 
         // Sets default route placeholder to appRoutes when _createRoutes method is complete
         _setDefaultRoute: function( base ){
+            var self = this;
+
             /* Controller */
             // Ex: { "default" : default route's function }
-            this.controller[ "default" ] = this.controller[ this._defaultRoute.get('route').callback ];
+            this.controller[ "default" ] = function(){
+                var defaultURL = self._defaultRoute.get('load').url;
+
+                if(_.isArray( defaultURL ) ){
+                    _.each(defaultURL, function( url ){
+                        if(App.getCurrentRoute() != url && url.indexOf(":") === -1) App.navigate(url);
+                        return;
+                    });
+                }else{
+                    if(App.getCurrentRoute() != defaultURL && defaultURL.indexOf(":") === -1) App.navigate(defaultURL);
+                }
+
+                self.controller[ self._defaultRoute.get('route').callback ]();
+            };
 
             /* AppRoutes */
             // Ex: { "baseURL(/)" : "default" }
